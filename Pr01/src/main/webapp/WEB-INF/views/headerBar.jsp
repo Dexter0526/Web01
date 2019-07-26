@@ -3,15 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="resources/css/carousel.css" rel="stylesheet">
-<link href="resources/css/signin.css" rel="stylesheet">
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<script type="text/javascript"
+	src="resources/js/member.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,7 +22,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index">Project name</a>
+						<a class="navbar-brand" href="index">Web Project</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
@@ -49,7 +42,15 @@
 									<li><a href="#">Separated link</a></li>
 									<li><a href="#">One more separated link</a></li>
 								</ul></li>
-							<li class="pull-right"><a href="log">Sign in</a></li>
+							<c:choose>
+								<c:when test="${empty loginUser }">
+									<li class="pull-right"><a href="log">Sign in</a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="pull-right"><a href="log">Sign in</a></li>
+								</c:otherwise>
+							</c:choose>
+
 						</ul>
 					</div>
 				</div>
