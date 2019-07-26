@@ -45,17 +45,23 @@ public class HomeController {
 	@RequestMapping(value = "/about")
 	public String about(Model model) {
 		System.out.println("about");
-		return "about";
+		return "About/about";
 	}
 	@RequestMapping(value = "/contact")
 	public String contact(Model model) {
 		System.out.println("contact");
-		return "contact";
+		return "Contact/contact";
 	}
 	@RequestMapping(value = "/log")
 	public String log(Model model) {
 		System.out.println("log");
 		return "Log/log";
+	}
+	
+	@RequestMapping(value = "/join")
+	public String join(Model model) {
+		System.out.println("join");
+		return "Log/join";
 	}
 	
 }
