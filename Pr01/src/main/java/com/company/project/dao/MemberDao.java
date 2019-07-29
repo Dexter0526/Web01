@@ -23,13 +23,12 @@ public class MemberDao {
 
 	public Connection getConnection() throws Exception{
 		Context initContext = new InitialContext();
-		Context envContext = (Context)initContext.lookup("java:/comp/env");
-		DataSource ds = (DataSource)envContext.lookup("jdbc/Oracle11g");
+		DataSource ds = (DataSource) initContext.lookup("java:comp/env/jdbc/oracle11g");
 		Connection conn = ds.getConnection();
 		return conn;
 	}
 
-	public int userChect(String email, String pwd) {
+	public int userCheck(String email, String pwd) {
 		int result = -1;
 		String sql = "select pwd from member where email = ?";
 		Connection conn = null;

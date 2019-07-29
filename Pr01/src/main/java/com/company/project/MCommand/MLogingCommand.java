@@ -25,7 +25,7 @@ public class MLogingCommand implements Mcommand{
 		String pwd = request.getParameter("pwd");
 		
 		MemberDao mdao = new MemberDao();
-		int result = mdao.userChect(email, pwd);
+		int result = mdao.userCheck(email, pwd);
 		
 		if(result == 1) {
 			MemberDto mdto = mdao.getMember(email);

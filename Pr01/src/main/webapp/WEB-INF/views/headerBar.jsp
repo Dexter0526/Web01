@@ -47,7 +47,7 @@
 									<li class="pull-right"><a href="log">Sign in</a></li>
 								</c:when>
 								<c:otherwise>
-									<li class="pull-right"><a href="log">Sign in</a></li>
+									<li class="pull-right"><a href="log">Log out</a></li>
 								</c:otherwise>
 							</c:choose>
 
