@@ -6,6 +6,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- Carousel
+    ================================================== -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -15,7 +17,7 @@
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
-				<img class="first-slide"
+				<img
 					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 					alt="First slide">
 				<div class="container">
@@ -36,8 +38,8 @@
 				</div>
 			</div>
 			<div class="item">
-				<img class="second-slide"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				<img
+					src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -53,8 +55,8 @@
 				</div>
 			</div>
 			<div class="item">
-				<img class="third-slide"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+				<img
+					src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -79,6 +81,7 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
+	<!-- /.carousel -->
 
 </body>
 </html>

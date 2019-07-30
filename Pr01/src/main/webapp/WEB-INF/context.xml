@@ -19,7 +19,7 @@
 	<Resource name="jdbc/oracle11g" auth="Container"
 		type="javax.sql.DataSource" username="admin" password="0000"
 		driverClassName="oracle.jdbc.driver.OracleDriver"
-		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
 		url="jdbc:oracle:thin:@127.0.0.1:1521:admin" maxActive="500"
 		maxIdle="100" />
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
