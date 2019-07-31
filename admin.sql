@@ -9,7 +9,3 @@ create table member(
 
 INSERT INTO "ADMIN"."MEMBER" (NAME, EMAIL, PWD, PHONE, ADMIN) VALUES ('°ü¸®ÀÚ', 'admin@dexterweb.co.kr', '0526', '010-1234-5678', '1');
 commit;
-
-
-create table employee(
-    

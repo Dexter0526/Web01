@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="./resources/css/carousel.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/carousel.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>

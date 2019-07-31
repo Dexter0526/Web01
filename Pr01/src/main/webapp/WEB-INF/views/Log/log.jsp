@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,29 +19,29 @@
 
 	<div class="container">
 
-		<form class="form-signin" name = "frm" action = "login" method = "post">
+		<form class="form-signin" name="frm" action="login" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> <input
-				type="email" id="inputEmail" class="form-control"
+				type="email" name = "email" id="inputEmail" class="form-control"
 				placeholder="Email address" required autofocus> <label
 				for="inputPassword" class="sr-only">Password</label> <input
-				type="password" id="inputPassword" class="form-control"
+				type="password" name = "pwd" id="inputPassword" class="form-control"
 				placeholder="Password" required>
 			<div class="checkbox">
 				<label> <input type="checkbox" value="remember-me">
 					Remember me
 				</label>
 			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="return loginCheck()">Sign
-				in</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				onclick="return loginCheck()">Sign in</button>
 			<br>
 			<div class="position_a" align="center">
 				<div class="find_info">
-					<a target="_blank" id="idinquiry" href="">아이디 찾기</a>
-					<span class="bar" aria-hidden="true">|</span>
-					<a target="_blank" id="pwinquiry" href="">비밀번호 찾기</a>
-					<span class="bar" aria-hidden="true">|</span>
-					<a target="_blank" id="join" href="join">회원가입</a>
+					<a target="_blank" id="idinquiry" href="">아이디 찾기</a> <span
+						class="bar" aria-hidden="true">|</span> <a target="_blank"
+						id="pwinquiry" href="">비밀번호 찾기</a> <span class="bar"
+						aria-hidden="true">|</span> <a target="_blank" id="join"
+						href="join">회원가입</a>
 				</div>
 			</div>
 		</form>

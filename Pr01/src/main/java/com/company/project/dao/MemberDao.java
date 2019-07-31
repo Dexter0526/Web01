@@ -8,11 +8,17 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.company.project.dto.MemberDto;
+import com.company.project.util.constant;
 
 public class MemberDao {
+	JdbcTemplate template;
 
-	public MemberDao() {}
+	public MemberDao() {
+		this.template = constant.template;
+	}
 
 	private static MemberDao instance = new MemberDao();
 
@@ -31,10 +37,11 @@ public class MemberDao {
 	public int userCheck(String email, String pwd) {
 		int result = -1;
 		String sql = "select pwd from member where email = ?";
+		System.out.println("email = " + email);
+		System.out.println("pwd = " + pwd);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -57,7 +64,7 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-
+		
 		return result;
 	}
 

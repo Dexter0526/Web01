@@ -15,7 +15,7 @@ public class MLogingCommand implements Mcommand{
 	@Override
 	public void execute(Model model) {
 		// TODO Auto-generated method stub
-
+		System.out.println("execute 실행");
 
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
@@ -26,7 +26,7 @@ public class MLogingCommand implements Mcommand{
 		
 		MemberDao mdao = new MemberDao();
 		int result = mdao.userCheck(email, pwd);
-		
+		System.out.println("result = " + result);
 		if(result == 1) {
 			MemberDto mdto = mdao.getMember(email);
 			mdto.setEmail(email);
@@ -40,3 +40,4 @@ public class MLogingCommand implements Mcommand{
 		}
 	}
 }
+

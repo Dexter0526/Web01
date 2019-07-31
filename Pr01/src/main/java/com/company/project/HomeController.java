@@ -40,6 +40,7 @@ public class HomeController {
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
 		System.out.println("index");
+		System.out.println("실행");
 		return "index";
 	}
 	
