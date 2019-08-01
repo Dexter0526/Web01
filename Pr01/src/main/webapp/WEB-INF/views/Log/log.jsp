@@ -34,16 +34,6 @@
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit"
 				onclick="return loginCheck()">Sign in</button>
-			<br>
-			<div class="position_a" align="center">
-				<div class="find_info">
-					<a target="_blank" id="idinquiry" href="">아이디 찾기</a> <span
-						class="bar" aria-hidden="true">|</span> <a target="_blank"
-						id="pwinquiry" href="">비밀번호 찾기</a> <span class="bar"
-						aria-hidden="true">|</span> <a target="_blank" id="join"
-						href="join">회원가입</a>
-				</div>
-			</div>
 		</form>
 
 	</div>
