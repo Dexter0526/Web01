@@ -14,5 +14,12 @@ public class MemberController {
 		return "MemberView/memberIndexView";
 	}
 	
+	@RequestMapping(value = "/contract")
+	public String member_contract(Model model) {
+		System.out.println("contract view");
+		
+		return "MemberView/MemberBody/contract";
+	}
+	
 	
 }
