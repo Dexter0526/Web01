@@ -1,8 +1,6 @@
 # Web01
 web project01
 
-stack : 
-
 java8
 
 tomcat7.0
