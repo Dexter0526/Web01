@@ -30,7 +30,6 @@ public class MLogingCommand implements Mcommand{
 		if(result == 1) {
 			MemberDto mdto = mdao.getMember(email);
 			mdto.setEmail(email);
-			
 			session2.setAttribute("loginUser", mdto);
 			session2.setAttribute("message", "회원님 안녕하세요.");
 		}else if(result == 0) {
@@ -38,6 +37,7 @@ public class MLogingCommand implements Mcommand{
 		}else if(result == -1) {
 			session2.setAttribute("message", "회원이 존재하지 않습니다.");
 		}
+		session2.setAttribute("result", result);
 	}
 }
 
