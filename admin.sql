@@ -1,3 +1,7 @@
+create user admin identified by 0000;
+grant connect, resource, dba to admin;
+
+
 create table member(
     name varchar2(10),
     email varchar2(30),
