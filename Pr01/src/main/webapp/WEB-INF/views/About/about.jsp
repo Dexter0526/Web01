@@ -34,6 +34,21 @@
 	<!-- content -->
 	<div class="container marketing">
 
+	<!-- Body -->
+	<hr class = "featurette-divider">
+	
+	<%@ include file = "aboutBody1.jsp" %>
+	
+	<hr class = "featurette-divider">
+	
+	<%@ include file = "aboutBody2.jsp" %>
+	
+	<hr class = "featurette-divider">
+	
+	<%@ include file = "aboutBody3.jsp" %>
+	
+	<hr class = "featurette-divider">
+
 		<!-- FOOTER -->
 		<footer>
 			<p><%@ include file="../footer.jsp"%></p>
