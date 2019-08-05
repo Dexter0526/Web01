@@ -27,3 +27,17 @@
     maxWait : 사용 가능한 커넥션이 없을 때 커넥션 회수를 기다리는 시간 (1000 = 1초)
     testOnBorrow : db에 test를 해볼 것인지
 -->
+
+*현재 사용 context.xml
+<Resource 
+    	name="jdbc/oracle11g"
+    	auth="Container" 
+    	type="javax.sql.DataSource"
+    	maxTotal="100" 
+    	maxIdle="30" 
+    	maxWaitMillis="10000"
+    	username="admin"
+    	password="0000"
+    	driverClassName="oracle.jdbc.driver.OracleDriver"
+    	url="jdbc:oracle:thin:@localhost:1521:orcl"
+        />
