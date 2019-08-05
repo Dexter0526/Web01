@@ -44,14 +44,15 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<c:choose>
-								<c:when test="${empty loginUser }">
+								<c:when test="${result != 1}">
 									<li><a href="log">Sign in</a></li>
+									<li><a href="#">Help</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="memberIndexView">Member</a>
+									<li><a href="logout">Log out</a></li>
 								</c:otherwise>
 							</c:choose>
-							<li><a href="#">Help</a></li>
 						</ul>
 					</div>
 				</div>

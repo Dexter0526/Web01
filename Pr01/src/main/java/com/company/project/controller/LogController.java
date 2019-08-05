@@ -30,4 +30,15 @@ Mcommand command;
 			return "Log/log";
 		}
 	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout_process(HttpServletRequest request, Model model) {
+		System.out.println("logout()");
+		
+		model.addAttribute("request", request);
+		command = new MLogingCommand();
+		command.execute(model);
+		
+		return "index";
+	}
 }
