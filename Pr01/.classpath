@@ -25,8 +25,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/it/Downloads/apache-tomcat-8.5.43/lib/tomcat-dbcp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/it/Downloads/apache-tomcat-8.5.43/lib/tomcat-jdbc.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-dbcp.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jdbc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/ojdbc6_g.jar"/>
 	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/standard-1.1.2.jar"/>
