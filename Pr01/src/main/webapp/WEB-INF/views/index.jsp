@@ -43,19 +43,7 @@
 		<%@ include file="Body/body1.jsp"%>
 
 		<!-- START THE FEATURETTES -->
-
-		<hr class="featurette-divider">
-
-		<%@ include file="Body/body2.jsp"%>
-
-		<hr class="featurette-divider">
-
-		<%@ include file="Body/body3.jsp"%>
-
-		<hr class="featurette-divider">
-
-		<%@ include file="Body/body4.jsp"%>
-
+		
 		<hr class="featurette-divider">
 
 		<!-- /END THE FEATURETTES -->

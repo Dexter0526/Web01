@@ -14,9 +14,9 @@ public class IndexController {
 	}
 
 	// 회사소개
-	@RequestMapping(value = "/about")
+	@RequestMapping(value = "/info")
 	public String about(Model model) {
-		System.out.println("about");
+		System.out.println("info");
 		return "About/about";
 	}
 	
@@ -26,46 +26,46 @@ public class IndexController {
 		System.out.println("contact");
 		return "Business/building";
 	}
-	@RequestMapping(value = "/business/building")
+	@RequestMapping(value = "/building")
 	public String building(Model model) {
-		System.out.println("business/building()");
+		System.out.println("building");
 		return "/Business/building";
 	}
-	@RequestMapping(value = "/business/civil")
+	@RequestMapping(value = "/civil")
 	public String civil(Model model) {
-		System.out.println("/business/civil");
+		System.out.println("civil");
 		return "/Business/civil";
 	}
-	@RequestMapping(value = "/business/plant")
+	@RequestMapping(value = "/plant")
 	public String plant(Model model) {
-		System.out.println("/business/plant");
+		System.out.println("plant");
 		return "/Business/plant";
 	}
 	
 	// 기술분야
-	@RequestMapping(value = "/tech/construction")
+	@RequestMapping(value = "/construction")
 	public String construction(Model model) {
-		System.out.println("/tech/construction");
+		System.out.println("construction");
 		return "/Tech/construction";
 	}
-	@RequestMapping(value = "/tech/environment")
+	@RequestMapping(value = "/environment")
 	public String environment(Model model) {
-		System.out.println("/tech/environment");
+		System.out.println("environment");
 		return "/Tech/environment";
 	}
-	@RequestMapping(value = "/tech/futureTech")
+	@RequestMapping(value = "/futureTech")
 	public String futureTech(Model model) {
-		System.out.println("/tech/futureTech");
+		System.out.println("futureTech");
 		return "/Tech/futureTech";
 	}
-	@RequestMapping(value = "/tech/patent")
+	@RequestMapping(value = "/patent")
 	public String patent(Model model) {
-		System.out.println("/tech/patent");
+		System.out.println("patent");
 		return "/Tech/patent";
 	}
-	@RequestMapping(value = "/tech/portfolio")
+	@RequestMapping(value = "/portfolio")
 	public String portfolio(Model model) {
-		System.out.println("/tech/portfolio");
+		System.out.println("portfolio");
 		return "/Tech/portfolio";
 	}
 	
