@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,17 +39,19 @@
 		<hr class="featurette-divider">
 		<div class="row featurette">
 			<div class="col-md-7">
-				<h2 class="featurette-heading">
-					First featurette heading. <span class="text-muted">It'll
-						blow your mind.</span>
-				</h2>
+				<h2 class="featurette-heading">가스 처리 시설</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor
 					fringilla. Vestibulum id ligula porta felis euismod semper.
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
+				<p>
+					<button type="button" class="btn btn-primary">주요 실적</button>
+				</p>
 			</div>
 			<div class="col-md-5">
-				<img class="featurette-image img-responsive center-block"
+				<img
+					src="${pageContext.request.contextPath}/resources/image/architecture-1639990_640.jpg"
+					class="featurette-image img-responsive center-block"
 					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
 			</div>
 		</div>
@@ -58,16 +60,20 @@
 		<div class="row featurette">
 			<div class="col-md-7 col-md-push-5">
 				<h2 class="featurette-heading">
-					Oh yeah, it's that good. <span class="text-muted">See for
-						yourself.</span>
+					<span class="text-muted">전력 시설</span>
 				</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor
 					fringilla. Vestibulum id ligula porta felis euismod semper.
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
+				<p>
+					<button type="button" class="btn btn-primary">주요 실적</button>
+				</p>
 			</div>
 			<div class="col-md-5 col-md-pull-7">
-				<img class="featurette-image img-responsive center-block"
+				<img
+					src="${pageContext.request.contextPath}/resources/image/power-plant-3878137_640.jpg"
+					class="featurette-image img-responsive center-block"
 					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
 			</div>
 		</div>
@@ -75,16 +81,19 @@
 		<hr class="featurette-divider">
 		<div class="row featurette">
 			<div class="col-md-7">
-				<h2 class="featurette-heading">
-					And lastly, this one. <span class="text-muted">Checkmate.</span>
-				</h2>
+				<h2 class="featurette-heading">석유 정제 시설</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor
 					fringilla. Vestibulum id ligula porta felis euismod semper.
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
+				<p>
+					<button type="button" class="btn btn-primary">주요 실적</button>
+				</p>
 			</div>
 			<div class="col-md-5">
-				<img class="featurette-image img-responsive center-block"
+				<img
+					src="${pageContext.request.contextPath}/resources/image/brown-coal-282960_640.jpg"
+					class="featurette-image img-responsive center-block"
 					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
 			</div>
 		</div>
