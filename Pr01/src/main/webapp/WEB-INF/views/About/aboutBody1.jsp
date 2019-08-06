@@ -19,7 +19,7 @@
 				dapibus, tellus ac cursus commodo.</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-responsive center-block"
+			<img src = "${pageContext.request.contextPath}/resources/image/albert-einstein-1933340_640.jpg" class="featurette-image img-responsive center-block"
 				data-src="holder.js/500x500/auto" alt="Generic placeholder image">
 		</div>
 	</div>
