@@ -26,27 +26,27 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="about">회사소개</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							<li class="dropdown"><a href="business" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-expanded="false">사업분야
 									<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">건축</a></li>
-									<li><a href="#">토목</a></li>
-									<li><a href="#">플랜트</a></li>
+									<li><a href="business/building">건축</a></li>
+									<li><a href="business/civil">토목</a></li>
+									<li><a href="business/plant">플랜트</a></li>
 								</ul></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
+							<li class="dropdown"><a href="tech/construction" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-expanded="false">기술분야
 									<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">시공</a></li>
-									<li><a href="#">환경</a></li>
-									<li><a href="#">미래 기술</a></li>
+									<li><a href="tech/construction">시공</a></li>
+									<li><a href="tech/environment">환경</a></li>
+									<li><a href="tech/futureTech">미래 기술</a></li>
 									<li class="divider"></li>
-									<li class="dropdown-header">연구 실적</li>
-									<li><a href="#">특허</a></li>
-									<li><a href="#">포트폴리오</a></li>
+									<li class="dropdown-header"><a href="tech/patent">연구 실적</a></li>
+									<li><a href="tech/patent">특허</a></li>
+									<li><a href="tech/portfolio">포트폴리오</a></li>
 								</ul></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
