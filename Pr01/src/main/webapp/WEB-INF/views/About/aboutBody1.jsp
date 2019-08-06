@@ -11,8 +11,7 @@
 	<div class="row featurette">
 		<div class="col-md-7">
 			<h2 class="featurette-heading">
-				First featurette heading. <span class="text-muted">It'll blow
-					your mind.</span>
+				CEO 인사말.
 			</h2>
 			<p class="lead">Donec ullamcorper nulla non metus auctor
 				fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
