@@ -20,16 +20,18 @@ public class MLogingCommand implements Mcommand{
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
-		
+
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
-		
+
 		MemberDao mdao = new MemberDao();
 		int result = mdao.userCheck(email, pwd);
 		System.out.println("result = " + result);
 		if(result == 1) {
 			MemberDto mdto = mdao.getMember(email);
 			mdto.setEmail(email);
+			int admin = mdto.getAdmin();
+			session2.setAttribute("admin", admin);
 			session2.setAttribute("loginUser", mdto);
 			session2.setAttribute("message", "회원님 안녕하세요.");
 		}else if(result == 0) {
