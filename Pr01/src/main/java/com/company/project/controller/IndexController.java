@@ -43,16 +43,6 @@ public class IndexController {
 	}
 	
 	// 기술분야
-	@RequestMapping(value = "/construction")
-	public String construction(Model model) {
-		System.out.println("construction");
-		return "/Tech/construction";
-	}
-	@RequestMapping(value = "/environment")
-	public String environment(Model model) {
-		System.out.println("environment");
-		return "/Tech/environment";
-	}
 	@RequestMapping(value = "/futureTech")
 	public String futureTech(Model model) {
 		System.out.println("futureTech");
@@ -63,13 +53,20 @@ public class IndexController {
 		System.out.println("patent");
 		return "/Tech/patent";
 	}
-	@RequestMapping(value = "/portfolio")
-	public String portfolio(Model model) {
-		System.out.println("portfolio");
-		return "/Tech/portfolio";
+	
+	// 홍보센터
+	@RequestMapping(value = "/news")
+	public String news(Model model) {
+		System.out.println("news");
+		return "/Promotion/news";
+	}
+	@RequestMapping(value = "/ci")
+	public String ci(Model model) {
+		System.out.println("ci");
+		return "/Promotion/ci";
 	}
 	
-	// 직원 로그인
+	// 직원 로그인 뷰
 	@RequestMapping(value = "/log")
 	public String log(Model model) {
 		System.out.println("log");
