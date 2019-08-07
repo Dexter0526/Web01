@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.project.MCommand.MJoinCommand;
 import com.company.project.MCommand.MLogingCommand;
 import com.company.project.MCommand.Mcommand;
 
@@ -49,6 +50,10 @@ Mcommand command;
 	}
 	@RequestMapping(value = "/join")
 	public String join(HttpServletRequest request, Model model) {
+		System.out.println("회원가입");
+		model.addAttribute("request", request);
+		command = new MJoinCommand();
+		command.execute(model);
 		
 		return "MemberView/memberView";
 	}
