@@ -30,7 +30,6 @@ Mcommand command;
 			return "Log/log";
 		}
 	}
-	
 	@RequestMapping(value = "/logout")
 	public String logout_process(HttpServletRequest request, Model model) {
 		System.out.println("logout()");
@@ -40,5 +39,17 @@ Mcommand command;
 		command.execute(model);
 		
 		return "index";
+	}
+	
+	@RequestMapping(value = "/signup")
+	public String singUp(Model model) {
+		System.out.println("signUp");
+		
+		return "Log/signUp";
+	}
+	@RequestMapping(value = "/join")
+	public String join(HttpServletRequest request, Model model) {
+		
+		return "MemberView/memberView";
 	}
 }

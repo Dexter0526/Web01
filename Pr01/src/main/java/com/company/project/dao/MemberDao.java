@@ -3,6 +3,8 @@ package com.company.project.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -100,6 +102,38 @@ public class MemberDao {
 			}
 		}
 		return mdto;
+	}
+	public List<MemberDto> selectAllMember() {
+		String sql = "select * from member";
+		List<MemberDto> memberList = new ArrayList<MemberDto>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDto mdto = new MemberDto();
+				mdto.setName(rs.getString("name"));
+				mdto.setEmail(rs.getString("email"));
+				mdto.setPhone(rs.getString("phone"));
+				mdto.setAdmin(rs.getInt("admin"));
+				memberList.add(mdto);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return memberList;
 	}
 
 	public int insertMember(MemberDto mdto) {
