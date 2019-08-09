@@ -81,8 +81,8 @@
 									<td>${memberList.email}</td>
 									<td>${memberList.phone}</td>
 									<td>${memberList.admin}</td>
-									<td><button type="button" class="btn btn-xs btn-default">수정</button>
-										<button type="button" class="btn btn-xs btn-danger">삭제</button></td>
+									<td><a href = "memberUpdateView?email=${memberList.email}"><button type="button" class="btn btn-xs btn-default">수정</button></a>
+										<a href = "memberDelete?email=${memberList.email}"><button type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

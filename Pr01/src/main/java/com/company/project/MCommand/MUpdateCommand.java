@@ -11,20 +11,19 @@ import org.springframework.ui.Model;
 import com.company.project.dao.MemberDao;
 import com.company.project.dto.MemberDto;
 
-
-public class MJoinCommand implements Mcommand{
+public class MUpdateCommand implements Mcommand{
 
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
+		
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
@@ -39,15 +38,7 @@ public class MJoinCommand implements Mcommand{
 		mdto.setAdmin(admin);
 		
 		MemberDao mdao = new MemberDao();
-		int result = mdao.insertMember(mdto);
-		
-		session2 = request.getSession();
-		
-		if(result == 1) {
-			session2.setAttribute("userEmail", mdto.getEmail());
-			request.setAttribute("message", "성공");
-		}else {
-			request.setAttribute("message", "실패");
-		}
+		mdao.updateMember(mdto);
 	}
+
 }

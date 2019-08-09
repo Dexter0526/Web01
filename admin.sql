@@ -7,7 +7,7 @@ create table member(
     email varchar2(30),
     pwd varchar2(10),
     phone char(13),
-    admin number(1) DEFAULT 0,
+    admin number(1) DEFAULT 1,
     primary key(email)
 );
 

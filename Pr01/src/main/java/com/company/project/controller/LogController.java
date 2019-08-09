@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.MCommand.MJoinCommand;
 import com.company.project.MCommand.MLogingCommand;
+import com.company.project.MCommand.MUpdateCommand;
+import com.company.project.MCommand.MUpdateViewCommand;
 import com.company.project.MCommand.Mcommand;
 
 @Controller
@@ -56,5 +58,23 @@ Mcommand command;
 		command.execute(model);
 		
 		return "MemberView/memberView";
+	}
+	@RequestMapping(value = "/memberUpdateView")
+	public String memberUpdateView(HttpServletRequest request, Model model) {
+		System.out.println("회원 수정");
+		model.addAttribute("request", request);
+		command = new MUpdateViewCommand();
+		command.execute(model);
+		
+		return "Log/memberUpdateView";
+	}
+	@RequestMapping(value = "/memberUpdate")
+	public String memberUpdate(HttpServletRequest request, Model model) {
+		System.out.println("수정 완료");
+		model.addAttribute("request", request);
+		command = new MUpdateCommand();
+		command.execute(model);
+		
+		return "MemberView/memberIndexView";
 	}
 }

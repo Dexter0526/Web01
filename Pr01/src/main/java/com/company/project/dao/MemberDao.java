@@ -104,7 +104,7 @@ public class MemberDao {
 		return mdto;
 	}
 	public List<MemberDto> selectAllMember() {
-		String sql = "select * from member";
+		String sql = "select * from member order by admin asc";
 		List<MemberDto> memberList = new ArrayList<MemberDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -136,6 +136,34 @@ public class MemberDao {
 		return memberList;
 	}
 
+	public int confirmEmail(String email) {
+		int result = -1;
+		String sql = "select email from member where email = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = 1;
+			}else result = -1;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public int insertMember(MemberDto mdto) {
 		int result = -1;
 		String sql = "insert into member values(?, ?, ?, ?, ?)";
@@ -150,6 +178,7 @@ public class MemberDao {
 			pstmt.setString(3, mdto.getPwd());
 			pstmt.setString(4, mdto.getPhone());
 			pstmt.setInt(5, mdto.getAdmin());
+			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -166,7 +195,7 @@ public class MemberDao {
 
 	public int updateMember(MemberDto mdto) {
 		int result = -1;
-		String sql = "update member set pwd=? phone = ?" + "where email = ?";
+		String sql = "update member set pwd=?, phone = ?," + "admin = ? where email = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -174,7 +203,8 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mdto.getPwd());
 			pstmt.setString(2, mdto.getPhone());
-			pstmt.setString(3, mdto.getEmail());
+			pstmt.setInt(3, mdto.getAdmin());
+			pstmt.setString(4, mdto.getEmail());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
