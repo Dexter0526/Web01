@@ -18,11 +18,11 @@
 		<div class="carousel-inner" role="listbox">
 			<div class="item active">
 				<img
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+					src="${pageContext.request.contextPath}/resources/image/crane-homes-1528336_1920.jpg"
 					alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>Example headline.</h1>
+						<h1>Dexter</h1>
 						<p>
 							Note: If you're viewing this page via a
 							<code>file://</code>
@@ -39,7 +39,7 @@
 			</div>
 			<div class="item">
 				<img
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+					src="${pageContext.request.contextPath}/resources/image/wall-1397361_1920.jpg"
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
@@ -56,7 +56,7 @@
 			</div>
 			<div class="item">
 				<img
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+					src="${pageContext.request.contextPath}/resources/image/panorama-2646143_1920.jpg"
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
