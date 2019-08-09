@@ -219,4 +219,19 @@ public class MemberDao {
 
 		return result;
 	}
+	
+	public void memberDelete(String email) {
+		String sql = "delete from member where email = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

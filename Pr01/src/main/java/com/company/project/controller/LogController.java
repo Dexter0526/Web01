@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.project.MCommand.MDeleteCommand;
 import com.company.project.MCommand.MJoinCommand;
 import com.company.project.MCommand.MLogingCommand;
 import com.company.project.MCommand.MUpdateCommand;
@@ -73,6 +74,15 @@ Mcommand command;
 		System.out.println("수정 완료");
 		model.addAttribute("request", request);
 		command = new MUpdateCommand();
+		command.execute(model);
+		
+		return "MemberView/memberIndexView";
+	}
+	@RequestMapping(value = "/memberDelete")
+	public String memberDelete(HttpServletRequest request, Model model) {
+		System.out.println("회원 삭제");
+		model.addAttribute("request", request);
+		command = new MDeleteCommand();
 		command.execute(model);
 		
 		return "MemberView/memberIndexView";
