@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.company.project.dto.patentDto;
+import com.company.project.dto.PatentDto;
 import com.company.project.util.constant;
 
 public class PatentDao {
@@ -36,9 +36,9 @@ public class PatentDao {
 		return conn;
 	}
 
-	public List<patentDto> selectAllPatent(){
+	public List<PatentDto> selectAllPatent(){
 		String sql = "select * from patent order by num desc";
-		List<patentDto> patentList = new ArrayList<patentDto>();
+		List<PatentDto> patentList = new ArrayList<PatentDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -48,9 +48,9 @@ public class PatentDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				patentDto pdto = new patentDto();
+				PatentDto pdto = new PatentDto();
 				pdto.setNum(rs.getInt("num"));
-				pdto.setPatenNum(rs.getString("patentnum"));
+				pdto.setPatentNum(rs.getString("patentnum"));
 				pdto.setTitle(rs.getString("title"));
 				pdto.setContent(rs.getString("content"));
 				patentList.add(pdto);
@@ -69,8 +69,8 @@ public class PatentDao {
 		return patentList;
 	}
 
-	public void insertPatent(patentDto pdto) {
-		String sql = "insert into patent(" + "num, patentnum, title, content) " + "values(patent_seq.nextval, ?, ?, ?";
+	public void insertPatent(PatentDto pdto) {
+		String sql = "insert into patent(" + "num, patentnum, title, content) " + "values(patent_seq.nextval, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 

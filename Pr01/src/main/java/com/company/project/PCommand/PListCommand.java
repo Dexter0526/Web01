@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.company.project.dao.PatentDao;
-import com.company.project.dto.patentDto;
+import com.company.project.dto.PatentDto;
 
 public class PListCommand implements Pcommand{
 
@@ -21,7 +21,7 @@ public class PListCommand implements Pcommand{
 		HttpSession session2 = request.getSession();
 		
 		PatentDao pdao = new PatentDao();
-		List<patentDto> patentList = pdao.selectAllPatent();
+		List<PatentDto> patentList = pdao.selectAllPatent();
 		session2.setAttribute("patentList", patentList);
 	}
 	

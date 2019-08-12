@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.PCommand.PListCommand;
+import com.company.project.PCommand.PRegistrationCommand;
 import com.company.project.PCommand.Pcommand;
 
 @Controller
@@ -33,7 +34,13 @@ public class PatentController {
 	@RequestMapping(value = "/registration")
 	public String registration(HttpServletRequest request, Model model) {
 		System.out.println("등록 완료");
+		model.addAttribute("request", request);
+		command = new PRegistrationCommand();
+		command.execute(model);
 		
+		// 리스트 재실행
+		command = new PListCommand();
+		command.execute(model);
 		
 		return "/Tech/patent";
 	}

@@ -86,7 +86,7 @@
 					<tbody>
 						<c:forEach var = "patentList" items = "${patentList}">
 						<tr>
-						<td>${patentList.num}</td>
+						<td>${patentList.num-1}</td>
 						<td>${patentList.patentNum}</td>
 						<td>${patentList.title}</td>
 						<td>${patentList.content}</td>

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
+import com.company.project.dao.PatentDao;
+import com.company.project.dto.PatentDto;
+
 public class PRegistrationCommand implements Pcommand{
 
 	@Override
@@ -24,6 +27,12 @@ public class PRegistrationCommand implements Pcommand{
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		PatentDto pdto = new PatentDto();
+		PatentDao pdao = new PatentDao();
+		pdto.setPatentNum(patentNum);
+		pdto.setTitle(title);
+		pdto.setContent(content);
 		
+		pdao.insertPatent(pdto);
 	}
 }

@@ -1,6 +1,6 @@
 package com.company.project.dto;
 
-public class patentDto {
+public class PatentDto {
 	private int num;
 	private String patentNum;
 	private String title;
@@ -15,7 +15,7 @@ public class patentDto {
 	public String getPatentNum() {
 		return patentNum;
 	}
-	public void setPatenNum(String patentNum) {
+	public void setPatentNum(String patentNum) {
 		this.patentNum = patentNum;
 	}
 	public String getTitle() {
@@ -30,7 +30,7 @@ public class patentDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public patentDto(int num, String patentNum, String title, String content) {
+	public PatentDto(int num, String patentNum, String title, String content) {
 		super();
 		this.num = num;
 		this.patentNum = patentNum;
@@ -38,7 +38,7 @@ public class patentDto {
 		this.content = content;
 	}
 	
-	public patentDto() {
+	public PatentDto() {
 		// TODO Auto-generated constructor stub
 	}
 }
