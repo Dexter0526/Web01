@@ -26,18 +26,18 @@
 		<%@ include file="headerBar.jsp"%>
 	</header>
 
-
-	<!-- Carousel
-    ================================================== -->
-	<%@ include file="Body/header.jsp"%>
-	<!-- /.carousel -->
-
+	<br><br><br><br>
 
 	<!-- Marketing messaging and featurettes
     ================================================== -->
 	<!-- Wrap the rest of the page in another container to center all the content. -->
 
 	<div class="container marketing">
+	
+	<!-- Carousel
+    ================================================== -->
+	<%@ include file="Body/header.jsp"%>
+	<!-- /.carousel -->
 
 		<!-- Three columns of text below the carousel -->
 		<%@ include file="Body/body1.jsp"%>

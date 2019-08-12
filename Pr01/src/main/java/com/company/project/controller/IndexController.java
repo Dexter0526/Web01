@@ -48,11 +48,6 @@ public class IndexController {
 		System.out.println("futureTech");
 		return "/Tech/futureTech";
 	}
-	@RequestMapping(value = "/patent")
-	public String patent(Model model) {
-		System.out.println("patent");
-		return "/Tech/patent";
-	}
 	
 	// 홍보센터
 	@RequestMapping(value = "/news")

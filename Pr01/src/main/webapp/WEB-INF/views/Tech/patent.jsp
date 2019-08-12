@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,13 @@
 <script
 	src="${pageContext.request.contextPath}/resources/css/bootstrap.css"></script>
 
-
+<style>
+.featurette-heading {
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -39,13 +46,62 @@
 		<!-- Body -->
 		<hr class="featurette-divider">
 
+		<div class="row featurette" style ="background-color: #eee;">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">비선형 구조물</h2>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<img
+					src="${pageContext.request.contextPath}/resources/image/railway-station-2255902_1920.jpg"
+					class="featurette-image img-responsive center-block"
+					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			</div>
+		</div>
+		<hr class="featurette-divider">
+
+		<div class="row">
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+					<c:if test = "${result == 1}">
+					<c:if test = "${admin != 2}">
+					<tr>
+						<td colspan = "4" style = "border:white; text-align:right">
+							<a href = "patentWrite">등록</a>
+						</td>
+					</tr>
+					</c:if>
+					</c:if>
+						<tr>
+							<th>번호</th>
+							<th>특허 번호</th>
+							<th>특허명</th>
+							<th>설명</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var = "patentList" items = "${patentList}">
+						<tr>
+						<td>${patentList.num}</td>
+						<td>${patentList.patentNum}</td>
+						<td>${patentList.title}</td>
+						<td>${patentList.content}</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<hr class="featurette-divider">
 		<!-- FOOTER -->
 		<footer>
 			<p><%@ include file="../footer.jsp"%></p>
 		</footer>
 	</div>
-
-
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
