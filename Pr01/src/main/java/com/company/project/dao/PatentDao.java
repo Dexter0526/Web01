@@ -35,6 +35,40 @@ public class PatentDao {
 		Connection conn = ds.getConnection();
 		return conn;
 	}
+	
+	public PatentDto getPatent(String patentNum) {
+		String sql = "select * from patent where patentnum=?";
+		
+		PatentDto pdto = new PatentDto();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, patentNum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pdto.setNum(rs.getInt("num"));
+				pdto.setPatentNum(rs.getString("patentnum"));
+				pdto.setTitle(rs.getString("title"));
+				pdto.setContent(rs.getString("content"));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return pdto;
+	}
 
 	public List<PatentDto> selectAllPatent(){
 		String sql = "select * from patent order by num desc";
@@ -81,6 +115,29 @@ public class PatentDao {
 			pstmt.setString(2, pdto.getTitle());
 			pstmt.setString(3, pdto.getContent());
 
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void updatePatent(PatentDto pdto) {
+		String sql = "update patent set patentnum=?, title=?, content=? where num=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pdto.getPatentNum());
+			pstmt.setString(2, pdto.getTitle());
+			pstmt.setString(3, pdto.getContent());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

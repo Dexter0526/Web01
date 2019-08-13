@@ -27,9 +27,9 @@
 
 <style>
 .featurette-heading {
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: -1px;
+	font-weight: 200;
+	line-height: 1;
+	letter-spacing: -1px;
 }
 </style>
 <title>Insert title here</title>
@@ -46,7 +46,7 @@
 		<!-- Body -->
 		<hr class="featurette-divider">
 
-		<div class="row featurette" style ="background-color: #eee;">
+		<div class="row featurette" style="background-color: #eee;">
 			<div class="col-md-7">
 				<h2 class="featurette-heading">비선형 구조물</h2>
 				<p class="lead">Donec ullamcorper nulla non metus auctor
@@ -67,31 +67,63 @@
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>
-					<c:if test = "${result == 1}">
-					<c:if test = "${admin != 2}">
-					<tr>
-						<td colspan = "4" style = "border:white; text-align:right">
-							<a href = "patentWrite">등록</a>
-						</td>
-					</tr>
-					</c:if>
-					</c:if>
-						<tr>
-							<th>번호</th>
-							<th>특허 번호</th>
-							<th>특허명</th>
-							<th>설명</th>
-						</tr>
+						<c:choose>
+							<c:when test="${result == 1 && admin != 2}">
+								<tr>
+									<td colspan="5" style="border: white; text-align: right"><a
+										href="patentWrite">등록</a></td>
+								</tr>
+
+								<tr>
+									<th>번호</th>
+									<th>특허 번호</th>
+									<th>특허명</th>
+									<th>설명</th>
+									<th>옵션</th>
+								</tr>
+
+							</c:when>
+
+							<c:otherwise>
+								<tr>
+									<th>번호</th>
+									<th>특허 번호</th>
+									<th>특허명</th>
+									<th>설명</th>
+								</tr>
+							</c:otherwise>
+						</c:choose>
 					</thead>
 					<tbody>
-						<c:forEach var = "patentList" items = "${patentList}">
-						<tr>
-						<td>${patentList.num-1}</td>
-						<td>${patentList.patentNum}</td>
-						<td>${patentList.title}</td>
-						<td>${patentList.content}</td>
-						</tr>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${result == 1 && admin != 2}">
+								<c:forEach var="patentList" items="${patentList}">
+									<tr>
+										<td>${patentList.num-1}</td>
+										<td>${patentList.patentNum}</td>
+										<td>${patentList.title}</td>
+										<td>${patentList.content}</td>
+										<td><a href="patentUpdateView?patentNum=${patentList.patentNum}"><button
+													type="button" class="btn btn-xs btn-default">수정</button></a>
+											&nbsp; &nbsp; <a
+											href="patentDelete?patentNum=${patentList.patentNum}"><button
+													type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
+									</tr>
+								</c:forEach>
+							</c:when>
+
+							<c:otherwise>
+								<c:forEach var="patentList" items="${patentList}">
+									<tr>
+										<td>${patentList.num-1}</td>
+										<td>${patentList.patentNum}</td>
+										<td>${patentList.title}</td>
+										<td>${patentList.content}</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+
 					</tbody>
 				</table>
 			</div>
