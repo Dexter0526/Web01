@@ -65,6 +65,7 @@
 
 		<div class="row">
 			<div class="table-responsive">
+			<h2>특허 리스트</h2>
 				<table class="table table-bordered">
 					<thead>
 						<c:choose>

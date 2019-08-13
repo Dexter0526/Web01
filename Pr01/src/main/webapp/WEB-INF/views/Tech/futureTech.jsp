@@ -38,6 +38,48 @@
 		<!-- Body -->
 		<hr class="featurette-divider">
 
+		<div class="row featurette">
+			<div class="col-md-7 col-md-push-5">
+				<h3 class="featurette-heading">BIM</h3>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+				<%--<p>
+					<button type="button" class="btn btn-primary">상세보기</button>
+				</p> --%>
+			</div>
+			<div class="col-md-5 col-md-pull-7">
+				<img
+					src="${pageContext.request.contextPath}/resources/image/BIM-Image-Copy-1.jpg"
+					class="featurette-image img-responsive center-block"
+					data-src="holder.js/350x214/auto" alt="Generic placeholder image">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h3 class="featurette-heading">
+					<span class="text-muted">도시 설계 : IOT</span>
+				</h3>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+				<%--<p>
+					<button type="button" class="btn btn-primary">주요 실적</button>
+				</p>--%>
+			</div>
+			<div class="col-md-5">
+				<img
+					src="${pageContext.request.contextPath}/resources/image/city-4317139_1920.jpg"
+					class="featurette-image img-responsive center-block"
+					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
 		<!-- FOOTER -->
 		<footer>
 			<p><%@ include file="../footer.jsp"%></p>

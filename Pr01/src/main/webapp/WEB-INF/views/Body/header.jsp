@@ -38,16 +38,16 @@
 			</div>
 			<div class="item">
 				<img
-					src="${pageContext.request.contextPath}/resources/image/591-180271-grafik-bim-benefits-newtonpage-final-hires.jpg"
+					src="${pageContext.request.contextPath}/resources/image/apartment-1853196_1920.jpg"
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>BIM</h1>
+						<h1>Apt</h1>
 						<p>Cras justo odio, dapibus ac facilisis in, egestas eget
 							quam. Donec id elit non mi porta gravida at eget metus. Nullam id
 							dolor id nibh ultricies vehicula ut id elit.</p>
 						<p>
-							<a class="btn btn-lg btn-primary" href="futureTech" role="button">LEARN MORE</a>
+							<a class="btn btn-lg btn-primary" href="building" role="button">LEARN MORE</a>
 						</p>
 					</div>
 				</div>
