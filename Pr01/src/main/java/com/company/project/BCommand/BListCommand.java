@@ -25,6 +25,7 @@ public class BListCommand implements BCommand{
 			e.printStackTrace();
 		}
 		String table = (String) session2.getAttribute("table");
+		System.out.println(table);
 		BusinessDao bdao = new BusinessDao();
 		List<BusinessDto> businessList = bdao.selectAllBusiness(table);
 		session2.setAttribute("businessList", businessList);

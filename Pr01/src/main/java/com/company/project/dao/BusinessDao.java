@@ -36,16 +36,14 @@ public class BusinessDao {
 	}
 	
 	public List<BusinessDto> selectAllBusiness(String table){
-		String sql = "select * from ? order by num desc";
+		String sql = "select * from " + table + " order by num desc";
 		List<BusinessDto> businessList = new ArrayList<BusinessDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, table);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -55,6 +53,8 @@ public class BusinessDao {
 				bdto.setContent(rs.getString("content"));
 				bdto.setField(rs.getString("field"));
 				businessList.add(bdto);
+				
+				System.out.println(bdto);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

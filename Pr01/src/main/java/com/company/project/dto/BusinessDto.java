@@ -42,6 +42,11 @@ public class BusinessDto {
 	public void setField(String field) {
 		this.field = field;
 	}
+
+	@Override
+	public String toString() {
+		return "BusinessDto [num=" + num + ", title=" + title + ", content=" + content + ", field=" + field + "]";
+	}
 	
 	
 }
