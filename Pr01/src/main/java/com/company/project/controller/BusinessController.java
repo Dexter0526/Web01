@@ -26,13 +26,23 @@ public class BusinessController {
 		return "/Business/building";
 	}
 	@RequestMapping(value = "/civil")
-	public String civil(Model model) {
+	public String civil(HttpServletRequest request, Model model) {
 		System.out.println("civil");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		session2.setAttribute("table", "civil");
+		command = new BListCommand();
+		command.execute(model);
 		return "/Business/civil";
 	}
 	@RequestMapping(value = "/plant")
-	public String plant(Model model) {
+	public String plant(HttpServletRequest request, Model model) {
 		System.out.println("plant");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		session2.setAttribute("table", "plant");
+		command = new BListCommand();
+		command.execute(model);
 		return "/Business/plant";
 	}
 }

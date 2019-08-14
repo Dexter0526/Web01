@@ -45,7 +45,7 @@
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
 				<p>
-					<button type="button" class="btn btn-primary">주요 실적</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bridges">주요 실적</button>
 				</p>
 			</div>
 			<div class="col-md-5 col-md-pull-7">
@@ -67,7 +67,7 @@
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
 				<p>
-					<button type="button" class="btn btn-primary">주요 실적</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#road">주요 실적</button>
 				</p>
 			</div>
 			<div class="col-md-5">
@@ -87,7 +87,7 @@
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
 				<p>
-					<button type="button" class="btn btn-primary">주요 실적</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#railroad">주요 실적</button>
 				</p>
 			</div>
 			<div class="col-md-5 col-md-pull-7">
@@ -107,6 +107,9 @@
 		</footer>
 
 	</div>
+	
+	<%--모달 DB 테이블 --%>
+	<%@ include file="civilTable.jsp"%>
 
 
 	<!-- Bootstrap core JavaScript

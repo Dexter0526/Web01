@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -9,8 +9,8 @@
 </head>
 <body>
 	<!-- Modal -->
-	<%-- #skyscraper --%>
-	<div class="modal fade" id="skyscraper" tabindex="-1" role="dialog"
+	<%-- #gas --%>
+	<div class="modal fade" id="gas" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -19,13 +19,13 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">초고층 빌딩 사업 실적</h4>
+					<h4 class="modal-title" id="myModalLabel">가스처리 시설 사업 실적</h4>
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
 						<c:forEach var="businessDto" items="${businessList}">
 							<table class="table table-bordered">
-								<c:if test="${businessDto.field eq 'skyscraper'}">
+								<c:if test="${businessDto.field eq 'gas'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
@@ -38,14 +38,14 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" name="field"
-						value="skyscraper">Save changes</button>
+						value="gas">Save changes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<%-- #housing --%>
-	<div class="modal fade" id="housing" tabindex="-1" role="dialog"
+	<%-- #power --%>
+	<div class="modal fade" id="power" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -54,13 +54,13 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">주택 사업 실적</h4>
+					<h4 class="modal-title" id="myModalLabel">전력 시설 사업 실적</h4>
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
 						<c:forEach var="businessDto" items="${businessList}">
 							<table class="table table-bordered">
-								<c:if test="${businessDto.field eq 'housing'}">
+								<c:if test="${businessDto.field eq 'power'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
@@ -73,14 +73,14 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" name="field"
-						value="housing">Save changes</button>
+						value="power">Save changes</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<%-- #commercialFacility --%>
-	<div class="modal fade" id="commercialFacility" tabindex="-1"
+	<%-- #oil --%>
+	<div class="modal fade" id="oil" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -89,13 +89,13 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">상업시설 사업 실적</h4>
+					<h4 class="modal-title" id="myModalLabel">석유정제 시설 사업 실적</h4>
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
 						<c:forEach var="businessDto" items="${businessList}">
 							<table class="table table-bordered">
-								<c:if test="${businessDto.field eq 'commercialFacility'}">
+								<c:if test="${businessDto.field eq 'oil'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
@@ -108,7 +108,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" name="field"
-						value="commercialFacility">Save changes</button>
+						value= "oil">Save changes</button>
 				</div>
 			</div>
 		</div>
