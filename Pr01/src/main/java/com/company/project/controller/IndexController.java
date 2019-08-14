@@ -26,21 +26,6 @@ public class IndexController {
 		System.out.println("contact");
 		return "Business/building";
 	}
-	@RequestMapping(value = "/building")
-	public String building(Model model) {
-		System.out.println("building");
-		return "/Business/building";
-	}
-	@RequestMapping(value = "/civil")
-	public String civil(Model model) {
-		System.out.println("civil");
-		return "/Business/civil";
-	}
-	@RequestMapping(value = "/plant")
-	public String plant(Model model) {
-		System.out.println("plant");
-		return "/Business/plant";
-	}
 	
 	// 기술분야
 	@RequestMapping(value = "/futureTech")

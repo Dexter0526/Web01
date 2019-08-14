@@ -71,7 +71,7 @@
 
 		<h3 class="sub-header">리스트</h3>
 		<div class="table-responsive">
-			<table class="table table-striped">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>번호</th>
