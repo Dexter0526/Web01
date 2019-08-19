@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.MCommand.MDeleteCommand;
 import com.company.project.MCommand.MJoinCommand;
+import com.company.project.MCommand.MLogOutCommand;
 import com.company.project.MCommand.MLogingCommand;
 import com.company.project.MCommand.MUpdateCommand;
 import com.company.project.MCommand.MUpdateViewCommand;
@@ -39,7 +40,7 @@ Mcommand command;
 		System.out.println("logout()");
 		
 		model.addAttribute("request", request);
-		command = new MLogingCommand();
+		command = new MLogOutCommand();
 		command.execute(model);
 		
 		return "index";

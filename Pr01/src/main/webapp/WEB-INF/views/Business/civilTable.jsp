@@ -37,8 +37,6 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" name="field"
-						value="bridges">Save changes</button>
 				</div>
 			</div>
 		</div>
@@ -72,8 +70,6 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" name="field"
-						value="road">Save changes</button>
 				</div>
 			</div>
 		</div>
@@ -107,8 +103,6 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" name="field"
-						value=railroad>Save changes</button>
 				</div>
 			</div>
 		</div>
