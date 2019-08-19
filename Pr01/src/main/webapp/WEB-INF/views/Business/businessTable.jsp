@@ -52,7 +52,7 @@
 					<thead>
 						<tr>
 							<td colspan="5" style="border: white; text-align: right"><a
-								href="patentWrite">등록</a></td>
+								href="businessWrite">등록</a></td>
 						</tr>
 
 						<tr>

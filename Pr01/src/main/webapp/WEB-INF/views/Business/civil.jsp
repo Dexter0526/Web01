@@ -47,7 +47,7 @@
 				<p>
 					<c:choose>
 						<c:when test="${result == 1 && admin != 2}">
-							<a href="adminTable">
+							<a href="businessTable">
 								<button type="button" class="btn btn-primary">주요 실적</button>
 							</a>
 						</c:when>
@@ -80,7 +80,7 @@
 				<p>
 					<c:choose>
 						<c:when test="${result == 1 && admin != 2}">
-							<a href="adminTable">
+							<a href="businessTable">
 								<button type="button" class="btn btn-primary">주요 실적</button>
 							</a>
 						</c:when>
@@ -112,7 +112,7 @@
 				<p>
 					<c:choose>
 						<c:when test="${result == 1 && admin != 2}">
-							<a href="adminTable">
+							<a href="businessTable">
 								<button type="button" class="btn btn-primary">주요 실적</button>
 							</a>
 						</c:when>

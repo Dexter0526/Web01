@@ -45,8 +45,18 @@
 					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
 					Fusce dapibus, tellus ac cursus commodo.</p>
 				<p>
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#gas">주요 실적</button>
+					<c:choose>
+						<c:when test="${result == 1 && admin != 2}">
+							<a href="businessTable">
+								<button type="button" class="btn btn-primary">주요 실적</button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#gas">주요 실적</button>
+						</c:otherwise>
+					</c:choose>
+
 				</p>
 			</div>
 			<div class="col-md-5">
@@ -70,7 +80,7 @@
 				<p>
 					<c:choose>
 						<c:when test="${result == 1 && admin != 2}">
-							<a href="adminTable">
+							<a href="businessTable">
 								<button type="button" class="btn btn-primary">주요 실적</button>
 							</a>
 						</c:when>
@@ -101,7 +111,7 @@
 				<p>
 					<c:choose>
 						<c:when test="${result == 1 && admin != 2}">
-							<a href="adminTable">
+							<a href="businessTable">
 								<button type="button" class="btn btn-primary">주요 실적</button>
 							</a>
 						</c:when>

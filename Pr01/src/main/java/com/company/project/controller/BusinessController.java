@@ -45,10 +45,16 @@ public class BusinessController {
 		command.execute(model);
 		return "/Business/plant";
 	}
-	@RequestMapping(value = "/adminTable")
+	@RequestMapping(value = "/businessTable")
 	public String adminTable(Model model) {
 		System.out.println("사업실적 리스트 뷰");
 		
-		return "/Business/adminTable";
+		return "/Business/businessTable";
+	}
+	@RequestMapping(value = "/businessWrite")
+	public String businessWrite(Model model) {
+		System.out.println("사업실적 등록 뷰");
+		
+		return "/Business/businessWrite";
 	}
 }
