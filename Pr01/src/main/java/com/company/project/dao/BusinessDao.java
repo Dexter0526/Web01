@@ -70,4 +70,32 @@ public class BusinessDao {
 		
 		return businessList;
 	}
+	
+	public void insertBusiness(BusinessDto bdto, String table) {
+		String sql = "insert into "+table+"("+"num, title, content, field) "
+					+"values("+table+"_seq.nextval, ?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bdto.getTitle());
+			pstmt.setString(2, bdto.getContent());
+			pstmt.setString(3, bdto.getField());
+
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 }

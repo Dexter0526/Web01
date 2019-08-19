@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.BCommand.BCommand;
 import com.company.project.BCommand.BListCommand;
+import com.company.project.BCommand.BRegistrationCommand;
 
 @Controller
 public class BusinessController {
@@ -51,10 +52,17 @@ public class BusinessController {
 		
 		return "/Business/businessTable";
 	}
-	@RequestMapping(value = "/businessWrite")
-	public String businessWrite(Model model) {
-		System.out.println("사업실적 등록 뷰");
+	@RequestMapping(value="/besinessRegistration")
+	public String besinessRegistration(HttpServletRequest request, Model model) {
+		System.out.println("사업실적 등록");
+		model.addAttribute("request", request);
+		command = new BRegistrationCommand();
+		command.execute(model);
 		
-		return "/Business/businessWrite";
+		// 리스트 재실행
+		command = new BListCommand();
+		command.execute(model);
+		
+		return "/Business/businessTable";
 	}
 }

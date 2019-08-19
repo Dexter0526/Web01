@@ -15,6 +15,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/carousel.css"
 	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/signin.css" rel="stylesheet">
 
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 <script
@@ -31,6 +32,12 @@
 	line-height: 1;
 	letter-spacing: -1px;
 }
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -39,22 +46,18 @@
 	<header>
 		<%@ include file="../headerBar.jsp"%>
 	</header>
-
+	<br><br>
 	<!-- content -->
 	<div class="container marketing">
+	<!-- 등록창, 상세뷰 -->
+		<jsp:include page="businessWrite.jsp"/>
+		<br>
 		<!-- Body -->
-		<hr class="featurette-divider">
 
-		<div class="row">
 			<div class="table-responsive">
 				<h2>사업실적 리스트</h2>
 				<table class="table table-bordered">
 					<thead>
-						<tr>
-							<td colspan="5" style="border: white; text-align: right"><a
-								href="businessWrite">등록</a></td>
-						</tr>
-
 						<tr>
 							<th>번호</th>
 							<th>사업명</th>
@@ -62,27 +65,25 @@
 							<th>사업 분야</th>
 							<th>옵션</th>
 						</tr>
-
 					</thead>
 					<tbody>
 						<c:forEach var="businessDto" items="${businessList}">
 							<tr>
 								<td>${businessDto.num}</td>
 								<td>${businessDto.title}</td>
-								<td>${businessDto.content}</td>
+								<td><a href = "patentUpdateView?num=${businessDto.num}">${businessDto.content}</a></td>
 								<td>${businessDto.field}</td>
 								<td><a
-									href="patentUpdateView?patentNum=${patentList.patentNum}"><button
+									href="patentUpdateView?num=${businessDto.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
 									&nbsp; &nbsp; <a
-									href="patentDelete?patentNum=${patentList.patentNum}"><button
+									href="patentDelete?num=${businessDto.num}"><button
 											type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
-		</div>
 		<hr class="featurette-divider">
 		<!-- FOOTER -->
 		<footer>
