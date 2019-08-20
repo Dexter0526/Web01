@@ -43,30 +43,31 @@
 									<li><a href="patent">연구성과</a></li>
 									<li><a href="futureTech">미래 기술</a></li>
 								</ul></li>
-							<li class="dropdown"><a href="news" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-expanded="false">홍보센터
-									<span class="caret"></span>
-							</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="news">뉴스</a></li>
-									<li><a href="ci">CI/BI</a></li>
-								</ul></li>
+							<li><a href="news">뉴스</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown"><a href="business"
+								class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-expanded="false">메뉴 <span class="caret"></span>
+								</a>
+							<ul class="dropdown-menu" role="menu">
 							<c:choose>
 								<c:when test="${result != 1}">
 									<li><a href="log">Sign in</a></li>
-									<li><a href="#">Help</a></li>
+									<li><a href="contact">Help</a></li>
 								</c:when>
 								<c:when test="${admin == 2}">
-									<li><a href="log">Sign in</a></li>
-									<li><a href="#">Help</a></li>
+									<li><a href="logout">Log out</a></li>
+									<li><a href="contact">Help</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="memberIndexView">ERP</a></li>
 									<li><a href="logout">Log out</a></li>
+									<li><a href="contact">Help</a></li>
+									<li><a href="memberIndexView">ERP</a></li>
 								</c:otherwise>
 							</c:choose>
+							</ul>
+							</li>
 						</ul>
 					</div>
 				</div>

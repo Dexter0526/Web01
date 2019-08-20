@@ -24,7 +24,7 @@ public class BusinessDao {
 	
 	private static BusinessDao instance = new BusinessDao();
 	
-	private static BusinessDao getInstance() {
+	public BusinessDao getInstance() {
 		return instance;
 	}
 	

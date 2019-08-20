@@ -22,8 +22,8 @@ public class IndexController {
 	
 	// 사업분야
 	@RequestMapping(value = "/business")
-	public String contact(Model model) {
-		System.out.println("contact");
+	public String business(Model model) {
+		System.out.println("business");
 		return "Business/building";
 	}
 	
@@ -40,17 +40,19 @@ public class IndexController {
 		System.out.println("news");
 		return "/Promotion/news";
 	}
-	@RequestMapping(value = "/ci")
-	public String ci(Model model) {
-		System.out.println("ci");
-		return "/Promotion/ci";
-	}
 	
 	// 직원 로그인 뷰
 	@RequestMapping(value = "/log")
 	public String log(Model model) {
 		System.out.println("log");
 		return "Log/log";
+	}
+	
+	// 고객센터
+	@RequestMapping(value = "/contact")
+	public String contact(Model model) {
+		System.out.println("/contact");
+		return "/Contact/contact";
 	}
 
 }

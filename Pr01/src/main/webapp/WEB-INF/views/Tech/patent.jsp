@@ -100,7 +100,7 @@
 							<c:when test="${result == 1 && admin != 2}">
 								<c:forEach var="patentList" items="${patentList}">
 									<tr>
-										<td>${patentList.num-1}</td>
+										<td>${patentList.num}</td>
 										<td>${patentList.patentNum}</td>
 										<td>${patentList.title}</td>
 										<td>${patentList.content}</td>
@@ -116,7 +116,7 @@
 							<c:otherwise>
 								<c:forEach var="patentList" items="${patentList}">
 									<tr>
-										<td>${patentList.num-1}</td>
+										<td>${patentList.num}</td>
 										<td>${patentList.patentNum}</td>
 										<td>${patentList.title}</td>
 										<td>${patentList.content}</td>
