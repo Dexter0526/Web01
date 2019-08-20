@@ -50,7 +50,14 @@
 	<!-- content -->
 	<div class="container marketing">
 	<!-- 등록창, 상세뷰 -->
+		<c:if test = "${bResult == 0}">
 		<jsp:include page="businessWrite.jsp"/>
+		</c:if>
+		
+		<c:if test = "${bResult == 1}">
+		<jsp:include page="businessUpdateView.jsp"/>
+		</c:if>
+		
 		<br>
 		<!-- Body -->
 
@@ -67,17 +74,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="businessDto" items="${businessList}">
+						<c:forEach var="businessList" items="${businessList}">
 							<tr>
-								<td>${businessDto.num}</td>
-								<td>${businessDto.title}</td>
-								<td><a href = "patentUpdateView?num=${businessDto.num}">${businessDto.content}</a></td>
-								<td>${businessDto.field}</td>
+								<td>${businessList.num}</td>
+								<td>${businessList.title}</td>
+								<td><a href = "businessUpdateView?num=${businessList.num}">${businessList.content}</a></td>
+								<td>${businessList.field}</td>
 								<td><a
-									href="patentUpdateView?num=${businessDto.num}"><button
+									href="businessUpdateView?num=${businessList.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
 									&nbsp; &nbsp; <a
-									href="patentDelete?num=${businessDto.num}"><button
+									href="businessDelete?num=${businessList.num}"><button
 											type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 							</tr>
 						</c:forEach>

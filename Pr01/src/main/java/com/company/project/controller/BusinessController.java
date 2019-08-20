@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.project.BCommand.BCommand;
 import com.company.project.BCommand.BListCommand;
 import com.company.project.BCommand.BRegistrationCommand;
+import com.company.project.BCommand.BUpdateCommand;
+import com.company.project.BCommand.BUpdateViewCommand;
 
 @Controller
 public class BusinessController {
@@ -47,8 +49,13 @@ public class BusinessController {
 		return "/Business/plant";
 	}
 	@RequestMapping(value = "/businessTable")
-	public String adminTable(Model model) {
+	public String adminTable(HttpServletRequest request, Model model) {
 		System.out.println("사업실적 리스트 뷰");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		int bResult = 0;
+		session2.setAttribute("bResult", bResult);
+		System.out.println("bResult : "+bResult);
 		
 		return "/Business/businessTable";
 	}
@@ -63,6 +70,42 @@ public class BusinessController {
 		command = new BListCommand();
 		command.execute(model);
 		
+		return "/Business/businessTable";
+	}
+	@RequestMapping(value = "/businessUpdateView")
+	public String businessUpdateView(HttpServletRequest request, Model model) {
+		System.out.println("사업실적 수정");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		command = new BUpdateViewCommand();
+		command.execute(model);
+		
+		int bResult = 1;
+		session2.setAttribute("bResult", bResult);
+		
+		return "/Business/businessTable";
+	}
+	@RequestMapping(value = "/besinessUpdate")
+	public String besinessUpdate(HttpServletRequest request, Model model) {
+		System.out.println("사업실적 수정완료");
+		model.addAttribute("request", request);
+		command = new BUpdateCommand();
+		command.execute(model);
+		
+		// 리스트 재실행
+		command = new BListCommand();
+		command.execute(model);
+		
+		return "/Business/businessTable";
+	}
+	@RequestMapping(value ="/businessDelete")
+	public String businessDelete(HttpServletRequest request, Model model) {
+		System.out.println("사업실적 삭제완료");
+		model.addAttribute("request", request);
+		
+		// 리스트 재실행
+		command = new BListCommand();
+		command.execute(model);
 		return "/Business/businessTable";
 	}
 }

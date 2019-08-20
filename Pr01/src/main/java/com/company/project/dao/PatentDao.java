@@ -138,6 +138,7 @@ public class PatentDao {
 			pstmt.setString(1, pdto.getPatentNum());
 			pstmt.setString(2, pdto.getTitle());
 			pstmt.setString(3, pdto.getContent());
+			pstmt.setInt(4, pdto.getNum());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
