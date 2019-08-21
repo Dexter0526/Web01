@@ -134,6 +134,7 @@ public class NewsDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ndto.getTitle());
 			pstmt.setString(2, ndto.getContent());
+			pstmt.setInt(3, ndto.getNum());
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

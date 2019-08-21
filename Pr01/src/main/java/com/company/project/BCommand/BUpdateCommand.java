@@ -36,6 +36,7 @@ public class BUpdateCommand implements BCommand{
 		bdto.setField(field);
 		
 		bdao.updateBusiness(bdto, table);
+		session2.setAttribute("bresult", 0);
 	}
 
 }
