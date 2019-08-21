@@ -15,7 +15,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/carousel.css"
 	rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/signin.css" rel="stylesheet">
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -25,7 +25,19 @@
 <script
 	src="${pageContext.request.contextPath}/resources/css/bootstrap.css"></script>
 
-
+<style>
+.featurette-heading {
+	font-weight: 200;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -37,21 +49,18 @@
 
 	<!-- content -->
 	<div class="container marketing">
-		<hr class="featurette-divider">
 		<!-- Body -->
 		<h1 class="page-header">뉴스</h1>
 
 		<!-- body head -->
-		<div class="row placeholders">
-		<c:forEach var="newsList" items="${newsList}" begin="0" end="3">
-			<div class="col-xs-6 col-sm-3 placeholder">
-				<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
-					alt="Generic placeholder thumbnail">
-				<h4>${newsList.title}</h4>
-			</div>
-		</c:forEach>
-		</div>
-
+		<c:choose>
+			<c:when test="${admin==0||admin==1}">
+				<jsp:include page="newsWrite.jsp"/>
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="newsHead.jsp"/>
+			</c:otherwise>
+		</c:choose>
 
 		<h3 class="sub-header">리스트</h3>
 		<div class="table-responsive">

@@ -23,16 +23,16 @@
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
+					<table class="table table-bordered">
 						<c:forEach var="businessDto" items="${businessList}">
-							<table class="table table-bordered">
 								<c:if test="${businessDto.field eq 'skyscraper'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
 									</tr>
 								</c:if>
-							</table>
 						</c:forEach>
+						</table>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -56,16 +56,16 @@
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
-						<c:forEach var="businessDto" items="${businessList}">
-							<table class="table table-bordered">
+						<table class="table table-bordered">
+							<c:forEach var="businessDto" items="${businessList}">
 								<c:if test="${businessDto.field eq 'housing'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
 									</tr>
 								</c:if>
-							</table>
-						</c:forEach>
+							</c:forEach>
+						</table>
 					</div>
 				</div>
 				<div class="modal-footer">

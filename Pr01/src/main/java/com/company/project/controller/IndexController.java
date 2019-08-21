@@ -34,13 +34,6 @@ public class IndexController {
 		return "/Tech/futureTech";
 	}
 	
-	// 홍보센터
-	@RequestMapping(value = "/news")
-	public String news(Model model) {
-		System.out.println("news");
-		return "/Promotion/news";
-	}
-	
 	// 직원 로그인 뷰
 	@RequestMapping(value = "/log")
 	public String log(Model model) {
