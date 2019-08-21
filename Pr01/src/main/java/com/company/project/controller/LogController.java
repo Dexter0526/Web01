@@ -30,7 +30,7 @@ Mcommand command;
 		System.out.println(session2.getAttribute("result"));
 		int result = (Integer) session2.getAttribute("result");
 		if(result == 1 ) {
-			return "MemberView/memberIndexView";
+			return "index";
 		}else {
 			return "Log/log";
 		}

@@ -64,6 +64,8 @@
 									<li><a href="logout">Log out</a></li>
 									<li><a href="contact">Help</a></li>
 									<li><a href="memberIndexView">ERP</a></li>
+									<c:if test="${admin == 0}">
+									<li><a href="memberView">Member</a></li></c:if>
 								</c:otherwise>
 							</c:choose>
 							</ul>
