@@ -69,7 +69,7 @@ public class NewsDao {
 	}
 	
 	public void insertNews(NewsDto ndto) {
-		String sql="insert into news values(news_seq.nextval,?,?,?,?)";
+		String sql="insert into news("+"num, title, content) "+"values(news_seq.nextval,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -77,9 +77,6 @@ public class NewsDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ndto.getTitle());
 			pstmt.setString(2, ndto.getContent());
-			pstmt.setInt(3, ndto.getCount());
-			pstmt.setTimestamp(4, ndto.getRegDate());
-
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -111,7 +108,7 @@ public class NewsDao {
 				ndto.setTitle(rs.getString("title"));
 				ndto.setContent(rs.getString("content"));
 				ndto.setCount(rs.getInt("count"));
-				ndto.setRegDate(rs.getTimestamp("regDate"));
+				ndto.setRegDate(rs.getTimestamp("reg_Date"));
 				System.out.println(ndto);
 			}
 		}catch (Exception e) {
@@ -148,6 +145,28 @@ public class NewsDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void updateCount(int num) {
+		String sql = "update news set count=count+1 where num=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	public void deleteNews(int num) {

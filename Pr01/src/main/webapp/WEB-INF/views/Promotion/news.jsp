@@ -54,6 +54,12 @@
 
 		<!-- body head -->
 		<c:choose>
+			<c:when test="${nresult==1}">
+				<jsp:include page="newsUpdateView.jsp"/>
+			</c:when>
+			<c:when test="${nresult==0}">
+				<jsp:include page="newsGet.jsp"/>
+			</c:when>
 			<c:when test="${admin==0||admin==1}">
 				<jsp:include page="newsWrite.jsp"/>
 			</c:when>
@@ -76,7 +82,7 @@
 				<c:forEach var="newsList" items="${newsList}">
 					<tr>
 						<td>${newsList.num}</td>
-						<td>${newsList.title}</td>
+						<td><a href = "getNews?num=${newsList.num}">${newsList.title}</a></td>
 						<td>${newsList.regDate}</td>
 					</tr>
 				</c:forEach>
