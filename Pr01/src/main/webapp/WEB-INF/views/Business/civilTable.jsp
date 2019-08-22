@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -23,16 +23,16 @@
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
-						<c:forEach var="businessDto" items="${businessList}">
-							<table class="table table-bordered">
+						<table class="table table-bordered">
+							<c:forEach var="businessDto" items="${businessList}">
 								<c:if test="${businessDto.field eq 'bridges'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
 									</tr>
 								</c:if>
-							</table>
-						</c:forEach>
+							</c:forEach>
+						</table>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -76,8 +76,8 @@
 	</div>
 
 	<%-- #railroad --%>
-	<div class="modal fade" id="railroad" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="railroad" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
