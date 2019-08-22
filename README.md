@@ -3,7 +3,7 @@ web project01
 
 java8
 
-tomcat7.0
+tomcat8.5
 
 spring 4.3.1(MVC)
 
