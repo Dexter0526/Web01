@@ -6,14 +6,24 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/resources"/>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -27,8 +37,12 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-dbcp.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jdbc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/ojdbc6_g.jar"/>
-	<classpathentry kind="lib" path="C:/Users/it/Downloads/li/standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/commons-dbcp2-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/ojdbc5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/it/web/Pr01/src/main/webapp/WEB-INF/li/standard-1.1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

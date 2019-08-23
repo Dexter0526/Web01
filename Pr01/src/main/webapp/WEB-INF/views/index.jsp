@@ -47,8 +47,7 @@
 		<hr class="featurette-divider">
 
 		<!-- /END THE FEATURETTES -->
-
-
+		
 		<!-- FOOTER -->
 		<footer>
 			<%@ include file="footer.jsp"%>
