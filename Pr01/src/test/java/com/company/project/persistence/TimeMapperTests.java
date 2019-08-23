@@ -1,4 +1,4 @@
-package com.company.project.test;
+package com.company.project.persistence;
 
 import org.junit.runner.RunWith;
 import org.junit.Test;
@@ -24,5 +24,11 @@ public class TimeMapperTests {
 	public void testGetTime() {
 		log.info(timeMapper.getClass().getName());
 		log.info(timeMapper.getTime());
+	}
+	
+	@Test
+	public void testGetTime2() {
+		log.info("getTime2");
+		log.info(timeMapper.getTime2());
 	}
 }
