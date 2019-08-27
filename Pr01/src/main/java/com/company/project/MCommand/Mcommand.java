@@ -6,4 +6,6 @@ public interface Mcommand {
 
 	public void execute(Model model);
 	
+	
+	
 }
