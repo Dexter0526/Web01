@@ -13,13 +13,16 @@ import com.company.project.BCommand.BRegistrationCommand;
 import com.company.project.BCommand.BUpdateCommand;
 import com.company.project.BCommand.BUpdateViewCommand;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 public class BusinessController {
 	BCommand command;
 	
 	@RequestMapping(value = "/building")
 	public String building(HttpServletRequest request, Model model) {
-		System.out.println("building");
+		log.info("building");
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.setAttribute("table", "building");
@@ -30,7 +33,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value = "/civil")
 	public String civil(HttpServletRequest request, Model model) {
-		System.out.println("civil");
+		log.info("civil");
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.setAttribute("table", "civil");
@@ -40,7 +43,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value = "/plant")
 	public String plant(HttpServletRequest request, Model model) {
-		System.out.println("plant");
+		log.info("plant");
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.setAttribute("table", "plant");
@@ -50,7 +53,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value = "/businessTable")
 	public String adminTable(HttpServletRequest request, Model model) {
-		System.out.println("사업실적 리스트 뷰");
+		log.info("사업실적 리스트 뷰");
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		int bResult = 0;
@@ -61,7 +64,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value="/besinessRegistration")
 	public String besinessRegistration(HttpServletRequest request, Model model) {
-		System.out.println("사업실적 등록");
+		log.info("사업실적 등록");
 		model.addAttribute("request", request);
 		command = new BRegistrationCommand();
 		command.execute(model);
@@ -74,7 +77,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value = "/businessUpdateView")
 	public String businessUpdateView(HttpServletRequest request, Model model) {
-		System.out.println("사업실적 수정");
+		log.info("사업실적 수정");
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		command = new BUpdateViewCommand();
@@ -87,7 +90,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value = "/besinessUpdate")
 	public String besinessUpdate(HttpServletRequest request, Model model) {
-		System.out.println("사업실적 수정완료");
+		log.info("사업실적 수정완료");
 		model.addAttribute("request", request);
 		command = new BUpdateCommand();
 		command.execute(model);
@@ -100,7 +103,7 @@ public class BusinessController {
 	}
 	@RequestMapping(value ="/businessDelete")
 	public String businessDelete(HttpServletRequest request, Model model) {
-		System.out.println("사업실적 삭제완료");
+		log.info("사업실적 삭제완료");
 		model.addAttribute("request", request);
 		
 		// 리스트 재실행

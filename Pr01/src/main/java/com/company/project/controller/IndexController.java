@@ -4,19 +4,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 public class IndexController {
 	@RequestMapping(value = "/index")
 	public String index(Model model) {
-		System.out.println("index");
-		System.out.println("실행");
+		log.info("index");
 		return "index";
 	}
 
 	// 회사소개
 	@RequestMapping(value = "/info")
 	public String about(Model model) {
-		System.out.println("info");
+		log.info("info");
 		return "About/about";
 	}
 	
@@ -30,21 +32,21 @@ public class IndexController {
 	// 기술분야
 	@RequestMapping(value = "/futureTech")
 	public String futureTech(Model model) {
-		System.out.println("futureTech");
+		log.info("futureTech");
 		return "/Tech/futureTech";
 	}
 	
 	// 직원 로그인 뷰
 	@RequestMapping(value = "/log")
 	public String log(Model model) {
-		System.out.println("log");
+		log.info("log");
 		return "Log/log";
 	}
 	
 	// 고객센터
 	@RequestMapping(value = "/contact")
 	public String contact(Model model) {
-		System.out.println("/contact");
+		log.info("contact");
 		return "/Contact/contact";
 	}
 
