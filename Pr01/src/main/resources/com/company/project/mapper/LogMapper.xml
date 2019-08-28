@@ -2,11 +2,7 @@
 <!DOCTYPE mapper
 SYSTEM
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.company.project.mapper.dao">
-	<select id="userCheck" resultType="com.company.project.dto.MemberDto">
-		select pwd from member where email = #{email}
-	</select>
-	
+<mapper namespace="com.company.project.mapper.MemberMapper">
 	<select id="getMember" resultType="com.company.project.dto.MemberDto">
 		select * from member where email = #{email}
 	</select>
@@ -25,8 +21,10 @@ SYSTEM
 	</insert>
 	
 	<update id="updateMember">
-		update member set (pwd, phone, admin)
-		values(#{pwd}, #{phone}, #{admin}) where email = #{email}
+		update member set pwd= #{pwd}, 
+		phone= #{phone}, 
+		admin= #{admin} 
+		where email = #{email}
 	</update>
 	
 	<delete id="memberDelete">
