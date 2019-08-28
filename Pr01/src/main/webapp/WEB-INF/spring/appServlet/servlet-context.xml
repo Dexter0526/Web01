@@ -35,21 +35,21 @@
 		base-package="com.company.project.exception">
 	</context:component-scan>
 
-	<beans:bean
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		name="dataSource">
+<!-- 	<beans:bean -->
+<!-- 		class="org.springframework.jdbc.datasource.DriverManagerDataSource" -->
+<!-- 		name="dataSource"> -->
 
-		<beans:property value="oracle.jdbc.driver.OracleDriver"
-			name="driverClassName" />
+<!-- 		<beans:property value="oracle.jdbc.driver.OracleDriver" -->
+<!-- 			name="driverClassName" /> -->
 
-		<beans:property
-			value="jdbc:oracle:thin:@localhost:1521:orcl" name="url" />
+<!-- 		<beans:property -->
+<!-- 			value="jdbc:oracle:thin:@localhost:1521:orcl" name="url" /> -->
 
-		<beans:property value="admin" name="username" />
+<!-- 		<beans:property value="admin" name="username" /> -->
 
-		<beans:property value="0000" name="password" />
+<!-- 		<beans:property value="0000" name="password" /> -->
 
-	</beans:bean>
+<!-- 	</beans:bean> -->
 
 	<beans:bean
 		class="org.springframework.jdbc.core.JdbcTemplate" name="template">

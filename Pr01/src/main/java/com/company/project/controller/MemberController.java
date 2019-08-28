@@ -8,18 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.MCommand.MListCommand;
 import com.company.project.MCommand.Mcommand;
+import com.company.project.service.MemberService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 public class MemberController {
 	Mcommand command;
+	private MemberService memberService;
 	
 	// 멤버 설정뷰(마스터 권한)
 	@RequestMapping(value = "/memberView")
-	public String memberView(HttpServletRequest request, Model model) {
-		System.out.println("유저 계정 접근 권한");
-		model.addAttribute("request", request);
-		command = new MListCommand();
-		command.execute(model);
+	public String memberView(Model model) {
+		log.info("멤버 뷰");
+		model.addAttribute("memberList", memberService.selectAllMember());
 		return "MemberView/memberView";
 	}
 	
@@ -36,7 +40,5 @@ public class MemberController {
 		
 		return "MemberView/MemberBody/contract";
 	}
-	
-	
 	
 }

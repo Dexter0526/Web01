@@ -5,11 +5,14 @@ import java.util.List;
 import com.company.project.dto.MemberDto;
 
 public interface MemberService {
+	
+	public int userCheck(String email, String pwd);
+	
 	public MemberDto getMember(String email);
 	
 	public List<MemberDto> selectAllMember();
 	
-	public void confirmEmail(String email);
+	public boolean confirmEmail(String email);
 	
 	public void insertMember(MemberDto mdto);
 	

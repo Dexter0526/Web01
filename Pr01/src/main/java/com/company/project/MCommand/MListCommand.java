@@ -23,5 +23,6 @@ public class MListCommand implements Mcommand{
 		MemberDao mdao = new MemberDao();
 		List<MemberDto> memberList = mdao.selectAllMember();
 		session2.setAttribute("memberList", memberList);
+		
 	}
 }
