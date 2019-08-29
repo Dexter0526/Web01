@@ -1,22 +1,26 @@
 package com.company.project.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.project.MCommand.MListCommand;
 import com.company.project.MCommand.Mcommand;
 import com.company.project.service.MemberService;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
+@AllArgsConstructor
 public class MemberController {
-	Mcommand command;
+	
+//	@Setter(onMethod_ = @Autowired)
 	private MemberService memberService;
 	
 	// 멤버 설정뷰(마스터 권한)
