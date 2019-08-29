@@ -30,15 +30,22 @@ public class MemberServiceTest {
 //		log.info(memberService);
 //		assertNotNull(memberService);
 //	}
+	@Test
+	public void userCheckTest() {
+		String email = "test";
+		String pwd = "test";
+		int result = memberService.userCheck(email, pwd);
+		log.info("결과 값 : .... "+result);
+		MemberDto mdto = memberService.getMember(email);
+		log.info("admin : .... " + mdto.getAdmin());
+	}
 	
-//	public int userCheck(String email, String pwd);
-//	
 //	public MemberDto getMember(String email);
 //	
-	@Test
-	public void selectAllMember(){
-		memberService.selectAllMember().forEach(member -> log.info(member));
-	}
+//	@Test
+//	public void selectAllMemberTest(){
+//		memberService.selectAllMember().forEach(member -> log.info(member));
+//	}
 //	
 //	public boolean confirmEmail(String email);
 //	

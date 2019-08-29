@@ -1,5 +1,7 @@
 package com.company.project.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,46 +16,35 @@ import com.company.project.MCommand.MLogingCommand;
 import com.company.project.MCommand.MUpdateCommand;
 import com.company.project.MCommand.MUpdateViewCommand;
 import com.company.project.MCommand.Mcommand;
+import com.company.project.service.MemberService;
 
+import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
 public class LogController {
-Mcommand command;
 	
-	@RequestMapping(value = "/login")
-	public String log_process(HttpServletRequest request, Model model) {
-		System.out.println("login()");
-		model.addAttribute("request", request);
-		command = new MLogingCommand();
-		command.execute(model);
-		
-		HttpSession session2 = request.getSession();
-		System.out.println(session2.getAttribute("result"));
-		int result = (Integer) session2.getAttribute("result");
-		if(result == 1 ) {
-			return "index";
-		}else {
-			return "Log/log";
-		}
-	}
+	Mcommand command;
+
+
 	@RequestMapping(value = "/logout")
 	public String logout_process(HttpServletRequest request, Model model) {
 		System.out.println("logout()");
-		
+
 		model.addAttribute("request", request);
 		command = new MLogOutCommand();
 		command.execute(model);
-		
+
 		return "index";
 	}
-	
+
 	@RequestMapping(value = "/signup")
 	public String singUp(Model model) {
 		System.out.println("signUp");
-		
+
 		return "Log/signUp";
 	}
 	@RequestMapping(value = "/join")
@@ -62,7 +53,7 @@ Mcommand command;
 		model.addAttribute("request", request);
 		command = new MJoinCommand();
 		command.execute(model);
-		
+
 		return "MemberView/memberView";
 	}
 	@RequestMapping(value = "/memberUpdateView")
@@ -71,7 +62,7 @@ Mcommand command;
 		model.addAttribute("request", request);
 		command = new MUpdateViewCommand();
 		command.execute(model);
-		
+
 		return "Log/memberUpdateView";
 	}
 	@RequestMapping(value = "/memberUpdate")
@@ -80,7 +71,7 @@ Mcommand command;
 		model.addAttribute("request", request);
 		command = new MUpdateCommand();
 		command.execute(model);
-		
+
 		return "MemberView/memberIndexView";
 	}
 	@RequestMapping(value = "/memberDelete")
@@ -89,7 +80,7 @@ Mcommand command;
 		model.addAttribute("request", request);
 		command = new MDeleteCommand();
 		command.execute(model);
-		
+
 		return "MemberView/memberIndexView";
 	}
 }

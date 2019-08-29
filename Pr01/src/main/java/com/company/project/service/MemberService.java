@@ -2,11 +2,15 @@ package com.company.project.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.company.project.dto.MemberDto;
 
 public interface MemberService {
 	
 	public int userCheck(String email, String pwd);
+	
+	public void loging(Model model);
 	
 	public MemberDto getMember(String email);
 	
