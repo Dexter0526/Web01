@@ -15,6 +15,10 @@ import com.company.project.MCommand.MUpdateCommand;
 import com.company.project.MCommand.MUpdateViewCommand;
 import com.company.project.MCommand.Mcommand;
 
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 public class LogController {
 Mcommand command;
