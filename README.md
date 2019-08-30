@@ -1,5 +1,5 @@
 # Construction company WebSite
----------------------------------------
+<br>
 ### Environment
 1. java8
 2. tomcat8.5
@@ -16,7 +16,7 @@
         DTO
 
 #### Spring 5Layer
--View(Presentation Layer)
+- View(Presentation Layer)
   - Controller(Control Layer)
     - Command and Service(Business Logic Layer)
       - Mapper(Persistence Layer)
