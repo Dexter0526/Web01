@@ -4,12 +4,17 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.ui.Model;
 
+import com.company.project.MCommand.MLogingCommand;
 import com.company.project.dto.MemberDto;
 import com.company.project.mapper.MemberMapper;
 import com.company.project.persistence.MemberTest;
@@ -30,14 +35,21 @@ public class MemberServiceTest {
 //		log.info(memberService);
 //		assertNotNull(memberService);
 //	}
+//	@Test
+//	public void userCheckTest() {
+//		String email = "test";
+//		String pwd = "test";
+//		int result = memberService.userCheck(email, pwd);
+//		log.info("결과 값 : .... "+result);
+//		MemberDto mdto = memberService.getMember(email);
+//		log.info("admin : .... " + mdto.getAdmin());
+//	}
+	
 	@Test
-	public void userCheckTest() {
-		String email = "test";
-		String pwd = "test";
-		int result = memberService.userCheck(email, pwd);
-		log.info("결과 값 : .... "+result);
-		MemberDto mdto = memberService.getMember(email);
-		log.info("admin : .... " + mdto.getAdmin());
+	public void logingTest(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		MLogingCommand command = new MLogingCommand();
+		command.execute(model);
 	}
 	
 //	public MemberDto getMember(String email);

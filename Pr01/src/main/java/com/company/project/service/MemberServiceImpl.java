@@ -25,31 +25,34 @@ public class MemberServiceImpl implements MemberService{
 
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper memberMapper;
-
-	public void loging(Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
-		
-		log.info("email : ... " + email);
-		log.info("pwd : ... " + pwd);
-		MemberServiceImpl service = new MemberServiceImpl();
-		int result = service.userCheck(email, pwd);
-		
-		if(result == 1) {
-			// service
-			MemberDto mdto = memberMapper.getMember(email);
-			int admin = mdto.getAdmin();
-			model.addAttribute("admin", admin);
-			model.addAttribute("message", "회원님 안녕하세요.");
-		}else if(result == 0) {
-			model.addAttribute("message", "비밀번호가 맞지 않습니다.");
-		}else if(result == -1) {
-			model.addAttribute("message", "회원이 존재하지 않습니다.");
-		}
-		model.addAttribute("result", result);
-	}
+	
+//	@Setter(onMethod_ = @Autowired)
+//	private MemberService service;
+//
+//	public void loging(Model model) {
+//		Map<String, Object> map = model.asMap();
+//		HttpServletRequest request = (HttpServletRequest) map.get("request");
+//		String email = request.getParameter("email");
+//		String pwd = request.getParameter("pwd");
+//		
+//		log.info("email : ... " + email);
+//		log.info("pwd : ... " + pwd);
+//		MemberServiceImpl service = new MemberServiceImpl();
+//		int result = service.userCheck(email, pwd);
+//		
+//		if(result == 1) {
+//			// service
+//			MemberDto mdto = memberMapper.getMember(email);
+//			int admin = mdto.getAdmin();
+//			model.addAttribute("admin", admin);
+//			model.addAttribute("message", "회원님 안녕하세요.");
+//		}else if(result == 0) {
+//			model.addAttribute("message", "비밀번호가 맞지 않습니다.");
+//		}else if(result == -1) {
+//			model.addAttribute("message", "회원이 존재하지 않습니다.");
+//		}
+//		model.addAttribute("result", result);
+//	}
 	
 	@Override
 	public int userCheck(String email, String pwd) {

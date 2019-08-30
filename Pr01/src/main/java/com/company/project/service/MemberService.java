@@ -10,8 +10,6 @@ public interface MemberService {
 	
 	public int userCheck(String email, String pwd);
 	
-	public void loging(Model model);
-	
 	public MemberDto getMember(String email);
 	
 	public List<MemberDto> selectAllMember();

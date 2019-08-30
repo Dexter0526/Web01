@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,11 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class MemberController {
 	
-//	@Setter(onMethod_ = @Autowired)
+	@Setter(onMethod_ = @Autowired)
 	private MemberService service;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MLogingCommand logingCommand;
 
 	// 멤버 설정뷰(마스터 권한)
 	@RequestMapping(value = "/memberView")
@@ -52,9 +56,8 @@ public class MemberController {
 	@RequestMapping(value = "/login")
 	public String log_process(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		// 커맨드 사용
-		MLogingCommand command = new MLogingCommand();
-		command.execute(model);
+		// 커맨드 사용(@Component)
+		logingCommand.execute(model);
 		Map<String, Object> map = model.asMap();
 		int result = (Integer) map.get("result");
 		
