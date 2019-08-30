@@ -15,8 +15,8 @@
 - View
   - Controller
     - Command
-      -DAO
-        DTO
+      - DAO
+        - DTO
 
 #### Spring 5Layer
 - View(Presentation Layer)
