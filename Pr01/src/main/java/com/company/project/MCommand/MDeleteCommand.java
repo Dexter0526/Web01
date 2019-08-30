@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 
 import com.company.project.dao.MemberDao;
 
-public class MDeleteCommand implements Mcommand{
+public class MDeleteCommand implements MCommand{
 
 	@Override
 	public void execute(Model model) {

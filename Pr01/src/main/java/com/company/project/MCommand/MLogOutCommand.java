@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
-public class MLogOutCommand implements Mcommand{
+public class MLogOutCommand implements MCommand{
 
 	@Override
 	public void execute(Model model) {

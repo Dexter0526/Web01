@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
-public class MCountCommand implements Mcommand{
+public class MCountCommand implements MCommand{
 
 	@Override
 	public void execute(Model model) {

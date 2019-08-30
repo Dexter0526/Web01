@@ -1,31 +1,38 @@
-package com.company.project.MCommand;
+package com.company.project.command;
 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.company.project.dao.MemberDao;
 import com.company.project.dto.MemberDto;
 import com.company.project.service.MemberService;
+import com.company.project.service.MemberServiceTest;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class MLogingCommand{
+public class MemberCommandTest{
 	
-	public void execute(Model model) {
+	@Setter(onMethod_ = @Autowired)
+	private MemberService service;
+	
+	public void logingCommand(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
-		MemberDao mdao = new MemberDao();
+		
 		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		
@@ -33,12 +40,12 @@ public class MLogingCommand{
 		log.info("email : ... " + email);
 		log.info("pwd : ... " + pwd);
 		
-		log.info("service.userCheck(email, pwd) ... " + mdao.userCheck(email, pwd));
-		int result = mdao.userCheck(email, pwd);
+		log.info("service.userCheck(email, pwd) ... " + service.userCheck(email, pwd));
+		int result = service.userCheck(email, pwd);
 
 		if(result == 1) {
 			// service
-			MemberDto mdto = mdao.getMember(email);
+			MemberDto mdto = service.getMember(email);
 			int admin = mdto.getAdmin();
 			session2.setAttribute("admin", admin);
 			session2.setAttribute("message", "회원님 안녕하세요.");
@@ -48,6 +55,16 @@ public class MLogingCommand{
 			session2.setAttribute("message", "회원이 존재하지 않습니다.");
 		}
 		session2.setAttribute("result", result);
+		
 	}
-}
+	
+	public void logoutCommand(Model model) {
 
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		HttpSession session2 = request.getSession();
+		session2.invalidate();
+	}
+
+}

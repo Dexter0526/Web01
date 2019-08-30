@@ -12,7 +12,7 @@ import com.company.project.dao.MemberDao;
 import com.company.project.dto.MemberDto;
 
 
-public class MJoinCommand implements Mcommand{
+public class MJoinCommand implements MCommand{
 
 	@Override
 	public void execute(Model model) {

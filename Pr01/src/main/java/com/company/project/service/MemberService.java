@@ -21,4 +21,6 @@ public interface MemberService {
 	public int updateMember(MemberDto mdto);
 	
 	public int memberDelete(String email);
+	
+	public void updateView(Model model);
 }

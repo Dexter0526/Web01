@@ -1,16 +1,19 @@
 package com.company.project.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.company.project.dao.MemberDao;
 import com.company.project.dto.MemberDto;
 import com.company.project.mapper.MemberMapper;
 
@@ -114,5 +117,13 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
-
+	@Override
+	public void updateView(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session2 = request.getSession();
+		String email = request.getParameter("email");
+		MemberDto mdto = memberMapper.getMember(email);
+		session2.setAttribute("member", mdto);
+	}
 }

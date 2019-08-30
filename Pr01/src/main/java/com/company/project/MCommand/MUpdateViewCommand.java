@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import com.company.project.dao.MemberDao;
 import com.company.project.dto.MemberDto;
 
-public class MUpdateViewCommand implements Mcommand{
+public class MUpdateViewCommand implements MCommand{
 
 	@Override
 	public void execute(Model model) {
