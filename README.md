@@ -1,12 +1,27 @@
-# Web01
-web project01
+# Construction company WebSite
 
-java8
+### Environment
+1. java8
+2. tomcat8.5
+3. spring 4.3.1
+4. oracle11g(DB), HikariCP(DBCP)
+5. css, js : [bootstrapk] http://bootstrapk.com/
 
-tomcat8.5
+---------------------------------------
 
-spring 4.3.1(MVC)
+### pattern
 
-oracle11g(DB)
+#### MVC
+- View
+  - Controller
+    - Command
+      - DAO
+        - DTO
 
-css, js : http://bootstrapk.com/
+#### Spring 5Layer
+- View(Presentation Layer)
+  - Controller(Control Layer)
+    - Command and Service(Business Logic Layer)
+      - Mapper(Persistence Layer)
+        - DTO(Domain Model Layer)
+        
