@@ -105,18 +105,35 @@ public class MemberController {
 		System.out.println("회원가입");
 		
 		service.insertMember(mdto);
-		rttr.addFlashAttribute("userEmail", mdto.getEmail());
+		rttr.addFlashAttribute("admin", mdto.getAdmin());
 
 		return "MemberView/memberView";
 	}
 	
 	@RequestMapping(value = "/memberUpdateView")
 	public String memberUpdateView(HttpServletRequest request, Model model) {
-		System.out.println("회원 수정");
+		log.info("회원 수정 화면");
 		model.addAttribute("request", request);
 		
 		service.updateView(model);
 		
 		return "Log/memberUpdateView";
+	}
+	
+	@RequestMapping(value = "/memberUpdate")
+	public String memberUpdate(MemberDto mdto) {
+		log.info("수정 완료");
+		service.updateMember(mdto);
+		
+		return "MemberView/memberIndexView";
+	}
+	
+	@RequestMapping(value = "/memberDelete")
+	public String memberDelete(HttpServletRequest request, Model model) {
+		log.info("회원 삭제");
+		String email = request.getParameter("email");
+		service.memberDelete(email);
+		
+		return "MemberView/memberIndexView";
 	}
 }

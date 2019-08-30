@@ -104,8 +104,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateMember(MemberDto mdto) {
 		int result = 0;
+		log.info("email = ... " + mdto.getEmail());
 		result = memberMapper.updateMember(mdto);
-		log.info("member delete result : ...." + result);
+		log.info("member update result : ...." + result);
 		return result;
 	}
 
@@ -123,6 +124,7 @@ public class MemberServiceImpl implements MemberService{
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
 		String email = request.getParameter("email");
+		log.info("email = ... " + email);
 		MemberDto mdto = memberMapper.getMember(email);
 		session2.setAttribute("member", mdto);
 	}
