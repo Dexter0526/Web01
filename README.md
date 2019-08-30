@@ -1,13 +1,16 @@
 # Construction company WebSite
-<br>
+
 ### Environment
 1. java8
 2. tomcat8.5
 3. spring 4.3.1
 4. oracle11g(DB), HikariCP(DBCP)
-5. css, js : http://bootstrapk.com/
+5. css, js : [bootstrapk] http://bootstrapk.com/
+
 ---------------------------------------
+
 ### pattern
+
 #### MVC
 - View
   - Controller
