@@ -39,7 +39,6 @@
 	<div class="container">
 
 		<form class="form-signin" name="frm" action="memberUpdate" method="post">
-			<input type = "hidden" name = "email" value = "${member.email}">
 			<h2 class="form-signin-heading">회원 수정</h2>
 			
 			이름<input type="text" name = "name" id="inputName" value = "${member.name}" readonly class="form-control"
