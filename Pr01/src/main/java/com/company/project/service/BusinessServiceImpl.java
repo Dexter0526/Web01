@@ -40,7 +40,7 @@ public class BusinessServiceImpl implements BusinessService{
 	}
 
 	@Override
-	public BusinessDto getBusiness(String num, String table) {
+	public BusinessDto getBusiness(int num, String table) {
 		return mapper.getBusiness(num, table);
 	}
 

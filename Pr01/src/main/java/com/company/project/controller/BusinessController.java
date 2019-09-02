@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.project.command.BusinessCommand;
 import com.company.project.dto.BusinessDto;
 import com.company.project.service.BusinessService;
 
@@ -19,6 +20,7 @@ import lombok.extern.log4j.Log4j;
 public class BusinessController {
 
 	private BusinessService service;
+	private BusinessCommand command;
 	
 	@RequestMapping(value = "/building")
 	public String building(HttpServletRequest request, Model model) {
@@ -28,6 +30,7 @@ public class BusinessController {
 		
 		return "/Business/building";
 	}
+	
 	@RequestMapping(value = "/civil")
 	public String civil(HttpServletRequest request, Model model) {
 		log.info("civil");
@@ -35,6 +38,7 @@ public class BusinessController {
 		service.selectAllBusiness("civil", model);
 		return "/Business/civil";
 	}
+	
 	@RequestMapping(value = "/plant")
 	public String plant(HttpServletRequest request, Model model) {
 		log.info("plant");
@@ -42,6 +46,7 @@ public class BusinessController {
 		service.selectAllBusiness("plant", model);
 		return "/Business/plant";
 	}
+	
 	@RequestMapping(value = "/businessTable")
 	public String adminTable(HttpServletRequest request, Model model) {
 		log.info("사업실적 리스트 뷰");
@@ -52,6 +57,7 @@ public class BusinessController {
 		
 		return "/Business/businessTable";
 	}
+	
 	@RequestMapping(value="/besinessRegistration")
 	public String besinessRegistration(BusinessDto bdto, HttpServletRequest request, Model model) {
 		log.info("사업실적 등록");
@@ -66,19 +72,18 @@ public class BusinessController {
 		
 		return "/Business/businessTable";
 	}
-//	@RequestMapping(value = "/businessUpdateView")
-//	public String businessUpdateView(HttpServletRequest request, Model model) {
-//		log.info("사업실적 수정");
-//		model.addAttribute("request", request);
-//		HttpSession session2 = request.getSession();
-//		command = new BUpdateViewCommand();
-//		command.execute(model);
-//		
-//		int bResult = 1;
-//		session2.setAttribute("bResult", bResult);
-//		
-//		return "/Business/businessTable";
-//	}
+	
+	@RequestMapping(value = "/businessUpdateView")
+	public String businessUpdateView(HttpServletRequest request, Model model) {
+		log.info("사업실적 수정");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		command.updateViewCommand(model);
+		int bResult = 1;
+		session2.setAttribute("bResult", bResult);
+		
+		return "/Business/businessTable";
+	}
 //	@RequestMapping(value = "/besinessUpdate")
 //	public String besinessUpdate(HttpServletRequest request, Model model) {
 //		log.info("사업실적 수정완료");

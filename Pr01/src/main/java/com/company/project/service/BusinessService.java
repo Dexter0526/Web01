@@ -10,7 +10,7 @@ public interface BusinessService {
 	
 	public void insertBusiness(BusinessDto bdto, String table);
 	
-	public BusinessDto getBusiness(String num, String table);
+	public BusinessDto getBusiness(int num, String table);
 	
 	public void updateBusiness(BusinessDto bdto, String table);
 	

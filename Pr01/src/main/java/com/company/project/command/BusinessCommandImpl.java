@@ -22,14 +22,16 @@ public class BusinessCommandImpl implements BusinessCommand{
 	
 	@Setter(onMethod_ = @Autowired)
 	private BusinessService service;
-	
+
 	@Override
-	public void selectAllBusiness(Model model) {
-		log.info("사업분야 테이블 실행(command)");
+	public void updateViewCommand(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpSession session2 = request.getSession();
 		
+		String num = request.getParameter("num");
+		String table = (String) session2.getAttribute("table");
+		
+		session2.setAttribute("business", service.getBusiness(num, table));
 	}
-
 }

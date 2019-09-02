@@ -11,10 +11,10 @@ public interface BusinessMapper {
 	
 	public void insertBusiness(@Param("bdto") BusinessDto bdto, @Param("table") String table);
 	
-	public BusinessDto getBusiness(String num, String table);
+	public BusinessDto getBusiness(@Param("num") int num, @Param("table") String table);
 	
-	public void updateBusiness(BusinessDto bdto, String table);
+	public void updateBusiness(@Param("bdto") BusinessDto bdto, @Param("table") String table);
 	
-	public void deleteBusiness(int num, String table);
+	public void deleteBusiness(@Param("num") int num, @Param("table") String table);
 	
 }

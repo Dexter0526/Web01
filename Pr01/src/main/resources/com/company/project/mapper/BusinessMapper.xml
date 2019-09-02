@@ -13,17 +13,17 @@ SYSTEM
 	</insert>
 	
 	<select id="getBusiness" resultType="com.company.project.dto.BusinessDto">
-		select * from ${value} order by num = ${num}
+		select * from ${table} order by num = ${num}
 	</select>
 	
 	<update id="updateBusiness">
-		update ${value} set title=#{title}, 
-		content=#{content}, 
-		field=#{field} 
+		update ${table} set title=#{bdto.title}, 
+		content=#{bdto.content}, 
+		field=#{bdto.field} 
 		where num = ${num}
 	</update>
 
 	<delete id="deleteBusiness">
-		delete #{table} where num = ${num}
+		delete ${table} where num = ${num}
 	</delete>
  </mapper>
