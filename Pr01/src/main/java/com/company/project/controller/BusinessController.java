@@ -52,20 +52,20 @@ public class BusinessController {
 		
 		return "/Business/businessTable";
 	}
-//	@RequestMapping(value="/besinessRegistration")
-//	public String besinessRegistration(BusinessDto bdto, HttpServletRequest request, Model model) {
-//		log.info("사업실적 등록");
-//		model.addAttribute("request", request);
-//		HttpSession session2 = request.getSession();
-//		String table = (String) session2.getAttribute("table");
-//		service.insertBusiness(bdto, table);
-//		
-//		// 리스트 재실행
-//		command = new BListCommand();
-//		command.execute(model);
-//		
-//		return "/Business/businessTable";
-//	}
+	@RequestMapping(value="/besinessRegistration")
+	public String besinessRegistration(BusinessDto bdto, HttpServletRequest request, Model model) {
+		log.info("사업실적 등록");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		String table = (String) session2.getAttribute("table");
+		log.info("table = ... " + table);
+		service.insertBusiness(bdto, table);
+		
+		// 리스트 재실행
+		service.selectAllBusiness(table, model);
+		
+		return "/Business/businessTable";
+	}
 //	@RequestMapping(value = "/businessUpdateView")
 //	public String businessUpdateView(HttpServletRequest request, Model model) {
 //		log.info("사업실적 수정");

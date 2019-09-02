@@ -29,8 +29,6 @@ public class BusinessCommandImpl implements BusinessCommand{
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
-		session2.setAttribute("businessList", 
-				service.selectAllBusiness((String) session2.getAttribute("table")));
 		
 	}
 
