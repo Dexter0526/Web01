@@ -29,7 +29,7 @@ public class BusinessCommandImpl implements BusinessCommand{
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		HttpSession session2 = request.getSession();
 		
-		String num = request.getParameter("num");
+		int num = Integer.parseInt(request.getParameter("num"));
 		String table = (String) session2.getAttribute("table");
 		
 		session2.setAttribute("business", service.getBusiness(num, table));
