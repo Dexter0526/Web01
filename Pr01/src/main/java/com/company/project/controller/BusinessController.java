@@ -7,13 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.project.BCommand.BCommand;
-import com.company.project.BCommand.BListCommand;
-import com.company.project.BCommand.BRegistrationCommand;
-import com.company.project.BCommand.BUpdateCommand;
-import com.company.project.BCommand.BUpdateViewCommand;
-import com.company.project.command.BusinessCommand;
-import com.company.project.mapper.BusinessMapper;
+import com.company.project.dto.BusinessDto;
 import com.company.project.service.BusinessService;
 
 import lombok.AllArgsConstructor;
@@ -25,57 +19,46 @@ import lombok.extern.log4j.Log4j;
 public class BusinessController {
 
 	private BusinessService service;
-	private BusinessCommand command;
 	
 	@RequestMapping(value = "/building")
 	public String building(HttpServletRequest request, Model model) {
 		log.info("building");
 		model.addAttribute("request", request);
-		HttpSession session2 = request.getSession();
-//		session2.setAttribute("table", "building");
-//		command.selectAllBusiness(model);
-		
-		session2.setAttribute("businessList", service.selectAllBusiness("building"));
+		service.selectAllBusiness("building", model);
 		
 		return "/Business/building";
 	}
-//	@RequestMapping(value = "/civil")
-//	public String civil(HttpServletRequest request, Model model) {
-//		log.info("civil");
-//		model.addAttribute("request", request);
-//		HttpSession session2 = request.getSession();
-//		session2.setAttribute("table", "civil");
-//		command = new BListCommand();
-//		command.execute(model);
-//		return "/Business/civil";
-//	}
-//	@RequestMapping(value = "/plant")
-//	public String plant(HttpServletRequest request, Model model) {
-//		log.info("plant");
-//		model.addAttribute("request", request);
-//		HttpSession session2 = request.getSession();
-//		session2.setAttribute("table", "plant");
-//		command = new BListCommand();
-//		command.execute(model);
-//		return "/Business/plant";
-//	}
-//	@RequestMapping(value = "/businessTable")
-//	public String adminTable(HttpServletRequest request, Model model) {
-//		log.info("사업실적 리스트 뷰");
-//		model.addAttribute("request", request);
-//		HttpSession session2 = request.getSession();
-//		int bResult = 0;
-//		session2.setAttribute("bResult", bResult);
-//		System.out.println("bResult : "+bResult);
-//		
-//		return "/Business/businessTable";
-//	}
+	@RequestMapping(value = "/civil")
+	public String civil(HttpServletRequest request, Model model) {
+		log.info("civil");
+		model.addAttribute("request", request);
+		service.selectAllBusiness("civil", model);
+		return "/Business/civil";
+	}
+	@RequestMapping(value = "/plant")
+	public String plant(HttpServletRequest request, Model model) {
+		log.info("plant");
+		model.addAttribute("request", request);
+		service.selectAllBusiness("plant", model);
+		return "/Business/plant";
+	}
+	@RequestMapping(value = "/businessTable")
+	public String adminTable(HttpServletRequest request, Model model) {
+		log.info("사업실적 리스트 뷰");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		int bResult = 0;
+		session2.setAttribute("bResult", bResult);
+		
+		return "/Business/businessTable";
+	}
 //	@RequestMapping(value="/besinessRegistration")
-//	public String besinessRegistration(HttpServletRequest request, Model model) {
+//	public String besinessRegistration(BusinessDto bdto, HttpServletRequest request, Model model) {
 //		log.info("사업실적 등록");
 //		model.addAttribute("request", request);
-//		command = new BRegistrationCommand();
-//		command.execute(model);
+//		HttpSession session2 = request.getSession();
+//		String table = (String) session2.getAttribute("table");
+//		service.insertBusiness(bdto, table);
 //		
 //		// 리스트 재실행
 //		command = new BListCommand();

@@ -1,10 +1,15 @@
 package com.company.project.service;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.company.project.dto.BusinessDto;
 import com.company.project.mapper.BusinessMapper;
@@ -21,8 +26,12 @@ public class BusinessServiceImpl implements BusinessService{
 	private BusinessMapper mapper;
 	
 	@Override
-	public List<BusinessDto> selectAllBusiness(String table) {
-		return mapper.selectAllBusiness(table);
+	public void selectAllBusiness(String table, Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session2 = request.getSession();
+		session2.setAttribute("table", table);
+		session2.setAttribute("businessList", mapper.selectAllBusiness(table));
 	}
 
 	@Override

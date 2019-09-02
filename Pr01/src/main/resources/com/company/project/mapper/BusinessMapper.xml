@@ -20,10 +20,10 @@ SYSTEM
 		update ${value} set title=#{title}, 
 		content=#{content}, 
 		field=#{field} 
-		where num=#{num}
+		where num = #{num}
 	</update>
 
 	<delete id="deleteBusiness">
-		delete #{table} where num=#{num}
+		delete #{table} where num = #{num}
 	</delete>
  </mapper>

@@ -2,10 +2,14 @@ package com.company.project.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+
 import com.company.project.dto.BusinessDto;
 
 public interface BusinessService {
-	public List<BusinessDto> selectAllBusiness(String table);
+	public void selectAllBusiness(String table, Model model);
 	
 	public void insertBusiness(BusinessDto bdto, String table);
 	
@@ -14,4 +18,5 @@ public interface BusinessService {
 	public void updateBusiness(BusinessDto bdto, String table);
 	
 	public void deleteBusiness(int num, String table);
+
 }
