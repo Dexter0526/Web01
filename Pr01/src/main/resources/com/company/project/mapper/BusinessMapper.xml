@@ -13,14 +13,14 @@ SYSTEM
 	</insert>
 	
 	<select id="getBusiness" resultType="com.company.project.dto.BusinessDto">
-		select * from ${table} order by num = ${num}
+		select * from ${table} where num = ${num}
 	</select>
 	
 	<update id="updateBusiness">
 		update ${table} set title=#{bdto.title}, 
 		content=#{bdto.content}, 
 		field=#{bdto.field} 
-		where num = ${num}
+		where num = ${bdto.num}
 	</update>
 
 	<delete id="deleteBusiness">

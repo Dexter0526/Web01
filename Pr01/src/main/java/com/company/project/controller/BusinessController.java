@@ -84,27 +84,30 @@ public class BusinessController {
 		
 		return "/Business/businessTable";
 	}
-//	@RequestMapping(value = "/besinessUpdate")
-//	public String besinessUpdate(HttpServletRequest request, Model model) {
-//		log.info("사업실적 수정완료");
-//		model.addAttribute("request", request);
-//		command = new BUpdateCommand();
-//		command.execute(model);
-//		
-//		// 리스트 재실행
-//		command = new BListCommand();
-//		command.execute(model);
-//		
-//		return "/Business/businessTable";
-//	}
-//	@RequestMapping(value ="/businessDelete")
-//	public String businessDelete(HttpServletRequest request, Model model) {
-//		log.info("사업실적 삭제완료");
-//		model.addAttribute("request", request);
-//		
-//		// 리스트 재실행
-//		command = new BListCommand();
-//		command.execute(model);
-//		return "/Business/businessTable";
-//	}
+	
+	@RequestMapping(value = "/besinessUpdate")
+	public String besinessUpdate(BusinessDto bdto, HttpServletRequest request, Model model) {
+		log.info("사업실적 수정완료");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		String table = (String) session2.getAttribute("table");
+		service.updateBusiness(bdto, table);
+		session2.setAttribute("bResult", 0);
+		// 리스트 재실행
+		service.selectAllBusiness(table, model);
+		
+		return "/Business/businessTable";
+	}
+	
+	@RequestMapping(value ="/businessDelete")
+	public String businessDelete(HttpServletRequest request, Model model) {
+		log.info("사업실적 삭제완료");
+		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
+		service.deleteBusiness(Integer.parseInt(request.getParameter("num")), 
+				(String) session2.getAttribute("table"));
+		// 리스트 재실행
+		service.selectAllBusiness((String) session2.getAttribute("table"), model);
+		return "/Business/businessTable";
+	}
 }
