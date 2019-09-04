@@ -6,70 +6,67 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.project.PCommand.PDeleteCommand;
-import com.company.project.PCommand.PListCommand;
-import com.company.project.PCommand.PRegistrationCommand;
-import com.company.project.PCommand.PUpdateCommand;
-import com.company.project.PCommand.PUpdateViewCommand;
-import com.company.project.PCommand.Pcommand;
+import com.company.project.dto.PatentDto;
+import com.company.project.mapper.PatentMapper;
+import com.company.project.service.PatentService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
+@AllArgsConstructor
 public class PatentController {
-	Pcommand command;
 	
+	private PatentService service;
+	private PatentMapper mapper;
 	
 	@RequestMapping(value = "/patent")
 	public String patent(HttpServletRequest request, Model model) {
-		System.out.println("patent");
+		log.info("patent");
 		model.addAttribute("request", request);
-		command = new PListCommand();
-		command.execute(model);
+		service.selectAllPatent(model);
 		
 		return "/Tech/patent";
 	}
 	
 	@RequestMapping(value = "/patentWrite")
 	public String patentWrite(Model model) {
-		System.out.println("patent write view");
+		log.info("patent write view");
 		
 		return "Tech/patentWrite";
 	}
 	@RequestMapping(value = "/registration")
-	public String registration(HttpServletRequest request, Model model) {
-		System.out.println("등록 완료");
+	public String registration(PatentDto pdto, HttpServletRequest request, Model model) {
+		log.info("등록 완료");
 		model.addAttribute("request", request);
-		command = new PRegistrationCommand();
-		command.execute(model);
+		mapper.insertPatent(pdto);
 		
 		// 리스트 재실행
-		command = new PListCommand();
-		command.execute(model);
+		service.selectAllPatent(model);
 		
 		return "/Tech/patent";
 	}
 	@RequestMapping(value = "/patentUpdateView")
 	public String patentUpdateView(HttpServletRequest request, Model model) {
-		System.out.println("patent update view");
 		model.addAttribute("request", request);
-		command = new PUpdateViewCommand();
-		command.execute(model);
+		service.updateViewPatent(model);
 		
 		return "Tech/patentUpdateView";
 	}
 	@RequestMapping(value = "/patentUpdate")
-	public String patentUpdate(HttpServletRequest request, Model model) {
+	public String patentUpdate(PatentDto pdto, HttpServletRequest request, Model model) {
 		System.out.println("수정 완료");
 		model.addAttribute("request", request);
-		command = new PUpdateCommand();
-		command.execute(model);
+		mapper.updatePatent(pdto);
 		
 		return "index";
 	}
 	@RequestMapping(value = "/patentDelete")
 	public String patentDelete(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		command = new PDeleteCommand();
-		command.execute(model);
+		
+		mapper.deletePatent(request.getParameter("patentNum"));
 		
 		return "index";
 	}

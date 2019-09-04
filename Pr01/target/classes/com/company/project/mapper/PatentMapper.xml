@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+SYSTEM
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.mapper.PatentMapper">
+
+	<select id="selectAllPatent" parameterType="string"
+		resultType="com.company.project.dto.PatentDto">
+		select * from patent order by num desc
+	</select>
+
+	<insert id="insertPatent">
+		insert into patent(num, patentnum, title, content)
+		values(patent_seq.nextval, #{patentNum}, #{title}, #{content})
+	</insert>
+
+	<select id="getPatent"
+		resultType="com.company.project.dto.PatentDto">
+		select * from patent where patentnum = ${value}
+	</select>
+
+	<update id="updatePatent">
+		update patent set patentnum=#{patentNum}, 
+		title=#{title}, 
+		content=#{content}
+		where num=${num}
+	</update>
+
+	<delete id="deletePatent">
+		delete patent where patentnum=#{value}
+	</delete>
+
+</mapper>
