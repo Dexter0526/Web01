@@ -107,7 +107,7 @@ public class MemberController {
 		service.insertMember(mdto);
 		rttr.addFlashAttribute("admin", mdto.getAdmin());
 
-		return "MemberView/memberView";
+		return "MemberView/memberIndexView";
 	}
 	
 	@RequestMapping(value = "/memberUpdateView")

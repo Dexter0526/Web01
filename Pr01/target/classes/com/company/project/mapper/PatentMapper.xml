@@ -16,7 +16,7 @@ SYSTEM
 
 	<select id="getPatent"
 		resultType="com.company.project.dto.PatentDto">
-		select * from patent where patentnum = ${value}
+		select * from patent where patentnum = #{patentNum}
 	</select>
 
 	<update id="updatePatent">

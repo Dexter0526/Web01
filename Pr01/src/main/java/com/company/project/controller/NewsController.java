@@ -13,51 +13,58 @@ import com.company.project.NCommand.NGetCommand;
 import com.company.project.NCommand.NListCommand;
 import com.company.project.NCommand.NRegistrationCommand;
 import com.company.project.NCommand.NUpdateCommand;
+import com.company.project.dto.NewsDto;
+import com.company.project.mapper.NewsMapper;
+import com.company.project.service.NewsService;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@AllArgsConstructor
 @Controller
 public class NewsController {
-	NCommand command;
+	
+	private NewsMapper mapper;
+	private NewsService service;
 	
 	@RequestMapping(value="/news")
 	public String news(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.removeAttribute("nresult");
-		command = new NListCommand();
-		command.execute(model);
+		service.selectAllNews(model);
 		return "/Promotion/news";
 	}
 	
 	@RequestMapping(value="/newsRegistration")
-	public String newsRegistration(HttpServletRequest request, Model model) {
+	public String newsRegistration(NewsDto ndto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		command = new NRegistrationCommand();
-		command.execute(model);
+		mapper.insertNews(ndto);
 		
 		// 리스트 재실행
-		command = new NListCommand();
-		command.execute(model);
+		service.selectAllNews(model);
 		
 		return "/Promotion/news";
 	}
+	
 	@RequestMapping(value="/getNews")
 	public String getNews(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		command = new NGetCommand();
-		command.execute(model);
+		service.getNews(model);
 		
 		return "/Promotion/news";
 	}
 	@RequestMapping(value="/newsUpdate")
-	public String newsUpdate(HttpServletRequest request, Model model) {
+	public String newsUpdate(NewsDto ndto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		HttpSession session2 = request.getSession();
 		
-		command = new NUpdateCommand();
-		command.execute(model);
-		
+		// 업데이트
+		mapper.updateNews(ndto);
+		session2.removeAttribute("nresult");
 		// 리스트 재실행
-		command = new NListCommand();
-		command.execute(model);
+		service.selectAllNews(model);
 		
 		return "/Promotion/news";
 	}
@@ -65,12 +72,14 @@ public class NewsController {
 	@RequestMapping(value="/newsDelete")
 	public String newsDelete(HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		command = new NDeleteCommand();
-		command.execute(model);
+		HttpSession session2 = request.getSession();
+		int num = Integer.parseInt(request.getParameter("num"));
+		// 삭제
+		mapper.deleteNews(num);
+		session2.removeAttribute("nresult");
 		
 		// 리스트 재실행
-		command = new NListCommand();
-		command.execute(model);
+		service.selectAllNews(model);
 		return "/Promotion/news";
 	}
 	
