@@ -56,16 +56,16 @@
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
-						<c:forEach var="businessDto" items="${businessList}">
-							<table class="table table-bordered">
+						<table class="table table-bordered">
+							<c:forEach var="businessDto" items="${businessList}">
 								<c:if test="${businessDto.field eq 'power'}">
 									<tr>
 										<th>${businessDto.title}</th>
 										<th>${businessDto.content}</th>
 									</tr>
 								</c:if>
-							</table>
-						</c:forEach>
+							</c:forEach>
+						</table>
 					</div>
 				</div>
 				<div class="modal-footer">
