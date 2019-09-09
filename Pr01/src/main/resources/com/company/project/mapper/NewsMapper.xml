@@ -4,9 +4,25 @@ SYSTEM
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.project.mapper.NewsMapper">
 
-<select id="selectAllNews" parameterType="string"
+	<select id="selectAllNews" parameterType="string"
 		resultType="com.company.project.dto.NewsDto">
 		select * from news order by num desc
+	</select>
+
+	<select id="selectAllNewsWithPaging"
+		resultType="com.company.project.dto.NewsDto">
+	<![CDATA[
+		select 
+			num, title, content, count, reg_date 
+		from
+			(select 
+			rownum rn, num, title, content, count, reg_date 
+			from news 
+			where rownum <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} - 1) * #{amount}
+		
+	]]>
 	</select>
 
 	<insert id="insertNews">
@@ -20,11 +36,11 @@ SYSTEM
 	</select>
 
 	<update id="updateNews">
-		update news set title=#{ndto.title}, 
-		content=#{ndto.content} 
+		update news set title=#{ndto.title},
+		content=#{ndto.content}
 		where num=${ndto.num}
 	</update>
-	
+
 	<update id="updateCount">
 		update news set count=count+1 where num=${num}
 	</update>

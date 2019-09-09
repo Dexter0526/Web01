@@ -13,6 +13,7 @@ import com.company.project.NCommand.NGetCommand;
 import com.company.project.NCommand.NListCommand;
 import com.company.project.NCommand.NRegistrationCommand;
 import com.company.project.NCommand.NUpdateCommand;
+import com.company.project.dto.Criteria;
 import com.company.project.dto.NewsDto;
 import com.company.project.mapper.NewsMapper;
 import com.company.project.service.NewsService;
@@ -29,21 +30,21 @@ public class NewsController {
 	private NewsService service;
 	
 	@RequestMapping(value="/news")
-	public String news(HttpServletRequest request, Model model) {
+	public String news(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.removeAttribute("nresult");
-		service.selectAllNews(model);
+		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
 		return "/Promotion/news";
 	}
 	
 	@RequestMapping(value="/newsRegistration")
-	public String newsRegistration(NewsDto ndto, HttpServletRequest request, Model model) {
+	public String newsRegistration(Criteria cri, NewsDto ndto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		mapper.insertNews(ndto);
 		
 		// 리스트 재실행
-		service.selectAllNews(model);
+		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
 		
 		return "/Promotion/news";
 	}
@@ -56,7 +57,7 @@ public class NewsController {
 		return "/Promotion/news";
 	}
 	@RequestMapping(value="/newsUpdate")
-	public String newsUpdate(NewsDto ndto, HttpServletRequest request, Model model) {
+	public String newsUpdate(Criteria cri, NewsDto ndto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		
@@ -64,13 +65,13 @@ public class NewsController {
 		mapper.updateNews(ndto);
 		session2.removeAttribute("nresult");
 		// 리스트 재실행
-		service.selectAllNews(model);
+		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
 		
 		return "/Promotion/news";
 	}
 	
 	@RequestMapping(value="/newsDelete")
-	public String newsDelete(HttpServletRequest request, Model model) {
+	public String newsDelete(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		int num = Integer.parseInt(request.getParameter("num"));
@@ -79,7 +80,7 @@ public class NewsController {
 		session2.removeAttribute("nresult");
 		
 		// 리스트 재실행
-		service.selectAllNews(model);
+		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
 		return "/Promotion/news";
 	}
 	

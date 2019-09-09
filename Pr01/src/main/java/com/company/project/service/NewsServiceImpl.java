@@ -1,5 +1,6 @@
 package com.company.project.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.company.project.dto.Criteria;
+import com.company.project.dto.NewsDto;
 import com.company.project.mapper.NewsMapper;
 
 import lombok.Setter;
@@ -23,13 +26,13 @@ public class NewsServiceImpl implements NewsService{
 	@Setter(onMethod_ = @Autowired)
 	private NewsMapper mapper;
 	
-	@Override
-	public void selectAllNews(Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		HttpSession session2 = request.getSession();
-		session2.setAttribute("newsList", mapper.selectAllNews());
-	}
+//	@Override
+//	public void selectAllNews(Model model) {
+//		Map<String, Object> map = model.asMap();
+//		HttpServletRequest request = (HttpServletRequest) map.get("request");
+//		HttpSession session2 = request.getSession();
+//		session2.setAttribute("newsList", mapper.selectAllNews());
+//	}
 
 	@Override
 	public void getNews(Model model) {
@@ -52,5 +55,10 @@ public class NewsServiceImpl implements NewsService{
 		log.info("nresult = " + nresult);
 	}
 
+	@Override
+	public List<NewsDto> selectAllNewsWithPaging(Criteria cri) {
+		
+		return mapper.selectAllNewsWithPaging(cri);
+	}
 	
 }

@@ -15,7 +15,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/carousel.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/signin.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/signin.css"
+	rel="stylesheet">
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -31,11 +32,12 @@
 	line-height: 1;
 	letter-spacing: -1px;
 }
+
 .form-signin input[type="text"] {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 </style>
 <title>Insert title here</title>
@@ -55,16 +57,16 @@
 		<!-- body head -->
 		<c:choose>
 			<c:when test="${nresult==1}">
-				<jsp:include page="newsUpdateView.jsp"/>
+				<jsp:include page="newsUpdateView.jsp" />
 			</c:when>
 			<c:when test="${nresult==0}">
-				<jsp:include page="newsGet.jsp"/>
+				<jsp:include page="newsGet.jsp" />
 			</c:when>
 			<c:when test="${admin==0||admin==1}">
-				<jsp:include page="newsWrite.jsp"/>
+				<jsp:include page="newsWrite.jsp" />
 			</c:when>
 			<c:otherwise>
-				<jsp:include page="newsHead.jsp"/>
+				<jsp:include page="newsHead.jsp" />
 			</c:otherwise>
 		</c:choose>
 
@@ -79,16 +81,32 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="newsList" items="${newsList}">
-					<tr>
-						<td>${newsList.num}</td>
-						<td><a href = "getNews?num=${newsList.num}">${newsList.title}</a></td>
-						<td>${newsList.regDate}</td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="newsList" items="${newsList}">
+						<tr>
+							<td>${newsList.num}</td>
+							<td><a href="getNews?num=${newsList.num}">${newsList.title}</a></td>
+							<td>${newsList.regDate}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+
+		<!-- pagination -->
+		<nav style=align:center;>
+			<ul class="pager">
+				<li class="disabled"><a href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li class="active"><a href="news?pageNum=1">1</a></li>
+				<li><a href="news?pageNum=2">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
+		</nav>
 
 		<hr class="featurette-divider">
 		<!-- FOOTER -->
