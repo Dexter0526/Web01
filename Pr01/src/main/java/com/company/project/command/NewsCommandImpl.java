@@ -34,7 +34,7 @@ public class NewsCommandImpl implements NewsCommand{
 		Criteria cri = (Criteria) map.get("cri");
 		
 		session2.setAttribute("newsList", service.selectAllNewsWithPaging(cri));
-		session2.setAttribute("pageMaker", new pageDto(cri, service.count()+1));
+		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
 		
 	}
 

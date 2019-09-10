@@ -13,7 +13,7 @@ SYSTEM
 		resultType="com.company.project.dto.NewsDto">
 	<![CDATA[
 		select 
-			num, title, content, count, reg_date 
+			num, title, content, readcount, reg_date 
 		from
 			(select 
 			rownum rn, num, title, content, readcount, reg_date 
@@ -43,15 +43,26 @@ SYSTEM
 	</update>
 
 	<update id="updateCount">
-		update news set count=count+1 where num=${num}
+		update news set readcount=readcount+1 where num=${num}
 	</update>
 
 	<delete id="deleteNews">
 		delete news where num=${num}
 	</delete>
 
-	<select id="count">
+	<select id="count" resultType="int">
 		select count(*) from news
+	</select>
+	
+	<select id="bestNews"
+		resultType="com.company.project.dto.NewsDto">
+	<![CDATA[
+		select 
+   			rownum rn, num, title, content, readcount, reg_date 
+    		from news 
+    		where rownum <= 4 
+    		order by readcount desc
+	]]>
 	</select>
 
 </mapper>

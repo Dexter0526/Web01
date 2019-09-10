@@ -39,6 +39,9 @@ public class NewsController {
 		HttpSession session2 = request.getSession();
 		session2.removeAttribute("nresult");
 		
+		model.addAttribute("bestNews", mapper.bestNews());
+//		session2.setAttribute("bestNews", mapper.bestNews());
+		
 		model.addAttribute("cri", cri);
 		command.selectAllNewsWithPaging(model);
 

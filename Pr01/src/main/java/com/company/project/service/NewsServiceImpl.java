@@ -63,7 +63,9 @@ public class NewsServiceImpl implements NewsService{
 
 	@Override
 	public int count() {
-		return mapper.count();
+		int count = mapper.count();
+		log.info("mapper.count() : ... " + count);
+		return count;
 	}
 	
 }

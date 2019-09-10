@@ -24,4 +24,6 @@ public interface NewsMapper {
 	public void deleteNews(@Param("num") int num);
 	
 	public int count();
+	
+	public List<NewsDto> bestNews();
 }
