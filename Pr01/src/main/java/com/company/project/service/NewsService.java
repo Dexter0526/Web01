@@ -14,4 +14,6 @@ public interface NewsService {
 	public void getNews(Model model);
 	
 	public List<NewsDto> selectAllNewsWithPaging(Criteria cri);
+	
+	public int count();
 }

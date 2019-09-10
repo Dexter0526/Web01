@@ -60,5 +60,10 @@ public class NewsServiceImpl implements NewsService{
 		
 		return mapper.selectAllNewsWithPaging(cri);
 	}
+
+	@Override
+	public int count() {
+		return mapper.count();
+	}
 	
 }

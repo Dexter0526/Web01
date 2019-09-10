@@ -16,11 +16,12 @@ SYSTEM
 			num, title, content, count, reg_date 
 		from
 			(select 
-			rownum rn, num, title, content, count, reg_date 
+			rownum rn, num, title, content, readcount, reg_date 
 			from news 
-			where rownum <= #{pageNum} * #{amount}
+			where rownum <= #{cri.pageNum} * #{cri.amount}
+			order by num desc
 			)
-		where rn > (#{pageNum} - 1) * #{amount}
+		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 		
 	]]>
 	</select>
@@ -48,5 +49,9 @@ SYSTEM
 	<delete id="deleteNews">
 		delete news where num=${num}
 	</delete>
+
+	<select id="count">
+		select count(*) from news
+	</select>
 
 </mapper>

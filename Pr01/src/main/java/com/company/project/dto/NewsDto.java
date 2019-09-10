@@ -1,6 +1,6 @@
 package com.company.project.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ public class NewsDto {
 	private int num;
 	private String title;
 	private String content;
-	private int count;
-	private Timestamp regDate;
+	private int readcount;
+	private Date reg_Date;
 	
 }

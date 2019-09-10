@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.NCommand.NCommand;
@@ -13,8 +14,10 @@ import com.company.project.NCommand.NGetCommand;
 import com.company.project.NCommand.NListCommand;
 import com.company.project.NCommand.NRegistrationCommand;
 import com.company.project.NCommand.NUpdateCommand;
+import com.company.project.command.NewsCommand;
 import com.company.project.dto.Criteria;
 import com.company.project.dto.NewsDto;
+import com.company.project.dto.pageDto;
 import com.company.project.mapper.NewsMapper;
 import com.company.project.service.NewsService;
 
@@ -28,13 +31,17 @@ public class NewsController {
 	
 	private NewsMapper mapper;
 	private NewsService service;
+	private NewsCommand command;
 	
 	@RequestMapping(value="/news")
 	public String news(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		session2.removeAttribute("nresult");
-		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
+		
+		model.addAttribute("cri", cri);
+		command.selectAllNewsWithPaging(model);
+
 		return "/Promotion/news";
 	}
 	
@@ -44,15 +51,20 @@ public class NewsController {
 		mapper.insertNews(ndto);
 		
 		// 리스트 재실행
-		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
+		model.addAttribute("cri", cri);
+		command.selectAllNewsWithPaging(model);
 		
 		return "/Promotion/news";
 	}
 	
 	@RequestMapping(value="/getNews")
-	public String getNews(HttpServletRequest request, Model model) {
+	public String getNews(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		service.getNews(model);
+		
+		// 리스트 재실행
+		model.addAttribute("cri", cri);
+		command.selectAllNewsWithPaging(model);
 		
 		return "/Promotion/news";
 	}
@@ -64,8 +76,10 @@ public class NewsController {
 		// 업데이트
 		mapper.updateNews(ndto);
 		session2.removeAttribute("nresult");
+		
 		// 리스트 재실행
-		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
+		model.addAttribute("cri", cri);
+		command.selectAllNewsWithPaging(model);
 		
 		return "/Promotion/news";
 	}
@@ -75,12 +89,15 @@ public class NewsController {
 		model.addAttribute("request", request);
 		HttpSession session2 = request.getSession();
 		int num = Integer.parseInt(request.getParameter("num"));
+		
 		// 삭제
 		mapper.deleteNews(num);
 		session2.removeAttribute("nresult");
 		
 		// 리스트 재실행
-		model.addAttribute("newsList", service.selectAllNewsWithPaging(cri));
+		model.addAttribute("cri", cri);
+		command.selectAllNewsWithPaging(model);
+		
 		return "/Promotion/news";
 	}
 	

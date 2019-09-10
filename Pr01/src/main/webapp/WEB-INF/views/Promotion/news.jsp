@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,8 +85,9 @@
 					<c:forEach var="newsList" items="${newsList}">
 						<tr>
 							<td>${newsList.num}</td>
-							<td><a href="getNews?num=${newsList.num}">${newsList.title}</a></td>
-							<td>${newsList.regDate}</td>
+							<td><a href="getNews?num=${newsList.num}&pageNum=${cri.pageNum}">${newsList.title}</a></td>
+							<td><fmt:formatDate value = "${newsList.reg_Date}" pattern="yyyy-MM-dd"/>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -93,18 +95,24 @@
 		</div>
 
 		<!-- pagination -->
-		<nav style=align:center;>
+		<nav>
 			<ul class="pager">
-				<li class="disabled"><a href="#" aria-label="Previous">
+			<c:if test="${pageMaker.prev}">
+				<li class="disabled"><a href="news?pageNum=${pageMake.startPage-1}" aria-label="Previous">
 				<span aria-hidden="true">&laquo;</span>
 				</a></li>
-				<li class="active"><a href="news?pageNum=1">1</a></li>
-				<li><a href="news?pageNum=2">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+			</c:if>
+			
+			<c:forEach var="pageNum" begin="${pageMaker.startPage}"
+			end="${pageMaker.endPage}">
+				<li class="${pageMaker.cri.pageNum == num ? 'active' : ''}">
+				<a href="news?pageNum=${pageNum}">${pageNum}</a></li>
+			</c:forEach>
+			
+			<c:if test="${pageMaker.next}">
+				<li><a href="news?pageNum=${pageMake.endPage+1}" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 				</a></li>
+			</c:if>
 			</ul>
 		</nav>
 

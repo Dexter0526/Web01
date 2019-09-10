@@ -48,7 +48,7 @@ public class NewsDao {
 				ndto.setTitle(rs.getString("title"));
 				ndto.setContent(rs.getString("content"));
 				ndto.setCount(rs.getInt("count"));
-				ndto.setRegDate(rs.getTimestamp("reg_Date"));
+				ndto.setReg_Date(rs.getTimestamp("reg_Date"));
 				newsList.add(ndto);
 
 				System.out.println(ndto);
@@ -108,7 +108,7 @@ public class NewsDao {
 				ndto.setTitle(rs.getString("title"));
 				ndto.setContent(rs.getString("content"));
 				ndto.setCount(rs.getInt("count"));
-				ndto.setRegDate(rs.getTimestamp("reg_Date"));
+				ndto.setReg_Date(rs.getTimestamp("reg_Date"));
 				System.out.println(ndto);
 			}
 		}catch (Exception e) {

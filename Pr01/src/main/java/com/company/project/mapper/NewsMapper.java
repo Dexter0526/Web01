@@ -22,4 +22,6 @@ public interface NewsMapper {
 	public void updateCount(@Param("num") int num);
 	
 	public void deleteNews(@Param("num") int num);
+	
+	public int count();
 }
