@@ -13,6 +13,10 @@ SYSTEM
 		select * from member order by admin asc
 	</select>
 	
+	<select id="selectAllMemberWithPaging">
+	
+	</select>
+	
 	<select id="selectSerchMember"
 		resultType="com.company.project.dto.MemberDto">
 		select * from member where admin = #{admin}

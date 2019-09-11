@@ -10,6 +10,8 @@ public interface MemberMapper {
 	
 	public List<MemberDto> selectAllMember();
 	
+	public List<MemberDto> selectAllMemberWithPaging();
+	
 	public void confirmEmail(String email);
 	
 	public void insertMember(MemberDto mdto);
