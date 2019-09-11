@@ -2,7 +2,7 @@ package com.company.project.mapper;
 
 import java.util.List;
 
-
+import com.company.project.dto.MemberCountDto;
 import com.company.project.dto.MemberDto;
 
 public interface MemberMapper {
@@ -17,4 +17,8 @@ public interface MemberMapper {
 	public int updateMember(MemberDto mdto);
 	
 	public int memberDelete(String email);
+	
+	public List<MemberCountDto> memberCount();
+	
+	public List<MemberDto> selectSerchMember(int admin);
 }

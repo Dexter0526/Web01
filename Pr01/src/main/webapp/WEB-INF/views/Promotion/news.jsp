@@ -86,7 +86,7 @@
 						<tr>
 							<td>${newsList.num}</td>
 							<td><a href="getNews?num=${newsList.num}&pageNum=${cri.pageNum}">${newsList.title}</a></td>
-							<td><fmt:formatDate value = "${newsList.reg_Date}" pattern="yyyy-MM-dd"/>
+							<td><fmt:formatDate value = "${newsList.reg_Date}" pattern="yy.MM.dd"/>
 							</td>
 						</tr>
 					</c:forEach>

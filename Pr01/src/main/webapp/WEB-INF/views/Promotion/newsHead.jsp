@@ -13,7 +13,8 @@
 			<div class="col-xs-6 col-sm-3 placeholder">
 				<img data-src="holder.js/200x200/auto/sky" class="img-responsive"
 					alt="Generic placeholder thumbnail">
-				<h4>${bestNews.title}</h4>
+				<h4><a href = "getNews?num=${bestNews.num}&pageNum=${cri.pageNum}">
+				${bestNews.title}</a></h4>
 			</div>
 		</c:forEach>
 	</div>

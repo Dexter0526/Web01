@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.project.command.MemberCommand;
 import com.company.project.dto.MemberDto;
+import com.company.project.mapper.MemberMapper;
 import com.company.project.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -25,15 +26,27 @@ public class MemberController {
 	
 //	@Setter(onMethod_ = @Autowired)
 	private MemberCommand command;
+	
+	private MemberMapper mapper;
 
 	// 멤버 설정뷰(마스터 권한)
 	@RequestMapping(value = "/memberView")
 	public String memberView(Model model) {
 		log.info("멤버 뷰");
 		model.addAttribute("memberList", service.selectAllMember());
+		model.addAttribute("memberCount", mapper.memberCount());
 		return "MemberView/memberView";
 	}
-
+	
+	@RequestMapping(value = "/positionView")
+	public String positionView(int admin, Model model) {
+		log.info("직책 선택 뷰");
+		model.addAttribute("memberList", mapper.selectSerchMember(admin));
+		model.addAttribute("memberCount", mapper.memberCount());
+		
+		return "MemberView/memberView";
+	}
+	
 	// ERP뷰
 	@RequestMapping(value = "/memberIndexView")
 	public String member_index_view(Model model) {
@@ -136,4 +149,6 @@ public class MemberController {
 		
 		return "MemberView/memberIndexView";
 	}
+	
+	
 }

@@ -107,7 +107,7 @@ public class NewsDao {
 				ndto.setNum(rs.getInt("num"));
 				ndto.setTitle(rs.getString("title"));
 				ndto.setContent(rs.getString("content"));
-				ndto.setCount(rs.getInt("count"));
+				ndto.setReadcount(rs.getInt("count"));
 				ndto.setReg_Date(rs.getTimestamp("reg_Date"));
 				System.out.println(ndto);
 			}

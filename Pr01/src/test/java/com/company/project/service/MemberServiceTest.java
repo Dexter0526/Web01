@@ -30,6 +30,9 @@ public class MemberServiceTest {
 	@Setter(onMethod_ = @Autowired)
 	private MemberService memberService;
 	
+	@Setter(onMethod_ = @Autowired)
+	private MemberMapper mapper;
+	
 //	@Test
 //	public void testExist() {
 //		log.info(memberService);
@@ -45,19 +48,19 @@ public class MemberServiceTest {
 //		log.info("admin : .... " + mdto.getAdmin());
 //	}
 	
-	@Test
-	public void logingTest(HttpServletRequest request, Model model) {
-		model.addAttribute("request", request);
-		MLogingCommand command = new MLogingCommand();
-		command.execute(model);
-	}
+//	@Test
+//	public void logingTest(HttpServletRequest request, Model model) {
+//		model.addAttribute("request", request);
+//		MLogingCommand command = new MLogingCommand();
+//		command.execute(model);
+//	}
 	
 //	public MemberDto getMember(String email);
 //	
-//	@Test
-//	public void selectAllMemberTest(){
-//		memberService.selectAllMember().forEach(member -> log.info(member));
-//	}
+	@Test
+	public void selectAllMemberTest(){
+		memberService.selectAllMember().forEach(member -> log.info(member));
+	}
 //	
 //	public boolean confirmEmail(String email);
 //	
@@ -66,4 +69,9 @@ public class MemberServiceTest {
 //	public int updateMember(MemberDto mdto);
 //	
 //	public int memberDelete(String email);
+	
+//	@Test
+//	public void memberCount() {
+//		mapper.memberCount().forEach(count -> log.info(count));
+//	}
 }

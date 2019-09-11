@@ -17,4 +17,6 @@ public interface BusinessMapper {
 	
 	public void deleteBusiness(@Param("num") int num, @Param("table") String table);
 	
+	
+	
 }

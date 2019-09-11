@@ -42,10 +42,14 @@
 
 				<!-- body head -->
 				<div class="row placeholders">
+				<c:forEach var="memberCount" items="${memberCount}">
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<h4>총 인원</h4><br>
-						<span class="text-muted">20명</span>
+						<h4><a href="positionView?admin=${memberCount.admin}">
+						${memberCount.position}</a></h4>
+						<br>
+						<span class="text-muted">${memberCount.count}</span>
 					</div>
+					<!-- 
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<h4>직원</h4><br>
 						<span class="text-muted">10명</span>
@@ -54,6 +58,9 @@
 						<h4>일반 사용자</h4><br>
 						<span class="text-muted">8명</span>
 					</div>
+					 -->
+				</c:forEach>
+				<!-- 계정 추가 -->
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<h4>계정 추가</h4><br>
 						<span class="text-muted">
