@@ -34,13 +34,14 @@ public class MemberController {
 	@RequestMapping(value = "/memberView")
 	public String memberView(Criteria cri, HttpServletRequest request, Model model) {
 		log.info("멤버 뷰");
+		log.info("cri : ... " + cri);
 //		model.addAttribute("memberList", service.selectAllMember());
-//		model.addAttribute("memberCount", mapper.memberCount());
 		
+		model.addAttribute("memberCount", mapper.memberCount());
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
 		command.selectAllMemberWithPaging(model);
-		log.info("cri : ... " + cri);
+
 		return "MemberView/memberView";
 	}
 	
