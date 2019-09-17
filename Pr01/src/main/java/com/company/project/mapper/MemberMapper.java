@@ -2,6 +2,9 @@ package com.company.project.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.company.project.dto.Criteria;
 import com.company.project.dto.MemberCountDto;
 import com.company.project.dto.MemberDto;
 
@@ -10,7 +13,7 @@ public interface MemberMapper {
 	
 	public List<MemberDto> selectAllMember();
 	
-	public List<MemberDto> selectAllMemberWithPaging();
+	public List<MemberDto> selectAllMemberWithPaging(@Param("cri") Criteria cri);
 	
 	public void confirmEmail(String email);
 	
@@ -23,4 +26,6 @@ public interface MemberMapper {
 	public List<MemberCountDto> memberCount();
 	
 	public List<MemberDto> selectSerchMember(int admin);
+	
+	public int count();
 }

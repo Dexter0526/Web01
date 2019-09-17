@@ -13,8 +13,20 @@ SYSTEM
 		select * from member order by admin asc
 	</select>
 	
-	<select id="selectAllMemberWithPaging">
-	
+	<select id="selectAllMemberWithPaging" 
+		resultType="com.company.project.dto.MemberDto">
+	<![CDATA[
+		select 
+			name, email, pwd, phone, admin  
+		from 
+			(select 
+				rownum rn, name, email, pwd, phone, admin 
+			from member 
+			where rownum <= #{cri.pageNum} * #{cri.amount}
+			order by admin
+			)
+		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+	]]>
 	</select>
 	
 	<select id="selectSerchMember"
@@ -42,6 +54,10 @@ SYSTEM
 	<delete id="memberDelete">
 		delete from member where email = #{email}
 	</delete>
+
+	<select id="count" resultType="int">
+		select count(*) from member
+	</select>
 
 	<select id="memberCount" resultType="com.company.project.dto.MemberCountDto">
 		SELECT COUNT(*) as count, admin,

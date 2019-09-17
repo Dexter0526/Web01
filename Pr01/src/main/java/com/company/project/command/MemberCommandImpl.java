@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.company.project.dto.Criteria;
 import com.company.project.dto.MemberDto;
+import com.company.project.dto.pageDto;
 import com.company.project.service.MemberService;
 
 import lombok.Setter;
@@ -63,6 +65,18 @@ public class MemberCommandImpl implements MemberCommand{
 
 		HttpSession session2 = request.getSession();
 		session2.invalidate();
+	}
+
+	@Override
+	public void selectAllMemberWithPaging(Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session2 = request.getSession();
+		
+		Criteria cri = (Criteria) map.get("cri");
+		
+		session2.setAttribute("memberList", service.selectAllMemberWithPaging(cri));
+		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
 	}
 	
 //	@Override

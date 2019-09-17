@@ -9,5 +9,7 @@ public interface MemberCommand {
 	
 //	public void insertCommand(Model model);
 	
+	public void selectAllMemberWithPaging(Model model);
+	
 	
 }

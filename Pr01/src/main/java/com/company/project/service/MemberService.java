@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import com.company.project.dto.Criteria;
 import com.company.project.dto.MemberDto;
 
 public interface MemberService {
@@ -14,6 +15,8 @@ public interface MemberService {
 	
 	public List<MemberDto> selectAllMember();
 	
+	public List<MemberDto> selectAllMemberWithPaging(Criteria cri);
+	
 	public boolean confirmEmail(String email);
 	
 	public void insertMember(MemberDto mdto);
@@ -23,4 +26,6 @@ public interface MemberService {
 	public int memberDelete(String email);
 	
 	public void updateView(Model model);
+	
+	public int count();
 }

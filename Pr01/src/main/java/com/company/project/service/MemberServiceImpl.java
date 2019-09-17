@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.company.project.dao.MemberDao;
+import com.company.project.dto.Criteria;
 import com.company.project.dto.MemberDto;
 import com.company.project.mapper.MemberMapper;
 
@@ -27,7 +28,7 @@ import lombok.extern.log4j.Log4j;
 public class MemberServiceImpl implements MemberService{
 
 	@Setter(onMethod_ = @Autowired)
-	private MemberMapper memberMapper;
+	private MemberMapper mapper;
 	
 //	@Setter(onMethod_ = @Autowired)
 //	private MemberService service;
@@ -60,7 +61,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int userCheck(String email, String pwd) {
 		int result = -1;
-		MemberDto memberDto = memberMapper.getMember(email);
+		MemberDto memberDto = mapper.getMember(email);
 		if(memberDto != null) {
 			if(memberDto.getPwd() != null &&
 					memberDto.getPwd().equals(pwd)) {
@@ -76,20 +77,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberDto getMember(String email) {
 		log.info("get member");
-		return memberMapper.getMember(email);
+		return mapper.getMember(email);
 	}
 
 	@Override
 	public List<MemberDto> selectAllMember() {
 		log.info("get member list....");
 		
-		return memberMapper.selectAllMember();
+		return mapper.selectAllMember();
 	}
 
 	@Override
 	public boolean confirmEmail(String email) {
 		boolean result = false;
-		MemberDto memberDto = memberMapper.getMember(email);
+		MemberDto memberDto = mapper.getMember(email);
 		if(memberDto != null) {
 			result = true;
 		}
@@ -98,14 +99,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void insertMember(MemberDto mdto) {
-		memberMapper.insertMember(mdto);
+		mapper.insertMember(mdto);
 	}
 
 	@Override
 	public int updateMember(MemberDto mdto) {
 		int result = 0;
 		log.info("email = ... " + mdto.getEmail());
-		result = memberMapper.updateMember(mdto);
+		result = mapper.updateMember(mdto);
 		log.info("member update result : ...." + result);
 		return result;
 	}
@@ -113,7 +114,7 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int memberDelete(String email) {
 		int result = 0;
-		result = memberMapper.memberDelete(email);
+		result = mapper.memberDelete(email);
 		log.info("member delete result : ...."+ result);
 		return result;
 	}
@@ -125,7 +126,17 @@ public class MemberServiceImpl implements MemberService{
 		HttpSession session2 = request.getSession();
 		String email = request.getParameter("email");
 		log.info("email = ... " + email);
-		MemberDto mdto = memberMapper.getMember(email);
+		MemberDto mdto = mapper.getMember(email);
 		session2.setAttribute("member", mdto);
+	}
+
+	@Override
+	public List<MemberDto> selectAllMemberWithPaging(Criteria cri) {
+		return mapper.selectAllMemberWithPaging(cri);
+	}
+
+	@Override
+	public int count() {
+		return mapper.count();
 	}
 }

@@ -42,14 +42,15 @@
 
 				<!-- body head -->
 				<div class="row placeholders">
-				<c:forEach var="memberCount" items="${memberCount}">
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<h4><a href="positionView?admin=${memberCount.admin}">
-						${memberCount.position}</a></h4>
-						<br>
-						<span class="text-muted">${memberCount.count}</span>
-					</div>
-					<!-- 
+					<c:forEach var="memberCount" items="${memberCount}">
+						<div class="col-xs-6 col-sm-3 placeholder">
+							<h4>
+								<a href="positionView?admin=${memberCount.admin}">
+									${memberCount.position}</a>
+							</h4>
+							<br> <span class="text-muted">${memberCount.count}</span>
+						</div>
+						<!-- 
 					<div class="col-xs-6 col-sm-3 placeholder">
 						<h4>직원</h4><br>
 						<span class="text-muted">10명</span>
@@ -59,12 +60,12 @@
 						<span class="text-muted">8명</span>
 					</div>
 					 -->
-				</c:forEach>
-				<!-- 계정 추가 -->
+					</c:forEach>
+					<!-- 계정 추가 -->
 					<div class="col-xs-6 col-sm-3 placeholder">
-						<h4>계정 추가</h4><br>
-						<span class="text-muted">
-							<a href = "signup"><button type="button" class="btn-sm btn-success">Account</button></a>
+						<h4>계정 추가</h4>
+						<br> <span class="text-muted"> <a href="signup"><button
+									type="button" class="btn-sm btn-success">Account</button></a>
 						</span>
 					</div>
 				</div>
@@ -88,13 +89,38 @@
 									<td>${memberList.email}</td>
 									<td>${memberList.phone}</td>
 									<td>${memberList.admin}</td>
-									<td><a href = "memberUpdateView?email=${memberList.email}"><button type="button" class="btn btn-xs btn-default">수정</button></a>
-										<a href = "memberDelete?email=${memberList.email}"><button type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
+									<td><a href="memberUpdateView?email=${memberList.email}"><button
+												type="button" class="btn btn-xs btn-default">수정</button></a> <a
+										href="memberDelete?email=${memberList.email}"><button
+												type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</div>
+				<nav>
+					<ul class="pager">
+						<c:if test="${pageMaker.prev}">
+							<li class="disabled"><a
+								href="memberView?pageNum=${pageMake.startPage-1}"
+								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+
+						<c:forEach var="pageNum" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="${pageMaker.cri.pageNum == num ? 'active' : ''}">
+								<a href="memberView?pageNum=${pageNum}">${pageNum}</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next}">
+							<li><a href="memberView?pageNum=${pageMake.endPage+1}"
+								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</c:if>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>

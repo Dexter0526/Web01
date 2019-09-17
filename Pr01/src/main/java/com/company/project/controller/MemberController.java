@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.project.command.MemberCommand;
+import com.company.project.dto.Criteria;
 import com.company.project.dto.MemberDto;
 import com.company.project.mapper.MemberMapper;
 import com.company.project.service.MemberService;
@@ -31,10 +32,15 @@ public class MemberController {
 
 	// 멤버 설정뷰(마스터 권한)
 	@RequestMapping(value = "/memberView")
-	public String memberView(Model model) {
+	public String memberView(Criteria cri, HttpServletRequest request, Model model) {
 		log.info("멤버 뷰");
-		model.addAttribute("memberList", service.selectAllMember());
-		model.addAttribute("memberCount", mapper.memberCount());
+//		model.addAttribute("memberList", service.selectAllMember());
+//		model.addAttribute("memberCount", mapper.memberCount());
+		
+		model.addAttribute("request", request);
+		model.addAttribute("cri", cri);
+		command.selectAllMemberWithPaging(model);
+		log.info("cri : ... " + cri);
 		return "MemberView/memberView";
 	}
 	
