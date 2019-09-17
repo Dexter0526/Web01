@@ -2,8 +2,8 @@
 
 ### Environment
 1. java8
-2. tomcat8.5
-3. spring 4.3.1
+2. tomcat9.0
+3. spring 5.0.7
 4. oracle11g(DB), HikariCP(DBCP)
 5. css, js : [bootstrapk] http://bootstrapk.com/
 
