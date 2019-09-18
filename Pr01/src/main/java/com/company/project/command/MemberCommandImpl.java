@@ -74,7 +74,7 @@ public class MemberCommandImpl implements MemberCommand{
 		HttpSession session2 = request.getSession();
 		
 		Criteria cri = (Criteria) map.get("cri");
-		
+		cri.setAmount(20);
 		session2.setAttribute("memberList", service.selectAllMemberWithPaging(cri));
 		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
 	}
