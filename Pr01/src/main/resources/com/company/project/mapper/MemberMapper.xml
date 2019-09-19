@@ -5,12 +5,12 @@ SYSTEM
 <mapper namespace="com.company.project.mapper.MemberMapper">
 	<select id="getMember"
 		resultType="com.company.project.dto.MemberDto">
-		select * from member where email = #{email}
+		select name, email, pwd, phone, admin from member where email = #{email}
 	</select>
 
 	<select id="selectAllMember"
 		resultType="com.company.project.dto.MemberDto">
-		select * from member order by admin asc
+		select name, email, pwd, phone, admin from member order by admin asc
 	</select>
 	
 	<select id="selectAllMemberWithPaging" 
@@ -31,7 +31,7 @@ SYSTEM
 	
 	<select id="selectSerchMember"
 		resultType="com.company.project.dto.MemberDto">
-		select * from member where admin = #{admin}
+		select name, email, pwd, phone, admin from member where admin = #{admin}
 	</select>
 
 	<select id="confirmEmail"
@@ -40,7 +40,7 @@ SYSTEM
 	</select>
 
 	<insert id="insertMember">
-		insert into member
+		insert into member(name, email, pwd, phone, admin) 
 		values(#{name}, #{email}, #{pwd}, #{phone}, #{admin})
 	</insert>
 
