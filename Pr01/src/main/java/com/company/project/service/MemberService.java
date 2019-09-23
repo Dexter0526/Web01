@@ -17,6 +17,8 @@ public interface MemberService {
 	
 	public List<MemberDto> selectAllMemberWithPaging(Criteria cri);
 	
+	public List<MemberDto> selectSerchAllMemberWithPaging(Criteria cri, int admin);
+	
 	public boolean confirmEmail(String email);
 	
 	public void insertMember(MemberDto mdto);

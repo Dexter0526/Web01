@@ -103,7 +103,7 @@
 						<c:if test="${pageMaker.prev}">
 							<li class="disabled"><a
 								href="memberView?pageNum=${pageMake.startPage-1}"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								aria-label="Previous">[Prev]
 							</a></li>
 						</c:if>
 
@@ -116,7 +116,7 @@
 
 						<c:if test="${pageMaker.next}">
 							<li><a href="memberView?pageNum=${pageMake.endPage+1}"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								aria-label="Next">[Next]
 							</a></li>
 						</c:if>
 					</ul>

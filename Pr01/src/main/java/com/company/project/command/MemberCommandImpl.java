@@ -1,6 +1,5 @@
 package com.company.project.command;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,6 +77,20 @@ public class MemberCommandImpl implements MemberCommand{
 		session2.setAttribute("memberList", service.selectAllMemberWithPaging(cri));
 		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
 	}
+
+	@Override
+	public void selectSearchAllMemberWithPaging(int admin, Model model) {
+		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session2 = request.getSession();
+		
+		Criteria cri = (Criteria) map.get("cri");
+		cri.setAmount(20);
+		session2.setAttribute("memberList", service.selectSerchAllMemberWithPaging(cri, admin));
+		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
+	}
+	
+	
 	
 //	@Override
 //	public void insertCommand(Model model) {

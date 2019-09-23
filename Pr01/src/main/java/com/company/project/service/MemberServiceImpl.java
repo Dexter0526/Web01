@@ -139,4 +139,9 @@ public class MemberServiceImpl implements MemberService{
 	public int count() {
 		return mapper.count();
 	}
+
+	@Override
+	public List<MemberDto> selectSerchAllMemberWithPaging(Criteria cri, int admin) {
+		return mapper.selectSerchAllMemberWithPaging(cri, admin);
+	}
 }

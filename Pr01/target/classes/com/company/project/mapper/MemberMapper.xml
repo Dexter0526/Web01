@@ -5,15 +5,17 @@ SYSTEM
 <mapper namespace="com.company.project.mapper.MemberMapper">
 	<select id="getMember"
 		resultType="com.company.project.dto.MemberDto">
-		select name, email, pwd, phone, admin from member where email = #{email}
+		select name, email, pwd, phone, admin from member where
+		email = #{email}
 	</select>
 
 	<select id="selectAllMember"
 		resultType="com.company.project.dto.MemberDto">
-		select name, email, pwd, phone, admin from member order by admin asc
+		select name, email, pwd, phone, admin from member order by
+		admin asc
 	</select>
-	
-	<select id="selectAllMemberWithPaging" 
+
+	<select id="selectAllMemberWithPaging"
 		resultType="com.company.project.dto.MemberDto">
 	<![CDATA[
 		select 
@@ -28,10 +30,31 @@ SYSTEM
 		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 	]]>
 	</select>
-	
+
 	<select id="selectSerchMember"
 		resultType="com.company.project.dto.MemberDto">
-		select name, email, pwd, phone, admin from member where admin = #{admin}
+		select name, email, pwd, phone, admin from member where
+		admin = #{admin}
+	</select>
+
+	<select id="selectSerchAllMemberWithPaging"
+		resultType="com.company.project.dto.MemberDto">
+	<![CDATA[
+		select 
+			name, email, pwd, phone, admin  
+		from 
+			(select 
+			rownum rn, name, email, pwd, phone, admin 
+			from 
+				(
+            	select name, email, pwd, phone, admin 
+            	from member where admin = #{admin}
+            	)
+			where rownum <= #{cri.pageNum} * #{cri.amount}
+			order by admin
+			)
+		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+	]]>
 	</select>
 
 	<select id="confirmEmail"
@@ -40,14 +63,15 @@ SYSTEM
 	</select>
 
 	<insert id="insertMember">
-		insert into member(name, email, pwd, phone, admin) 
+		insert into member(name, email, pwd, phone, admin)
 		values(#{name}, #{email}, #{pwd}, #{phone}, #{admin})
 	</insert>
 
 	<update id="updateMember">
 		update member set pwd= #{pwd},
 		phone= #{phone},
-		admin= #{admin}
+		admin=
+		#{admin}
 		where email = #{email}
 	</update>
 
@@ -59,17 +83,20 @@ SYSTEM
 		select count(*) from member
 	</select>
 
-	<select id="memberCount" resultType="com.company.project.dto.MemberCountDto">
+	<select id="memberCount"
+		resultType="com.company.project.dto.MemberCountDto">
 		SELECT COUNT(*) as count, admin,
-		CASE WHEN admin = 0 THEN 'manager'
+		CASE WHEN admin = 0 THEN
+		'manager'
 		WHEN admin = 1 THEN 'employee'
 		WHEN admin = 2 THEN 'user'
-		END "position"
-		FROM member group by admin, 
-		CASE 
-		WHEN admin = 0 THEN 'manager' 
-		WHEN admin = 1 THEN 'employee' 
-		WHEN admin = 2 THEN 'user' 
+		END
+		"position"
+		FROM member group by admin,
+		CASE
+		WHEN admin = 0 THEN 'manager'
+		WHEN admin = 1 THEN 'employee'
+		WHEN admin = 2 THEN 'user'
 		END order by admin
 	</select>
 

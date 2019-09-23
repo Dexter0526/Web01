@@ -11,5 +11,5 @@ public interface MemberCommand {
 	
 	public void selectAllMemberWithPaging(Model model);
 	
-	
+	public void selectSearchAllMemberWithPaging(int admin, Model model);
 }
