@@ -66,28 +66,44 @@ public class MemberCommandImpl implements MemberCommand{
 		session2.invalidate();
 	}
 
+	// 멤버 전부 출력
 	@Override
 	public void selectAllMemberWithPaging(Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		HttpSession session2 = request.getSession();
-		
-		Criteria cri = (Criteria) map.get("cri");
-		cri.setAmount(20);
-		session2.setAttribute("memberList", service.selectAllMemberWithPaging(cri));
-		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
+//		Map<String, Object> map = model.asMap();
+//		HttpServletRequest request = (HttpServletRequest) map.get("request");
+//		HttpSession session2 = request.getSession();
+//		
+//		Criteria cri = (Criteria) map.get("cri");
+//		cri.setAmount(20);
+//		session2.setAttribute("memberList", service.selectAllMemberWithPaging(cri));
+//		session2.setAttribute("pageMaker", new pageDto(cri, service.count(admin)));
 	}
 
+	// 동적쿼리 사용, 멤버 전체 or 일부 출력
 	@Override
-	public void selectSearchAllMemberWithPaging(int admin, Model model) {
+	public void selectSearchAllMemberWithPaging(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session2 = request.getSession();
 		
+		String position = request.getParameter("position");
+		int admin = 10;
+		if(position != null) {
+			if(position.equals("manager")) {
+				admin = 0;
+			}else if(position.equals("employee")) {
+				admin = 1;
+			}else if(position.equals("user")) {
+				admin = 2;
+			}
+		}
+		log.info("admin : ... " + admin);
+		log.info("position : ... " + position);
+		model.addAttribute("position", position);
 		Criteria cri = (Criteria) map.get("cri");
 		cri.setAmount(20);
 		session2.setAttribute("memberList", service.selectSerchAllMemberWithPaging(cri, admin));
-		session2.setAttribute("pageMaker", new pageDto(cri, service.count()));
+		session2.setAttribute("pageMaker", new pageDto(cri, service.count(admin)));
 	}
 	
 	

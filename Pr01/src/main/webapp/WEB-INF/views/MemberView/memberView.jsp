@@ -45,7 +45,7 @@
 					<c:forEach var="memberCount" items="${memberCount}">
 						<div class="col-xs-6 col-sm-3 placeholder">
 							<h4>
-								<a href="positionView?admin=${memberCount.admin}">
+								<a href="memberView?position=${memberCount.position}">
 									${memberCount.position}</a>
 							</h4>
 							<br> <span class="text-muted">${memberCount.count}</span>
@@ -102,7 +102,7 @@
 					<ul class="pager">
 						<c:if test="${pageMaker.prev}">
 							<li class="disabled"><a
-								href="memberView?pageNum=${pageMake.startPage-1}"
+								href="memberView?pageNum=${pageMake.startPage-1}&position=${position}"
 								aria-label="Previous">[Prev]
 							</a></li>
 						</c:if>
@@ -110,12 +110,12 @@
 						<c:forEach var="pageNum" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
 							<li class="${pageMaker.cri.pageNum == num ? 'active' : ''}">
-								<a href="memberView?pageNum=${pageNum}">${pageNum}</a>
+								<a href="memberView?pageNum=${pageNum}&position=${position}">${pageNum}</a>
 							</li>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next}">
-							<li><a href="memberView?pageNum=${pageMake.endPage+1}"
+							<li><a href="memberView?pageNum=${pageMake.endPage+1}&position=${position}"
 								aria-label="Next">[Next]
 							</a></li>
 						</c:if>

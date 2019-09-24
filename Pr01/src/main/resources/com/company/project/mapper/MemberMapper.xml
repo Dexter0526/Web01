@@ -45,11 +45,21 @@ SYSTEM
 		from 
 			(select 
 			rownum rn, name, email, pwd, phone, admin 
-			from 
+			from ]]>
+			<choose>
+			<when test="admin != 10">
 				(
-            	select name, email, pwd, phone, admin 
-            	from member where admin = #{admin}
+            	select 
+            	name, email, pwd, phone, admin 
+            	from member 
+            	where admin = #{admin}
             	)
+            </when>
+            <otherwise>
+            	member 
+            </otherwise>
+            </choose>
+            <![CDATA[
 			where rownum <= #{cri.pageNum} * #{cri.amount}
 			order by admin
 			)
@@ -81,6 +91,11 @@ SYSTEM
 
 	<select id="count" resultType="int">
 		select count(*) from member
+		<where>
+		<if test="admin != 10">
+			admin=#{admin}
+		</if>
+		</where>
 	</select>
 
 	<select id="memberCount"
@@ -97,7 +112,8 @@ SYSTEM
 		WHEN admin = 0 THEN 'manager'
 		WHEN admin = 1 THEN 'employee'
 		WHEN admin = 2 THEN 'user'
-		END order by admin
+		END order by
+		admin
 	</select>
 
 </mapper>

@@ -40,19 +40,21 @@ public class MemberController {
 		model.addAttribute("memberCount", mapper.memberCount());
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
-		command.selectAllMemberWithPaging(model);
+		
+//		command.selectAllMemberWithPaging(model);
+		command.selectSearchAllMemberWithPaging(model);
 
 		return "MemberView/memberView";
 	}
 	
 	@RequestMapping(value = "/positionView")
-	public String positionView(Criteria cri, HttpServletRequest request, int admin, Model model) {
+	public String positionView(Criteria cri, HttpServletRequest request, Model model) {
 		log.info("직책 선택 뷰");
 //		model.addAttribute("memberList", mapper.selectSerchMember(admin));
 		model.addAttribute("memberCount", mapper.memberCount());
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
-		command.selectSearchAllMemberWithPaging(admin, model);
+		command.selectSearchAllMemberWithPaging(model);
 		
 		return "MemberView/memberView";
 	}

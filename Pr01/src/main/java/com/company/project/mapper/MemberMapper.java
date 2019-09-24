@@ -29,5 +29,5 @@ public interface MemberMapper {
 	
 	public List<MemberDto> selectSerchAllMemberWithPaging(@Param("cri") Criteria cri, @Param("admin") int admin);
 	
-	public int count();
+	public int count(@Param("admin") int admin);
 }

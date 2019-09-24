@@ -136,8 +136,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int count() {
-		return mapper.count();
+	public int count(int admin) {
+		return mapper.count(admin);
 	}
 
 	@Override

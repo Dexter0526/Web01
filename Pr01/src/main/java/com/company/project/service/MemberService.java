@@ -29,5 +29,5 @@ public interface MemberService {
 	
 	public void updateView(Model model);
 	
-	public int count();
+	public int count(int admin);
 }
