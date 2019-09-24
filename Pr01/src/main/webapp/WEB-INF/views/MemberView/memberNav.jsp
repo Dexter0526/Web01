@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,10 @@
 			<li><a href="#">외주기성관리</a></li>
 			<li><a href="#">자재재고관리</a></li>
 			<li><a href="#">원가손익관리</a></li>
+		</ul>
+		<ul class="nav nav-sidebar">
+		<c:if test="${admin == 0}">
+			<li><a href="memberView">Member</a></li></c:if>
 		</ul>
 	</div>
 </body>
