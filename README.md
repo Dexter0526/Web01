@@ -5,11 +5,11 @@
 ---------------------------------------
 
 ### Environment
-1. java8
-2. tomcat9.0
-3. spring 5.0.7
-4. oracle11g(DB), HikariCP(DBCP)
-5. css, js : [bootstrapk] http://bootstrapk.com/
+- java8
+- tomcat9.0
+- spring 5.0.7
+- oracle11g(DB), HikariCP(DBCP)
+- css, js : [bootstrapk] http://bootstrapk.com/
 
 ---------------------------------------
 
