@@ -1,5 +1,5 @@
 # Construction company WebSite
-![포트폴리오 화면](./Reference/메인화면.PNG)
+![포트폴리오 화면](./Reference/메인 화면.PNG)
 
 ### Environment
 1. java8
