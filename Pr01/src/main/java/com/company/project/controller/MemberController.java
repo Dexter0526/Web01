@@ -110,7 +110,7 @@ public class MemberController {
 	@RequestMapping(value = "/signup")
 	public String singUp(Model model) {
 		log.info("sign up view");
-
+		
 		return "Log/signUp";
 	}
 	

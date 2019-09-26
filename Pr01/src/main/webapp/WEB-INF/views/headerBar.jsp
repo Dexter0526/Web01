@@ -54,15 +54,15 @@
 							<c:choose>
 								<c:when test="${result != 1}">
 									<li><a href="log">Sign in</a></li>
-									<li><a href="contact">Help</a></li>
+									<li><a href="help">Help</a></li>
 								</c:when>
 								<c:when test="${admin == 2}">
 									<li><a href="logout">Log out</a></li>
-									<li><a href="contact">Help</a></li>
+									<li><a href="help">Help</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="logout">Log out</a></li>
-									<li><a href="contact">Help</a></li>
+									<li><a href="help">Help</a></li>
 									<li><a href="memberIndexView">ERP</a></li>
 								</c:otherwise>
 							</c:choose>

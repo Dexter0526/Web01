@@ -54,12 +54,14 @@
 			폰 번호<input type="text" name = "phone" id="inputPhone" class="form-control"
 				placeholder="Phone Number" required> 
 			
+			<c:if test="${admin==0 }">
 			등급 : &nbsp;
 			<input type="radio" name = "admin" id="inputAdmin" value = "0"> 마스터
 			&nbsp;&nbsp;
 			<input type="radio" name = "admin" id="inputAdmin" value = "1" checked="checked"> 직원
-			
+			</c:if>
 			<br><br>
+			
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 		</form>
 
