@@ -33,7 +33,7 @@
 		</ul>
 		<ul class="nav nav-sidebar">
 		<c:if test="${admin == 0}">
-			<li><a href="memberView">Member</a></li></c:if>
+			<li><a href="memberView">회원 관리</a></li></c:if>
 		</ul>
 	</div>
 </body>
