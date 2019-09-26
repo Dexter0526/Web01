@@ -1,7 +1,9 @@
 # Construction Company Web
 > 건설회사 웹 페이지로 관리자 권한으로 사업 실적, 특허, 뉴스등 업데이트 관리 시스템
 
-![포트폴리오 화면](/Reference/mainView.PNG)
+
+
+[![Video Label](/Reference/mainView.PNG)](https://www.youtube.com/watch?v=tNeKzvV7PvQ)
 ---------------------------------------
 
 ### ENVIROMENT
