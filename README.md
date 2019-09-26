@@ -1,4 +1,5 @@
 # Construction company WebSite
+![포트폴리오 화면](./Reference/메인화면.PNG)
 
 ### Environment
 1. java8
@@ -9,7 +10,7 @@
 
 ---------------------------------------
 
-### pattern
+### pattern(MVC -> Spring 5Layer)
 
 #### MVC
 - View
@@ -25,3 +26,5 @@
       - Mapper(Persistence Layer)
         - DTO(Domain Model Layer)
         
+---------------------------------------
+
