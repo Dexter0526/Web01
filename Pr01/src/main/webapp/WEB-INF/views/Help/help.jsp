@@ -56,28 +56,34 @@
 
 			<div class="table-responsive">
 				<h2>상담 문의</h2>
-				<table class="table table-bordered">
+
+				<c:if test="${result != 1}">
+					<%@ include file="helpLog.jsp"%>
+				</c:if>
+				<br>
+				
+				<table class="table">
 					<thead>
 						<tr>
 							<th>번호</th>
-							<th>사업명</th>
-							<th>사업 설명</th>
-							<th>사업 분야</th>
+							<th>제목</th>
+							<th>답변</th>
+							<th>날짜</th>
 							<th>옵션</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="businessList" items="${businessList}">
+						<c:forEach var="helpList" items="${helpList}">
 							<tr>
-								<td>${businessList.num}</td>
-								<td>${businessList.title}</td>
-								<td><a href = "businessUpdateView?num=${businessList.num}">${businessList.content}</a></td>
-								<td>${businessList.field}</td>
+								<td>${helpList.num}</td>
+								<td>${helpList.title}</td>
+								<td><a href = "helpUpdateView?num=${helpList.num}">${helpList.content}</a></td>
+								<td>${helpList.field}</td>
 								<td><a
-									href="businessUpdateView?num=${businessList.num}"><button
+									href="helpUpdateView?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
 									&nbsp; &nbsp; <a
-									href="businessDelete?num=${businessList.num}"><button
+									href="helpDelete?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 							</tr>
 						</c:forEach>

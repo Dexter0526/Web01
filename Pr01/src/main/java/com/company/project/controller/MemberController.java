@@ -127,12 +127,16 @@ public class MemberController {
 //	dto객체 이동 테스트
 	@RequestMapping(value = "/join")
 	public String join(MemberDto mdto, RedirectAttributes rttr) {
-		System.out.println("회원가입");
-		
+		log.info("회원가입 성공");
 		service.insertMember(mdto);
 		rttr.addFlashAttribute("admin", mdto.getAdmin());
-
-		return "MemberView/memberIndexView";
+		
+		if(mdto.getAdmin() == 0) {
+			return "index";
+		}else {
+			return "MemberView/memberIndexView";			
+		}
+		
 	}
 	
 	@RequestMapping(value = "/memberUpdateView")

@@ -17,17 +17,8 @@ public class HelpController {
 	public String contact(HttpServletRequest request, Model model) {
 		log.info("Help");
 		model.addAttribute("request", request);
-		HttpSession session2 = request.getSession();
-
-		if(session2.getAttribute("result") != null) {
-			if((int) session2.getAttribute("result") == 1) {
-				return "/Help/help";
-			}else {
-				return "Log/log";
-			}
-		}else {
-			return "Log/log";
-		}
 		
+		return "/Help/help";
 	}
+	
 }
