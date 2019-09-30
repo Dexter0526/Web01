@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form class="form-inlaine" name="frm" action="login" method="post">
+	<form class="form-inlaine" name="frm" action="helpLog" method="post">
 		<div class="form-group">
 			<label for="exampleInputEmail">Email</label> <input type="email"
 				class="form-control" id="" name="email"
