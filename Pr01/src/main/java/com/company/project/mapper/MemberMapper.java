@@ -15,7 +15,7 @@ public interface MemberMapper {
 	
 	public List<MemberDto> selectAllMemberWithPaging(@Param("cri") Criteria cri);
 	
-	public void confirmEmail(String email);
+	public int confirmEmail(String email);
 	
 	public void insertMember(MemberDto mdto);
 	

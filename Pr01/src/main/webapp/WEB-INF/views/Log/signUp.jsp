@@ -11,26 +11,29 @@
 <meta name="author" content="">
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="./resources/css/signin.css" rel="stylesheet">
-<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<script type="text/javascript" src="./resources/js/jquery-3.4.1.min.js"></script>
+
 <title>Insert title here</title>
 <style>
 .form-signin input[type="email"] {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
+
 .form-signin input[type="text"] {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 </style>
 </head>
@@ -38,39 +41,77 @@
 
 	<div class="container">
 
-		<form class="form-signin" name="frm" action="join" method="post">
+		<form class="form-signin" name="frm" action="join" method="post"
+			id="frm">
 			<h2 class="form-signin-heading">Please sign up</h2>
-			
-			이름<input type="text" name = "name" id="inputName" class="form-control"
-				placeholder="Name" required autofocus> 
-			
-			이메일<input type="email" name = "email" id="inputEmail" class="form-control"
+
+			이름<input type="text" name="name" id="inputName" class="form-control"
+				placeholder="Name" required autofocus> 이메일<input
+				type="email" name="email" id="inputEmail" class="form-control"
 				placeholder="Email address" required>
 			<div class="check_font" id="email_check"></div>
-			
-			비밀번호<input type="password" name = "pwd" id="inputPassword" class="form-control"
-				placeholder="Password" required>
-			
-			폰 번호<input type="text" name = "phone" id="inputPhone" class="form-control"
-				placeholder="Phone Number" required> 
-			
+
+			비밀번호<input type="password" name="pwd" id="inputPassword"
+				class="form-control" placeholder="Password" required> 폰 번호<input
+				type="text" name="phone" id="inputPhone" class="form-control"
+				placeholder="Phone Number">
+
 			<c:if test="${admin==0 }">
 			등급 : &nbsp;
-			<input type="radio" name = "admin" id="inputAdmin" value = "0"> 마스터
+			<input type="radio" name="admin" value="0"> 마스터
 			&nbsp;&nbsp;
-			<input type="radio" name = "admin" id="inputAdmin" value = "1" checked="checked"> 직원
+			<input type="radio" name="admin" value="1" checked="checked"> 직원
 			</c:if>
-			<br><br>
-			
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+			<br>
+			<br>
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				id="frm_submit">Sign up</button>
 		</form>
 
 	</div>
 	<!-- /container -->
 
 
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script type="text/javasript" src="./resources/js/ajax.js"></script>
+
+<script>
+$("#inputEmail").blur(function() {
+	// id = "inputEmail" / name = "email"
+	var email = $('#inputEmail').val();
+	console.log('email : ' + email);
+	$.ajax({
+		url : '${pageContext.request.contextPath}/emailCheck?email='+ email,
+		type : 'get',
+		dataType : "json",
+		success : function(data) {						
+			console.log("data : " + data);
+			if (data == 1) {
+				// 1 : 아이디가 중복되는 문구
+				$("#email_check").text("사용중인 아이디입니다. ");
+				$("#email_check").css("color", "red");
+				$("#frm_submit").attr("disabled", true);
+			} else {
+
+				if(user_id == ""){
+
+					$('#email_check').text('아이디를 입력해주세요 :)');
+					$('#email_check').css('color', 'red');
+					$("#frm_submit").attr("disabled", true);				
+
+				}else{
+					$("#email_check").text("사용가능 아이디입니다.");
+					$("#email_check").css("color", "blue");
+					$("#frm_submit").attr("disabled", false);
+				}
+
+			}
+		}, error : function() {
+			console.log("실패");
+		}
+	});
+});
+</script>
 
 </body>
 </html>

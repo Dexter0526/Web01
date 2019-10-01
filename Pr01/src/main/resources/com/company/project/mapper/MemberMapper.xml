@@ -68,8 +68,8 @@ SYSTEM
 	</select>
 
 	<select id="confirmEmail"
-		resultType="com.company.project.dto.MemberDto">
-		select email from member where email = #{email}
+		resultType="int">
+		select count(*) from member where email = #{email}
 	</select>
 
 	<insert id="insertMember">

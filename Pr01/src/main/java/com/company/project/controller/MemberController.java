@@ -5,7 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.project.command.MemberCommand;
@@ -18,8 +21,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-@Controller
 @AllArgsConstructor
+@Controller
 public class MemberController {
 	
 //	@Setter(onMethod_ = @Autowired)
@@ -124,7 +127,8 @@ public class MemberController {
 //		return "MemberView/memberView";
 //	}
 	
-//	dto객체 이동 테스트
+	
+	//	dto객체 이동 테스트
 	@RequestMapping(value = "/join")
 	public String join(MemberDto mdto, RedirectAttributes rttr) {
 		log.info("회원가입 성공");
