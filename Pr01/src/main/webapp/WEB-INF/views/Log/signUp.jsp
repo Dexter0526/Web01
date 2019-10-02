@@ -12,6 +12,7 @@
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="./resources/css/signin.css" rel="stylesheet">
 <script type="text/javascript" src="./resources/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./resources/js/ajax.js"></script>
 
 <title>Insert title here</title>
 <style>
@@ -62,8 +63,7 @@
 			&nbsp;&nbsp;
 			<input type="radio" name="admin" value="1" checked="checked"> 직원
 			</c:if>
-			<br>
-			<br>
+			<br> <br>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit"
 				id="frm_submit">Sign up</button>
@@ -73,13 +73,22 @@
 	<!-- /container -->
 
 
-	<script type="text/javasript" src="./resources/js/ajax.js"></script>
+
+	<script type="text/javascript">
+// $(document).ready(function(){
+	
+// 	$("#inputEmail").blur(function(){
+// 		var email = $('#inputEmail').val();
+// 		idCheck(email);
+// 	});
+	
+// });
+</script>
 
 <script>
-$("#inputEmail").blur(function() {
-	// id = "inputEmail" / name = "email"
+// ajax 파일 분리 전
+$("#inputEmail").blur(function(){
 	var email = $('#inputEmail').val();
-	console.log('email : ' + email);
 	$.ajax({
 		url : '${pageContext.request.contextPath}/emailCheck?email='+ email,
 		type : 'get',
@@ -92,26 +101,25 @@ $("#inputEmail").blur(function() {
 				$("#email_check").css("color", "red");
 				$("#frm_submit").attr("disabled", true);
 			} else {
-
-				if(user_id == ""){
-
+	
+				if(email == ""){
+	
 					$('#email_check').text('아이디를 입력해주세요 :)');
 					$('#email_check').css('color', 'red');
 					$("#frm_submit").attr("disabled", true);				
-
+	
 				}else{
 					$("#email_check").text("사용가능 아이디입니다.");
 					$("#email_check").css("color", "blue");
 					$("#frm_submit").attr("disabled", false);
 				}
-
+	
 			}
 		}, error : function() {
 			console.log("실패");
-		}
-	});
+			}
+		});
 });
 </script>
-
 </body>
 </html>
