@@ -135,7 +135,7 @@ public class MemberController {
 		service.insertMember(mdto);
 		rttr.addFlashAttribute("admin", mdto.getAdmin());
 		
-		if(mdto.getAdmin() == 0) {
+		if(mdto.getAdmin() == 2) {
 			return "index";
 		}else {
 			return "MemberView/memberIndexView";			

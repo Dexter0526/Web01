@@ -58,11 +58,21 @@
 				placeholder="Phone Number">
 
 			<c:if test="${admin==0 }">
-			등급 : &nbsp;
-			<input type="radio" name="admin" value="0"> 마스터
-			&nbsp;&nbsp;
-			<input type="radio" name="admin" value="1" checked="checked"> 직원
+			
 			</c:if>
+			
+			<c:choose>
+				<c:when test="${admin==0 }">
+					등급 : &nbsp;
+					<input type="radio" name="admin" value="0"> 마스터
+					&nbsp;&nbsp;
+					<input type="radio" name="admin" value="1" checked="checked"> 직원
+				</c:when>
+				<c:otherwise>
+					<input type="hidden" name="admin" value="2">
+				</c:otherwise>
+			</c:choose>
+			
 			<br> <br>
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit"

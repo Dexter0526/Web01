@@ -24,7 +24,6 @@ public class HelpController {
 	public String contact(HttpServletRequest request, Model model) {
 		log.info("Help");
 		model.addAttribute("request", request);
-		
 		return "/Help/help";
 	}
 	
