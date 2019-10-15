@@ -47,6 +47,7 @@ public class MemberCommandImpl implements MemberCommand{
 			MemberDto mdto = service.getMember(email);
 			int admin = mdto.getAdmin();
 			session2.setAttribute("admin", admin);
+			session2.setAttribute("mdto", mdto);
 			session2.setAttribute("message", "회원님 안녕하세요.");
 		}else if(result == 0) {
 			session2.setAttribute("message", "비밀번호가 맞지 않습니다.");
