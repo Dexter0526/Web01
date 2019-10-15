@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+SYSTEM
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.mapper.HelpMapper">
+
+	<select id="getHelp"
+		resultType="com.company.project.dto.HelpDto">
+		select * from help where
+		num = ${num}
+	</select>
+
+	<select id="selectAllMemberWithPaging"
+		resultType="com.company.project.dto.HelpDto">
+	<![CDATA[
+		select 
+			num, email, title, content, reg_date 
+		from 
+			(select 
+			rownum rn, num, email, title, content, reg_date 
+			from help ]]>
+			<choose>
+			<when test="mdto.admin == 2">
+				(
+            	select 
+            	num, email, title, content, reg_date 
+            	from help 
+            	where email = #{mdto.email}
+            	)
+            </when>
+            <otherwise>
+            	help 
+            </otherwise>
+            </choose>
+            <![CDATA[
+			where rownum <= #{cri.pageNum} * #{cri.amount}
+			order by num
+			)
+		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+	]]>
+	</select>
+
+	<select id="countHelp"
+		resultType="int">
+		select count(*) from help 
+		<if test="mdto.admin == 2">
+		where email = #{email}
+		</if>
+	</select>
+
+	<insert id="insertHelp">
+		insert into help(num, email, title, content)
+		values(#{help_seq.nextval}, #{helpDto.email}, #{helpDto.title}, #{helpDto.content})
+	</insert>
+
+	<update id="updateHelp">
+		update help set title= #{helpDto.title},
+		content= #{helpDto.content} 
+		where num = ${helpDto.num}
+	</update>
+
+	<delete id="deleteHelp">
+		delete from help where num = ${num}
+	</delete>
+
+</mapper>
