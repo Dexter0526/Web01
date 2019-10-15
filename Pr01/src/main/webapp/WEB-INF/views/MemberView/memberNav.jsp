@@ -14,7 +14,8 @@
 					class="sr-only">(current)</span></a></li>
 			<li><a href="#">Reports</a></li>
 			<li><a href="#">Analytics</a></li>
-			<li><a href="#">Export</a></li>
+			<li><a href="http://data.g2b.go.kr:8275/pt/pubdata/moveGnrlzBidPblancPop.do" target="_blank">
+			통합 입찰공고 내역</a></li>
 		</ul>
 		<ul class="nav nav-sidebar">
 			<li><a href="contract">계약관리</a></li>
