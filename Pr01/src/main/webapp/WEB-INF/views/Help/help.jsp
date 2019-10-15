@@ -56,12 +56,23 @@
 
 			<div class="table-responsive">
 				<h2>상담 문의</h2>
-
-				<c:if test="${result != 1}">
+	
+				<!-- login -->
+				<c:choose>
+					<c:when test = "${result != 1}">
 					<%@ include file="helpLog.jsp"%>
-				</c:if>
+					</c:when>
+					<c:when test = "${help == null}">
+					<%@ include file="helpWrite.jsp"%>
+					</c:when>
+					<c:otherwise>
+					<%@ include file="helpGet.jsp"%>
+					</c:otherwise>
+				</c:choose>
 				<br>
 				
+				<!-- table -->
+				<c:if test = "${helpList != null }">
 				<table class="table">
 					<thead>
 						<tr>
@@ -89,6 +100,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				</c:if>
 			</div>
 		<hr class="featurette-divider">
 		<!-- FOOTER -->
