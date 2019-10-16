@@ -12,5 +12,4 @@ public class HelpDto {
 	private String content;
 	private Date reg_date;
 	
-	
 }

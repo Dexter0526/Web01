@@ -11,13 +11,13 @@ import com.company.project.dto.MemberDto;
 public interface HelpMapper {
 	public HelpDto getHelp(int num);
 	
-	public List<HelpDto> selectAllMemberWithPaging(@Param("cri") Criteria cri, @Param("mdto") MemberDto mdto);
+	public List<HelpDto> selectAllHelpWithPaging(@Param("cri") Criteria cri, @Param("mdto") MemberDto mdto);
 	
 	public int countHelp(@Param("mdto") MemberDto mdto);
 	
-	public HelpDto insertHelp(@Param("helpDto") HelpDto helpDto);
+	public int insertHelp(@Param("helpDto") HelpDto helpDto);
 	
-	public HelpDto updateHelp(@Param("helpDto") HelpDto helpDto);
+	public int updateHelp(@Param("helpDto") HelpDto helpDto);
 	
-	public void deleteHelp(int num);
+	public int deleteHelp(int num);
 }

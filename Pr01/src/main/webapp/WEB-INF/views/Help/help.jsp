@@ -50,13 +50,7 @@
 	<!-- content -->
 	<div class="container marketing">
 	<!-- 등록창, 상세뷰 -->
-		
-		<br>
 		<!-- Body -->
-
-			<div class="table-responsive">
-				<h2>상담 문의</h2>
-	
 				<!-- login -->
 				<c:choose>
 					<c:when test = "${result != 1}">
@@ -71,14 +65,17 @@
 				</c:choose>
 				<br>
 				
-				<!-- table -->
+			<!-- table -->
+			<div class="table-responsive">
+				<h2>상담 문의</h2>
+				<br>
 				<c:if test = "${helpList != null }">
 				<table class="table">
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
-							<th>답변</th>
+							<th>이메일</th>
 							<th>날짜</th>
 							<th>옵션</th>
 						</tr>
@@ -87,9 +84,9 @@
 						<c:forEach var="helpList" items="${helpList}">
 							<tr>
 								<td>${helpList.num}</td>
-								<td>${helpList.title}</td>
-								<td><a href = "helpUpdateView?num=${helpList.num}">${helpList.content}</a></td>
-								<td>${helpList.field}</td>
+								<td><a href = "helpGet?num=${helpList.num}">${helpList.title}</a></td>
+								<td>${helpList.email}</td>
+								<td>${helpList.reg_date }</td>
 								<td><a
 									href="helpUpdateView?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
