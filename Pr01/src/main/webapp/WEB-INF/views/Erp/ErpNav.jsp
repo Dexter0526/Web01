@@ -35,6 +35,10 @@
 		<ul class="nav nav-sidebar">
 		<c:if test="${admin == 0}">
 			<li><a href="memberView">회원 관리</a></li></c:if>
+			
+		<c:if test="${admin != 2}">
+			<li><a href="help">상담 관리</a></li>
+		</c:if>
 		</ul>
 	</div>
 </body>

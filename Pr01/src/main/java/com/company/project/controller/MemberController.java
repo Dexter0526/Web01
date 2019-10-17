@@ -47,7 +47,7 @@ public class MemberController {
 //		command.selectAllMemberWithPaging(model);
 		command.selectSearchAllMemberWithPaging(model);
 
-		return "MemberView/memberView";
+		return "Erp/Member/memberView";
 	}
 	
 	@RequestMapping(value = "/positionView")
@@ -59,7 +59,7 @@ public class MemberController {
 		model.addAttribute("cri", cri);
 		command.selectSearchAllMemberWithPaging(model);
 		
-		return "MemberView/memberView";
+		return "Erp/Member/memberView";
 	}
 	
 	// ERP뷰
@@ -67,13 +67,7 @@ public class MemberController {
 	public String member_index_view(Model model) {
 		System.out.println("member index view");
 
-		return "MemberView/memberIndexView";
-	}
-	@RequestMapping(value = "/contract")
-	public String member_contract(Model model) {
-		System.out.println("contract view");
-
-		return "MemberView/MemberBody/contract";
+		return "Erp/ErpIndexView";
 	}
 	
 	// 로그인
@@ -138,7 +132,7 @@ public class MemberController {
 		if(mdto.getAdmin() == 2) {
 			return "index";
 		}else {
-			return "MemberView/memberIndexView";			
+			return "Erp/ErpIndexView";			
 		}
 		
 	}
@@ -158,7 +152,7 @@ public class MemberController {
 		log.info("수정 완료");
 		service.updateMember(mdto);
 		
-		return "MemberView/memberIndexView";
+		return "Erp/ErpIndexView";
 	}
 	
 	@RequestMapping(value = "/memberDelete")
@@ -167,7 +161,7 @@ public class MemberController {
 		String email = request.getParameter("email");
 		service.memberDelete(email);
 		
-		return "MemberView/memberIndexView";
+		return "Erp/ErpIndexView";
 	}
 	
 	
