@@ -6,8 +6,8 @@ SYSTEM
 
 	<select id="getHelp"
 		resultType="com.company.project.dto.HelpDto">
-		select * from help where
-		num = ${num}
+		select * from help 
+		where num = #{num}
 	</select>
 
 	<select id="selectAllHelpWithPaging"
@@ -59,7 +59,7 @@ SYSTEM
 	</update>
 
 	<delete id="deleteHelp">
-		delete from help where num = ${num}
+		delete from help where num = ${value}
 	</delete>
 
 </mapper>

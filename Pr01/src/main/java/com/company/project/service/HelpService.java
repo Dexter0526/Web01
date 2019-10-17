@@ -14,4 +14,6 @@ public interface HelpService {
 	public void updateHelp(HelpDto helpDto);
 	
 	public void deleteHelp(int num);
+	
+	public void getHelp(int num, Model model);
 }

@@ -1,6 +1,9 @@
 package com.company.project.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.project.command.MemberCommand;
 import com.company.project.dto.Criteria;
 import com.company.project.dto.HelpDto;
+import com.company.project.dto.MemberDto;
 import com.company.project.mapper.HelpMapper;
 import com.company.project.service.HelpService;
 
@@ -30,25 +34,44 @@ public class HelpController {
 		log.info("Help");
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
+		HttpSession session2 = request.getSession();
+		
 		// 리스트 실행
 		service.selectAllHelpWithPaging(model);
-		return "/Help/help";
+		
+		if(session2.getAttribute("admin") == null) {
+			return "/Help/help";
+		}else if(((MemberDto) session2.getAttribute("mdto")).getAdmin() == 2) {
+			return "/Help/help";
+		}else {
+			return "Erp/Consulting/ConsultingView";
+		}
+		
 	}
 	
 	@RequestMapping(value = "helpLog")
 	public String helpLog(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
+		HttpSession session2 = request.getSession();
 		command.logingCommand(model);
 		
 		// 리스트 실행
 		service.selectAllHelpWithPaging(model);
-		return "/Help/help";
+		
+		if(session2.getAttribute("admin") == null) {
+			return "/Help/help";
+		}else if(((int) session2.getAttribute("admin")) == 2) {
+			return "/Help/help";
+		}else {
+			return "Erp/Consulting/ConsultingView";
+		}
 	}
 	
 	@RequestMapping(value = "helpInsert")
-	public String helpInsert(HelpDto helpDto, HttpServletRequest request, Model model) {
+	public String helpInsert(Criteria cri, HelpDto helpDto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
+		model.addAttribute("cri", cri);
 		
 		service.insertHelp(helpDto);
 		
@@ -59,22 +82,27 @@ public class HelpController {
 	}
 	
 	@RequestMapping(value = "helpDelete")
-	public String helpDelete(int num, HttpServletRequest request, Model model) {
+	public String helpDelete(Criteria cri, int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-	
+		model.addAttribute("cri", cri);
+		HttpSession session2 = request.getSession();
 		service.deleteHelp(num);
 		
 		// 리스트 실행
 		service.selectAllHelpWithPaging(model);
-				
-		return "/Help/help";
+		
+		if(((MemberDto) session2.getAttribute("mdto")).getAdmin() == 2) {
+			return "/Help/help";
+		}else {
+			return "Erp/Consulting/ConsultingView";
+		}
 	}
 	
 	@RequestMapping(value = "helpGet")
-	public String helpGet(int num, HttpServletRequest request, Model model) {
+	public String helpGet(Criteria cri, int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		
-		mapper.getHelp(num);
+		model.addAttribute("cri", cri);
+		model.addAttribute("help", mapper.getHelp(num));
 		
 		// 리스트 실행
 		service.selectAllHelpWithPaging(model);
@@ -83,17 +111,17 @@ public class HelpController {
 	}
 	
 	@RequestMapping(value = "helpUpdateView")
-	public String helpUpdateView(int num, HttpServletRequest request, Model model) {
+	public String helpUpdateView(Criteria cri, int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		model.addAttribute("help", mapper.getHelp(num));
-		
+		model.addAttribute("cri", cri);
 		return "/Help/helpUpdateView";
 	}
 	
 	@RequestMapping(value = "helpUpdate")
-	public String helpUpdate(HelpDto helpDto, HttpServletRequest request, Model model) {
+	public String helpUpdate(Criteria cri, HelpDto helpDto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		
+		model.addAttribute("cri", cri);
 		service.updateHelp(helpDto);
 		
 		// 리스트 실행

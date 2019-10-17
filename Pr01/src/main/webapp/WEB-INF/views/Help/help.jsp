@@ -15,7 +15,8 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/carousel.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/signin.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/signin.css"
+	rel="stylesheet">
 
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
 <script
@@ -32,11 +33,12 @@
 	line-height: 1;
 	letter-spacing: -1px;
 }
+
 .form-signin input[type="text"] {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 </style>
 <title>Insert title here</title>
@@ -46,30 +48,31 @@
 	<header>
 		<%@ include file="../headerBar.jsp"%>
 	</header>
-	<br><br>
+	<br>
+	<br>
 	<!-- content -->
 	<div class="container marketing">
-	<!-- 등록창, 상세뷰 -->
+		<!-- 등록창, 상세뷰 -->
 		<!-- Body -->
-				<!-- login -->
-				<c:choose>
-					<c:when test = "${result != 1}">
-					<%@ include file="helpLog.jsp"%>
-					</c:when>
-					<c:when test = "${help == null}">
-					<%@ include file="helpWrite.jsp"%>
-					</c:when>
-					<c:otherwise>
-					<%@ include file="helpGet.jsp"%>
-					</c:otherwise>
-				</c:choose>
-				<br>
-				
-			<!-- table -->
-			<div class="table-responsive">
-				<h2>상담 문의</h2>
-				<br>
-				<c:if test = "${helpList != null }">
+		<!-- login -->
+		<c:choose>
+			<c:when test="${result != 1}">
+				<%@ include file="helpLog.jsp"%>
+			</c:when>
+			<c:when test="${help == null && admin == 2}">
+				<%@ include file="helpWrite.jsp"%>
+			</c:when>
+			<c:otherwise>
+				<%@ include file="helpGet.jsp"%>
+			</c:otherwise>
+		</c:choose>
+		<br>
+
+		<!-- table -->
+		<div class="table-responsive">
+			<h2>상담 내역</h2>
+			<br>
+			<c:if test="${helpList != null }">
 				<table class="table">
 					<thead>
 						<tr>
@@ -84,21 +87,43 @@
 						<c:forEach var="helpList" items="${helpList}">
 							<tr>
 								<td>${helpList.num}</td>
-								<td><a href = "helpGet?num=${helpList.num}">${helpList.title}</a></td>
+								<td><a href="helpGet?num=${helpList.num}">${helpList.title}</a></td>
 								<td>${helpList.email}</td>
 								<td>${helpList.reg_date }</td>
-								<td><a
-									href="helpUpdateView?num=${helpList.num}"><button
+								<td><a href="helpUpdateView?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
-									&nbsp; &nbsp; <a
-									href="helpDelete?num=${helpList.num}"><button
+									&nbsp; &nbsp; <a href="helpDelete?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+			</c:if>
+		</div>
+
+		<nav>
+			<ul class="pager">
+				<c:if test="${pageMaker.prev}">
+					<li class="disabled"><a
+						href="help?pageNum=${pageMake.startPage-1}"
+						aria-label="Previous">[Prev] </a></li>
 				</c:if>
-			</div>
+
+				<c:forEach var="pageNum" begin="${pageMaker.startPage}"
+					end="${pageMaker.endPage}">
+					<li class="${pageMaker.cri.pageNum == num ? 'active' : ''}"><a
+						href="help?pageNum=${pageNum}">${pageNum}</a>
+					</li>
+				</c:forEach>
+
+				<c:if test="${pageMaker.next}">
+					<li><a
+						href="help?pageNum=${pageMake.endPage+1}"
+						aria-label="Next">[Next] </a></li>
+				</c:if>
+			</ul>
+		</nav>
+
 		<hr class="featurette-divider">
 		<!-- FOOTER -->
 		<footer>
