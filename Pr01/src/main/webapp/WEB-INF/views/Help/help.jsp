@@ -68,11 +68,12 @@
 		</c:choose>
 		<br>
 
+		<c:if test="${helpList != null }">
 		<!-- table -->
 		<div class="table-responsive">
 			<h2>상담 내역</h2>
 			<br>
-			<c:if test="${helpList != null }">
+
 				<table class="table">
 					<thead>
 						<tr>
@@ -90,15 +91,23 @@
 								<td><a href="helpGet?num=${helpList.num}">${helpList.title}</a></td>
 								<td>${helpList.email}</td>
 								<td>${helpList.reg_date }</td>
-								<td><a href="helpUpdateView?num=${helpList.num}"><button
+								
+								<c:choose>
+									<c:when test="${helpList.done == 1}">
+									<td>답변 완료</td>
+									</c:when>
+									<c:otherwise>
+									<td><a href="helpUpdateView?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-default">수정</button></a>
 									&nbsp; &nbsp; <a href="helpDelete?num=${helpList.num}"><button
 											type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
+									</c:otherwise>
+								</c:choose>
+								
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-			</c:if>
 		</div>
 
 		<nav>
@@ -123,13 +132,14 @@
 				</c:if>
 			</ul>
 		</nav>
-
+		</c:if>
 		<hr class="featurette-divider">
 		<!-- FOOTER -->
 		<footer>
 			<p><%@ include file="../footer.jsp"%></p>
 		</footer>
 	</div>
+
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

@@ -39,64 +39,37 @@
 			<!-- body -->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">상담 내역 관리</h1>
-				
+
 				<!-- body head -->
 				<div class="row placeholders">
 					<!-- 상단 4개 항목(통계 예정) -->
 				</div>
 
-				<h2 class="sub-header">List</h2>
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>이메일</th>
-								<th>날짜</th>
-								<th>옵션</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="helpList" items="${helpList}">
-								<tr>
-									<td>${helpList.num}</td>
-									<td><a href="helpGet?num=${helpList.num}">${helpList.title}</a></td>
-									<td>${helpList.email}</td>
-									<td>${helpList.reg_date }</td>
-									
-									<c:if test="${helpList.done == 1}">
-									<td><button type="button" class="btn btn-xs btn-success">답변</button></td>
-									</c:if>
-									<c:if test="${helpList.done == 0 }">
-									<td><a href="helpDelete?num=${helpList.num}">
-									<button type="button" class="btn btn-xs btn-danger">삭제</button></a></td>
-									</c:if>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+				<h2 class="sub-header">상세 내역</h2>
+				<div class="panel panel-default">
+					<div class="panel-heading">제목 : ${help.title}</div>
+					<div class="panel-body" style="height: 300px;">내용 :
+						${help.content}</div>
+					<div class="panel-footer">작성자 : ${help.email}</div>
 				</div>
-				<nav>
-					<ul class="pager">
-						<c:if test="${pageMaker.prev}">
-							<li class="disabled"><a
-								href="help?pageNum=${pageMake.startPage-1}"
-								aria-label="Previous">[Prev] </a></li>
-						</c:if>
 
-						<c:forEach var="pageNum" begin="${pageMaker.startPage}"
-							end="${pageMaker.endPage}">
-							<li class="${pageMaker.cri.pageNum == num ? 'active' : ''}"><a
-								href="help?pageNum=${pageNum}">${pageNum}</a></li>
-						</c:forEach>
 
-						<c:if test="${pageMaker.next}">
-							<li><a href="help?pageNum=${pageMake.endPage+1}"
-								aria-label="Next">[Next] </a></li>
-						</c:if>
-					</ul>
-				</nav>
+				<c:if test="${consulting != null}">
+				<h2 class="sub-header">답변 완료</h2>
+				<div class="panel panel-default">
+					<div class="panel-heading">답변 : ${consulting.title}</div>
+					<div class="panel-body" style="height: 300px;">내용 :
+						${consulting.content}</div>
+					<div class="panel-footer">작성자 : 덱스터 건설</div>
+				</div>
+				</c:if>
+
+				<c:if test="${consulting == null}">
+					<%@ include file="ConsultingWrite.jsp"%>
+				</c:if>
+
+				<!-- 하단 목록, 답글 생성 -->
+				<nav></nav>
 			</div>
 		</div>
 	</div>
