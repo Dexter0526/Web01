@@ -25,8 +25,8 @@ public class HelpCommandImpl implements HelpCommand{
 	@Override
 	public void helpSendEmail(HelpDto helpDto, String action) {
 		log.info("sendEmail 실행");
-		String setfrom = "dexterpark1992@gmail.com";	// 관리자
-		String tomail = "soul9862@gmail.com";	// 기술자(받는 사람)
+		String setfrom = "@gmail.com";	// 관리자
+		String tomail = "@gmail.com";	// 기술자(받는 사람)
 		String title = helpDto.getTitle();
 		String content = helpDto.getContent();
 		String userEmail = helpDto.getEmail();
@@ -53,7 +53,7 @@ public class HelpCommandImpl implements HelpCommand{
 	@Override
 	public void consultingSendEmail(ConsultingDto consulting) {
 		log.info("sendEmail 실행");
-		String setfrom = "dexterpark1992@gmail.com";	// 관리자
+		String setfrom = "@gmail.com";	// 관리자
 		String tomail = consulting.getSendEmail();	// 받는 사람(사용자)
 		String title = consulting.getTitle();
 		String content = consulting.getContent();
