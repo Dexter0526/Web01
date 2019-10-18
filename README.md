@@ -54,10 +54,16 @@
 - 동적 쿼리 사용
 - 회원가입 email ajax 사용(중복 email check)  
 
-#### 5. mybatis
+#### 5. 상담내역
+- 사용자별 리스트 페이지 조회, 전체 리스트 페이징
+- 사용자 상담 등록, 수정, 삭제시 관리자 메일로 해당 내용 발송
+- 관리자 답변 등록시 사용자에게 메일 발송
+- 답변 등록 완료시 수정, 삭제 불가능
+
+#### 6. mybatis
 - 동적 쿼리 및 sql 관리를 위해 적용  
 
-#### 6. library
+#### 7. library
 - lombok : 반복적 DTO 작업 간결화 작업
 - hikariCP : tomcat DBCP 사용중 hikariCP의 뛰어난 성능을 가지고 있다기에 사용(hikariCP 깃허브 참조)
 <img src="https://github.com/brettwooldridge/HikariCP/wiki/HikariCP-bench-2.6.0.png">  
