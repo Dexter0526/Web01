@@ -9,32 +9,40 @@ SYSTEM
 		select * from help 
 		where num = #{num}
 	</select>
+	
+	<select id="getConsulting"
+		resultType="com.company.project.dto.ConsultingDto">
+		select * from consulting
+		where num = #{num}
+	</select>
 
 	<select id="selectAllHelpWithPaging"
 		resultType="com.company.project.dto.HelpDto">
 	<![CDATA[
 		select 
-			num, email, title, content, reg_date 
+			num, email, title, content, reg_date, done 
 		from 
 			(select 
-			rownum rn, num, email, title, content, reg_date 
+			rownum rn, num, email, title, content, reg_date, done 
 			from ]]>
 			<choose>
 			<when test="mdto.admin == 2">
 				(
             	select 
-            	num, email, title, content, reg_date 
+            	num, email, title, content, reg_date, done  
             	from help 
-            	where email = #{mdto.email}
+            	where email = #{mdto.email} ORDER by reg_date desc 
             	)
             </when>
             <otherwise>
-            	help 
+            	(
+            	select * from help 
+            	ORDER by reg_date desc
+            	)
             </otherwise>
             </choose>
             <![CDATA[
 			where rownum <= #{cri.pageNum} * #{cri.amount}
-			order by num
 			)
 		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 	]]>
@@ -52,10 +60,20 @@ SYSTEM
 		values(help_seq.nextval, #{helpDto.email}, #{helpDto.title}, #{helpDto.content})
 	</insert>
 
+	<insert id="consultingInsert">
+		insert into consulting(num, email, title, content, sendemail) 
+		values(${consulting.num}, #{consulting.email}, #{consulting.title}, #{consulting.content}, #{consulting.sendEmail})
+	</insert>
+
 	<update id="updateHelp">
 		update help set title= #{helpDto.title},
 		content= #{helpDto.content} 
 		where num = ${helpDto.num}
+	</update>
+	
+	<update id="helpDone">
+		update help set done=${done} 
+		where num = ${consulting.num} 
 	</update>
 
 	<delete id="deleteHelp">
