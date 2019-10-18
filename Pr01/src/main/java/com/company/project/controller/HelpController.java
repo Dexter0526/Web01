@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.company.project.command.MemberCommand;
+import com.company.project.dto.ConsultingDto;
 import com.company.project.dto.Criteria;
 import com.company.project.dto.HelpDto;
 import com.company.project.dto.MemberDto;
@@ -102,19 +103,33 @@ public class HelpController {
 	public String helpGet(Criteria cri, int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
-		model.addAttribute("help", mapper.getHelp(num));
+		HttpSession session2 = request.getSession();		
 		
+		service.getHelp(num, model);
+		service.getConsulting(num, model);
+
+		model.addAttribute("help", mapper.getHelp(num));
+		model.addAttribute("consulting", mapper.getConsulting(num));
 		// 리스트 실행
 		service.selectAllHelpWithPaging(model);
 		
-		return "/Help/help";
+		log.info("help 세션값 : ???" + session2.getAttribute("help"));
+		
+		if(((MemberDto) session2.getAttribute("mdto")).getAdmin() == 2) {
+			return "/Help/help";
+		}else {
+			return "Erp/Consulting/ConsultingGet";
+		}
+		
 	}
 	
 	@RequestMapping(value = "helpUpdateView")
 	public String helpUpdateView(Criteria cri, int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		model.addAttribute("help", mapper.getHelp(num));
 		model.addAttribute("cri", cri);
+		
+		service.getHelp(num, model);
+		
 		return "/Help/helpUpdateView";
 	}
 	
@@ -128,5 +143,18 @@ public class HelpController {
 		service.selectAllHelpWithPaging(model);
 		
 		return "/Help/help";
+	}
+	
+	@RequestMapping(value = "consultingInsert")
+	public String consultingInsert(Criteria cri, ConsultingDto consultingDto, HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		model.addAttribute("cri", cri);
+		
+		service.insertConsulting(consultingDto);
+		
+		// 리스트 실행
+		service.selectAllHelpWithPaging(model);
+		
+		return "Erp/Consulting/ConsultingGet";
 	}
 }
