@@ -60,10 +60,10 @@
 - 관리자 답변 등록시 사용자에게 메일 발송
 - 답변 등록 완료시 수정, 삭제 불가능
 
-#### 5. mybatis
+#### 6. mybatis
 - 동적 쿼리 및 sql 관리를 위해 적용  
 
-#### 6. library
+#### 7. library
 - lombok : 반복적 DTO 작업 간결화 작업
 - hikariCP : tomcat DBCP 사용중 hikariCP의 뛰어난 성능을 가지고 있다기에 사용(hikariCP 깃허브 참조)
 <img src="https://github.com/brettwooldridge/HikariCP/wiki/HikariCP-bench-2.6.0.png">  
