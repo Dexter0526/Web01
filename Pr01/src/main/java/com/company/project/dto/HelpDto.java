@@ -11,5 +11,6 @@ public class HelpDto {
 	private String title;
 	private String content;
 	private Date reg_date;
+	private int done;
 	
 }

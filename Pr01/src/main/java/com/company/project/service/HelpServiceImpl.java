@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.project.command.HelpCommand;
+import com.company.project.dto.ConsultingDto;
 import com.company.project.dto.Criteria;
 import com.company.project.dto.HelpDto;
 import com.company.project.dto.MemberDto;
@@ -58,7 +59,7 @@ public class HelpServiceImpl implements HelpService{
 	@Override
 	public void insertHelp(HelpDto helpDto) {
 		// email command exe
-		command.sendEmail(helpDto, "insert");
+		command.helpSendEmail(helpDto, "insert");
 		
 		int result = mapper.insertHelp(helpDto);
 		log.info("insert result : " + result);
@@ -67,7 +68,7 @@ public class HelpServiceImpl implements HelpService{
 	@Override
 	public void updateHelp(HelpDto helpDto) {
 		// email command exe
-		command.sendEmail(helpDto, "update");
+		command.helpSendEmail(helpDto, "update");
 		
 		int result = mapper.updateHelp(helpDto);
 		log.info("update result : " + result);
@@ -76,7 +77,7 @@ public class HelpServiceImpl implements HelpService{
 	@Override
 	public void deleteHelp(int num) {
 		// email command exe
-		command.sendEmail(mapper.getHelp(num), "delete");
+		command.helpSendEmail(mapper.getHelp(num), "delete");
 		
 		mapper.deleteHelp(num);
 	}
@@ -88,8 +89,30 @@ public class HelpServiceImpl implements HelpService{
 		HttpSession session2 = request.getSession();
 
 		session2.setAttribute("help", mapper.getHelp(num));
+	}
 
+	
+	@Override
+	public void getConsulting(int num, Model model) {
+		// TODO Auto-generated method stub
+//		Map<String, Object> map = model.asMap();
+//		HttpServletRequest request = (HttpServletRequest) map.get("request");
+//		HttpSession session2 = request.getSession();
+		
+		model.addAttribute("consulting", mapper.getConsulting(num));
+	}
 
+	@Override
+	public void insertConsulting(ConsultingDto consulting) {
+		// email command exe
+		command.consultingSendEmail(consulting);
+		
+		int result = mapper.consultingInsert(consulting);
+		if(result == 1) {
+			mapper.helpDone(consulting, 1);
+		}
+		log.info("insert result : " + result);
+		
 	}
 
 }
