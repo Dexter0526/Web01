@@ -37,7 +37,7 @@ public class HelpServiceImpl implements HelpService{
 	@Override
 	public List<HelpDto> selectAllHelpWithPaging(Criteria cri, MemberDto mdto, int result) {
 		log.info("list service");
-
+		cri.setAmount(20);
 		if(result == 1) {
 			return mapper.selectAllHelpWithPaging(cri, mdto);
 		}else {
