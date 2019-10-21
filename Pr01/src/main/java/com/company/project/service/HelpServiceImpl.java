@@ -1,5 +1,6 @@
 package com.company.project.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,26 +35,22 @@ public class HelpServiceImpl implements HelpService{
 
 
 	@Override
-	public void selectAllHelpWithPaging(Model model) {
+	public List<HelpDto> selectAllHelpWithPaging(Criteria cri, MemberDto mdto, int result) {
 		log.info("list service");
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		HttpSession session2 = request.getSession();
-		session2.removeAttribute("help");
-
-		int result = 0;
-		if(session2.getAttribute("result") != null) {
-			result = (int) session2.getAttribute("result");
-		}
-
-		Criteria cri = (Criteria) map.get("cri");
-		cri.setAmount(20);
-		MemberDto mdto = (MemberDto) session2.getAttribute("mdto");
 
 		if(result == 1) {
-			session2.setAttribute("helpList", mapper.selectAllHelpWithPaging(cri, mdto));
-			session2.setAttribute("pageMaker", new pageDto(cri, mapper.countHelp(mdto)));
+			return mapper.selectAllHelpWithPaging(cri, mdto);
+		}else {
+			return null;
 		}
+		
+	}
+	
+	@Override
+	public pageDto pageMaker(Criteria cri, MemberDto mdto) {
+		cri.setAmount(20);
+		
+		return new pageDto(cri, mapper.countHelp(mdto));
 	}
 
 	@Override
@@ -83,23 +80,21 @@ public class HelpServiceImpl implements HelpService{
 	}
 
 	@Override
-	public void getHelp(int num, Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		HttpSession session2 = request.getSession();
-
-		session2.setAttribute("help", mapper.getHelp(num));
+	public HelpDto getHelp(int num) {
+		log.info("게시글 num : ... " + num);
+		
+		return mapper.getHelp(num);
 	}
 
 	
 	@Override
-	public void getConsulting(int num, Model model) {
+	public ConsultingDto getConsulting(int num) {
 		// TODO Auto-generated method stub
 //		Map<String, Object> map = model.asMap();
 //		HttpServletRequest request = (HttpServletRequest) map.get("request");
 //		HttpSession session2 = request.getSession();
 		
-		model.addAttribute("consulting", mapper.getConsulting(num));
+		return mapper.getConsulting(num);
 	}
 
 	@Override
@@ -114,5 +109,7 @@ public class HelpServiceImpl implements HelpService{
 		log.info("insert result : " + result);
 		
 	}
+
+
 
 }

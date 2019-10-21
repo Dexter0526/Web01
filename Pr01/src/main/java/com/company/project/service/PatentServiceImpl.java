@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.company.project.dto.PatentDto;
 import com.company.project.mapper.PatentMapper;
 
 import lombok.Setter;
@@ -23,22 +24,36 @@ public class PatentServiceImpl implements PatentService{
 
 	@Setter(onMethod_ = @Autowired)
 	private PatentMapper mapper;
-	
+
 	@Override
-	public void selectAllPatent(Model model){
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		HttpSession session2 = request.getSession();
-		session2.setAttribute("patentList", mapper.selectAllPatent());
+	public List<PatentDto> selectAllPatent() {
+		// TODO Auto-generated method stub
+		return mapper.selectAllPatent();
+	}
+
+	@Override
+	public PatentDto updateViewPatent(String patentNum) {
+		// TODO Auto-generated method stub
+		return mapper.getPatent(patentNum);
+	}
+
+	@Override
+	public int insertPatent(PatentDto pdto) {
+		// TODO Auto-generated method stub
+		return mapper.insertPatent(pdto);
+	}
+
+	@Override
+	public int updatePatent(PatentDto pdto) {
+		// TODO Auto-generated method stub
+		return mapper.updatePatent(pdto);
+	}
+
+	@Override
+	public int deletePatent(String patentNum) {
+		// TODO Auto-generated method stub
+		return mapper.deletePatent(patentNum);
 	}
 	
-	@Override
-	public void updateViewPatent(Model model) {
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		HttpSession session2 = request.getSession();
-		String patentNum = request.getParameter("patentNum");
-		
-		session2.setAttribute("patent", mapper.getPatent(patentNum));
-	}
+	
 }

@@ -36,8 +36,6 @@ public class NewsController {
 	@RequestMapping(value="/news")
 	public String news(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		HttpSession session2 = request.getSession();
-		session2.removeAttribute("nresult");
 		
 		model.addAttribute("bestNews", mapper.bestNews());
 //		session2.setAttribute("bestNews", mapper.bestNews());
@@ -61,9 +59,17 @@ public class NewsController {
 	}
 	
 	@RequestMapping(value="/getNews")
-	public String getNews(Criteria cri, HttpServletRequest request, Model model) {
+	public String getNews(Criteria cri,int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		service.getNews(model);
+		model.addAttribute("cri", cri);
+		
+		HttpSession session2 = request.getSession();
+		int admin = (int) session2.getAttribute("admin");
+		if(admin == 0 || admin == 1) {
+			model.addAttribute("nresult", 1);
+		}
+		
+		service.getNews(admin, num);
 		
 		// 리스트 재실행
 		model.addAttribute("cri", cri);
@@ -74,11 +80,9 @@ public class NewsController {
 	@RequestMapping(value="/newsUpdate")
 	public String newsUpdate(Criteria cri, NewsDto ndto, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		HttpSession session2 = request.getSession();
 		
 		// 업데이트
 		mapper.updateNews(ndto);
-		session2.removeAttribute("nresult");
 		
 		// 리스트 재실행
 		model.addAttribute("cri", cri);
@@ -90,12 +94,10 @@ public class NewsController {
 	@RequestMapping(value="/newsDelete")
 	public String newsDelete(Criteria cri, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		HttpSession session2 = request.getSession();
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		// 삭제
 		mapper.deleteNews(num);
-		session2.removeAttribute("nresult");
 		
 		// 리스트 재실행
 		model.addAttribute("cri", cri);

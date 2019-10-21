@@ -7,11 +7,11 @@ import com.company.project.dto.PatentDto;
 public interface PatentMapper {
 	public List<PatentDto> selectAllPatent();
 	
-	public void insertPatent(PatentDto pdto);
+	public int insertPatent(PatentDto pdto);
 	
 	public PatentDto getPatent(String patentNum);
 	
-	public void updatePatent(PatentDto pdto);
+	public int updatePatent(PatentDto pdto);
 	
-	public void deletePatent(String patentNum);
+	public int deletePatent(String patentNum);
 }

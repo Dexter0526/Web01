@@ -1,9 +1,17 @@
 package com.company.project.service;
 
-import org.springframework.ui.Model;
+import java.util.List;
+
+import com.company.project.dto.PatentDto;
 
 public interface PatentService {
-	public void selectAllPatent(Model model);
+	public List<PatentDto> selectAllPatent();
 	
-	public void updateViewPatent(Model model);
+	public PatentDto updateViewPatent(String patentNum);
+	
+	public int insertPatent(PatentDto pdto);
+	
+	public int updatePatent(PatentDto pdto);
+	
+	public int deletePatent(String patentNum);
 }

@@ -35,24 +35,11 @@ public class NewsServiceImpl implements NewsService{
 //	}
 
 	@Override
-	public void getNews(Model model) {
-		int nresult = 0;
-		int admin = 0;
-		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		HttpSession session2 = request.getSession();
-		int num = Integer.parseInt(request.getParameter("num"));
+	public NewsDto getNews(int admin, int num) {
 		mapper.updateCount(num);
-		session2.setAttribute("news", mapper.getNews(num));
+//		session2.setAttribute("news", mapper.getNews(num));
 		
-		if(session2.getAttribute("admin") != null) {
-			admin = (Integer) session2.getAttribute("admin");
-			if(admin==0||admin==1) {
-				nresult = 1;
-			}
-		}
-		session2.setAttribute("nresult", nresult);
-		log.info("nresult = " + nresult);
+		return mapper.getNews(num);
 	}
 
 	@Override

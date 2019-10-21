@@ -65,7 +65,7 @@ public class MemberController {
 	// ERP뷰
 	@RequestMapping(value = "/memberIndexView")
 	public String member_index_view(Model model) {
-		System.out.println("member index view");
+		log.info("member index view");
 
 		return "Erp/ErpIndexView";
 	}
@@ -142,7 +142,10 @@ public class MemberController {
 		log.info("회원 수정 화면");
 		model.addAttribute("request", request);
 		
-		service.updateView(model);
+//		service.updateView(model);
+		
+		// 리빌딩
+		model.addAttribute("member", mapper.getMember(request.getParameter("email")));
 		
 		return "Log/memberUpdateView";
 	}
@@ -163,6 +166,5 @@ public class MemberController {
 		
 		return "Erp/ErpIndexView";
 	}
-	
 	
 }

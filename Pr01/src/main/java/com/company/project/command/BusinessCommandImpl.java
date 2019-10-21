@@ -34,4 +34,5 @@ public class BusinessCommandImpl implements BusinessCommand{
 		
 		session2.setAttribute("business", service.getBusiness(num, table));
 	}
+	
 }
