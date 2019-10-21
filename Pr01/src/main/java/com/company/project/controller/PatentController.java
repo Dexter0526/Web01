@@ -53,7 +53,7 @@ public class PatentController {
 	@RequestMapping(value = "/patentUpdateView")
 	public String patentUpdateView(String patentNum, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
-		service.updateViewPatent(patentNum);
+		model.addAttribute("patent", service.updateViewPatent(patentNum));
 		
 		return "Tech/patentUpdateView";
 	}
