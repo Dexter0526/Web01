@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Hello world!
+<button type="button" onclick="location.href='index'">클릭</button>
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
