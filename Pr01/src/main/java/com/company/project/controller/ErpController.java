@@ -19,7 +19,7 @@ public class ErpController {
 	public String Analytics(HttpServletRequest request, Model model) {
 		log.info("pr_report");
 		
-		return "Erp/includeTest";
+		return "Erp/pr_report";
 	}
 	
 }
