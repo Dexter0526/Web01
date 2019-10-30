@@ -58,10 +58,13 @@ SYSTEM
 		resultType="com.company.project.dto.NewsDto">
 	<![CDATA[
 		select 
-   			rownum rn, num, title, content, readcount, reg_date 
-    		from news 
-    		where rownum <= 4 
-    		order by readcount desc
+		    rownum rn, num, title, content, readcount, reg_date  from 
+		    (
+		        select * 
+		        from news 
+		        order by readcount desc
+		    )
+    where rownum <= 4
 	]]>
 	</select>
 
