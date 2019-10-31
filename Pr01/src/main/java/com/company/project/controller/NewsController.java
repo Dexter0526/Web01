@@ -62,14 +62,16 @@ public class NewsController {
 	public String getNews(Criteria cri,int num, HttpServletRequest request, Model model) {
 		model.addAttribute("request", request);
 		model.addAttribute("cri", cri);
-		
+		model.addAttribute("nresult", 0);
 		HttpSession session2 = request.getSession();
-		int admin = (int) session2.getAttribute("admin");
-		if(admin == 0 || admin == 1) {
-			model.addAttribute("nresult", 1);
-		}
 		
-		service.getNews(admin, num);
+		if(session2.getAttribute("admin") != null) {
+			int admin = (int) session2.getAttribute("admin");
+			if(admin == 0 || admin == 1) {
+				model.addAttribute("nresult", 1);
+			}
+		}
+		model.addAttribute("news", service.getNews(num));
 		
 		// 리스트 재실행
 		model.addAttribute("cri", cri);

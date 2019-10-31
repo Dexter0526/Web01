@@ -68,6 +68,17 @@
 		</c:choose>
 		<br>
 
+		<c:if test="${consulting != null}">
+			<h2 class="sub-header">답변 완료</h2>
+			<div class="panel panel-default">
+				<div class="panel-heading">답변 : ${consulting.title}</div>
+				<div class="panel-body" style="height: 300px;">
+					<pre style="background-color: white; border: 0;">${consulting.content}</pre>
+				</div>
+				<div class="panel-footer">작성자 : 덱스터 건설</div>
+			</div>
+		</c:if>
+
 		<c:if test="${helpList != null }">
 		<!-- table -->
 		<div class="table-responsive">

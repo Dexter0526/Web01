@@ -22,6 +22,7 @@ public class HelpCommandImpl implements HelpCommand{
 	@Autowired
 	private JavaMailSender mailSender;
 	
+	// 사용자 게시글 작성시 해당 기술 부서에서 메일 전송
 	@Override
 	public void helpSendEmail(HelpDto helpDto, String action) {
 		log.info("sendEmail 실행");
@@ -50,6 +51,7 @@ public class HelpCommandImpl implements HelpCommand{
 		
 	}
 
+	// 해당 부서 게시글 답변 등록시 게시글 작성자에게 답변 완료 메일 전송
 	@Override
 	public void consultingSendEmail(ConsultingDto consulting) {
 		log.info("sendEmail 실행");

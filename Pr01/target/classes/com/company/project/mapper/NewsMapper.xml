@@ -17,9 +17,11 @@ SYSTEM
 		from
 			(select 
 			rownum rn, num, title, content, readcount, reg_date 
-			from news 
+			from (
+		        select * from news
+		        order by num desc
+		    )
 			where rownum <= #{cri.pageNum} * #{cri.amount}
-			order by num desc
 			)
 		where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 		

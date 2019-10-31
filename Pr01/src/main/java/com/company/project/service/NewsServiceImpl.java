@@ -35,11 +35,14 @@ public class NewsServiceImpl implements NewsService{
 //	}
 
 	@Override
-	public NewsDto getNews(int admin, int num) {
+	public NewsDto getNews(int num) {
 		mapper.updateCount(num);
 //		session2.setAttribute("news", mapper.getNews(num));
 		
-		return mapper.getNews(num);
+		NewsDto ndto = mapper.getNews(num);
+//		ndto.setContent(ndto.getContent().replace("\r\n", "<br>"));
+		
+		return ndto;
 	}
 
 	@Override

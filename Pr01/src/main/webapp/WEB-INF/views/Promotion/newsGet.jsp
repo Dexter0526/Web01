@@ -10,7 +10,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">${news.title}</div>
 		  <div class="panel-body" style="height: 300px;">
-		    ${news.content}
+		    <pre style="background-color: white; border: 0;">${news.content}</pre>
 		  </div>
 		</div>
 </body>

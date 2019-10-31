@@ -165,7 +165,7 @@ public class HelpController {
 		session2.setAttribute("helpList", service.selectAllHelpWithPaging(cri, mdto, result));
 		session2.setAttribute("pageMaker", service.pageMaker(cri, mdto));
 
-		log.info("help 세션값 : ???" + session2.getAttribute("help"));
+		log.info("help 세션값 : ???..." + session2.getAttribute("help"));
 
 		if(((MemberDto) session2.getAttribute("mdto")).getAdmin() == 2) {
 			return "/Help/help";

@@ -48,8 +48,9 @@
 				<h2 class="sub-header">상세 내역</h2>
 				<div class="panel panel-default">
 					<div class="panel-heading">제목 : ${help.title}</div>
-					<div class="panel-body" style="height: 300px;">내용 :
-						${help.content}</div>
+					  <div class="panel-body" style="height: 300px;">
+					  	<pre style="background-color: white; border: 0;">${help.content}</pre>
+					  </div>
 					<div class="panel-footer">작성자 : ${help.email}</div>
 				</div>
 
@@ -58,8 +59,8 @@
 				<h2 class="sub-header">답변 완료</h2>
 				<div class="panel panel-default">
 					<div class="panel-heading">답변 : ${consulting.title}</div>
-					<div class="panel-body" style="height: 300px;">내용 :
-						${consulting.content}</div>
+					<div class="panel-body" style="height: 300px;">
+						<pre style="background-color: white; border: 0;">${consulting.content}</pre></div>
 					<div class="panel-footer">작성자 : 덱스터 건설</div>
 				</div>
 				</c:if>

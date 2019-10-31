@@ -12,7 +12,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">제목 : ${help.title}</div>
 		  <div class="panel-body" style="height: 300px;">
-		    내용 : ${help.content}
+		   <pre style="background-color: white; border: 0;">${help.content}</pre>
 		  </div>
 		  <div class="panel-footer">작성자 : ${help.email}</div>
 		</div>
