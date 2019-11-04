@@ -13,21 +13,22 @@
 			<li><a href="Analytics" target="_blank">Analytics</a></li>
 			<li><a href="http://data.g2b.go.kr:8275/pt/pubdata/moveGnrlzBidPblancPop.do" target="_blank">
 			통합 입찰공고 내역</a></li>
+			<li><a href="Nara" target="_blank">개찰결과 조회</a></li>
 		</ul>
 		<ul class="nav nav-sidebar">
-			<li><a href="contract">계약관리</a></li>
-			<li><a href="#">현장관리</a></li>
-			<li><a href="#">도급/기성관리</a></li>
-			<li><a href="#">작업일보</a></li>
-			<li><a href="#">전도금/미지급관리</a></li>
+			<li><a href="#">계약관리(구현X)</a></li>
+			<li><a href="#">현장관리(구현X)</a></li>
+			<li><a href="#">도급/기성관리(구현X)</a></li>
+			<li><a href="#">작업일보(구현X)</a></li>
+			<li><a href="#">전도금/미지급관리(구현X)</a></li>
 		</ul>
 		<ul class="nav nav-sidebar">
-			<li><a href="#">노무장비관리</a></li>
-			<li><a href="#">마감정산관리</a></li>
-			<li><a href="#">노무신고</a></li>
-			<li><a href="#">외주기성관리</a></li>
-			<li><a href="#">자재재고관리</a></li>
-			<li><a href="#">원가손익관리</a></li>
+			<li><a href="#">노무장비관리(구현X)</a></li>
+			<li><a href="#">마감정산관리(구현X)</a></li>
+			<li><a href="#">노무신고(구현X)</a></li>
+			<li><a href="#">외주기성관리(구현X)</a></li>
+			<li><a href="#">자재재고관리(구현X)</a></li>
+			<li><a href="#">원가손익관리(구현X)</a></li>
 		</ul>
 		<ul class="nav nav-sidebar">
 		<c:if test="${admin == 0}">
