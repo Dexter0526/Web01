@@ -60,10 +60,13 @@
 - 관리자 답변 등록시 사용자에게 메일 발송
 - 답변 등록 완료시 수정, 삭제 불가능
 
-#### 6. mybatis
+#### 6. 오픈 api
+- 공공데이터 포털 : 나라장터 오픈 api json 형식 파싱
+
+#### 7. mybatis
 - 동적 쿼리 및 sql 관리를 위해 적용  
 
-#### 7. library
+#### 8. library
 - hikariCP : tomcat DBCP -> hikariCP 변경 (hikariCP 깃허브 참조)
 <img src="https://github.com/brettwooldridge/HikariCP/wiki/HikariCP-bench-2.6.0.png">  
 
