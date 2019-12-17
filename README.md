@@ -1,9 +1,9 @@
 # Construction Company Web
 > 건설회사 웹 페이지로 관리자 권한으로 사업 실적, 특허, 뉴스등 업데이트 관리 시스템
 
-[![Video Label](/Reference/mainView.PNG)](https://www.youtube.com/watch?v=tNeKzvV7PvQ)
+[![Video Label](/Reference/mainView.PNG)](https://www.youtube.com/watch?v=GElavPh4Hv4)
 
-- [이미지 클릭] : 유튜브 링크(https://www.youtube.com/watch?v=tNeKzvV7PvQ)
+- [이미지 클릭] : 유튜브 링크(https://www.youtube.com/watch?v=GElavPh4Hv4)
 ---------------------------------------
 
 ### ENVIROMENT
